@@ -1,0 +1,541 @@
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Services</li>
+			<li>New Services</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+<div id="content">
+		<div class="animated fadeInRight">
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="well">
+						<form class="smart-form">
+						   <label class="toggle">
+							  
+						  </label> <h3 class="semi-bold">New Service</h3>
+						</form>
+					</div>				
+				</div>
+			</div>
+		
+		
+			<div class="row" id=tabView>
+				<article class="col-sm-12 col-md-12 col-lg-12">
+					
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget well" id="wid-id-1 data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+						<!-- widget options:
+						usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+		
+						data-widget-colorbutton="false"
+						data-widget-editbutton="false"
+						data-widget-togglebutton="false"
+						data-widget-deletebutton="false"
+						data-widget-fullscreenbutton="false"
+						data-widget-custombutton="false"
+						data-widget-collapsed="true"
+						data-widget-sortable="false"
+		
+						-->
+							<header>
+								<span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+								<h2>Default Tabs with border </h2>
+			
+							</header>
+					
+									<!-- widget div-->
+									<div>
+					
+										<!-- widget edit box -->
+										<div class="jarviswidget-editbox">
+											<!-- This area used as dropdown edit box -->
+					
+										</div>
+										<!-- end widget edit box -->
+					
+										<!-- widget content -->
+										<div class="widget-body">
+					
+											
+											<br>
+											<br>
+											
+											<ul id="myTab1" class="nav nav-tabs bordered">
+												<li class="active">
+													<a href="#s1" data-toggle="tab">DETAILS</a>
+												</li>
+												<li>
+													<a href="#s2" data-toggle="tab">STAFF</a>
+												</li>
+												<!-- <li>
+													<a href="#s3" data-toggle="tab">DISTRIBUTION</a>
+												</li> -->
+											
+											</ul>
+					
+											<div id="myTabContent1" class="tab-content padding-10">
+												<div class="tab-pane fade in active" id="s1">
+												
+													<div class ="row" id="reminderMessageTemplate">
+														<div class="col-sm-12 col-md-12 col-lg-12">
+															<form class="smart-form" id="newService-form">
+																<fieldset>
+																
+																	<div class="row">
+																	
+																		<section class="col col-6">
+																				Service Name<label class="input"> <i class="icon-append fa fa-briefcase"></i><input
+																					type="text" name="serviceName" id="serviceName" placeholder="e.g. haircut"
+																					>
+																				</label>
+																		</section>
+																		
+																	
+																		<section class="col col-6">
+																				Service Price<label class="input"><i class="icon-append fa fa-inr"></i> <input
+																					type="text" name="retailPrice" id="retailPrice" placeholder="0"
+																					>
+																				</label>
+																		</section>
+																		</div>
+																	
+																	<!--	<div class="row">
+																		
+																			 <section class="col col-6">
+																			<label class="label">Treatment Type </label>
+																			<label class="select" id ="treatmentType">
+																				<select>
+																					<option value="Single">Single</option>
+																					<option value="Multiple">Multiple</option>
+																				</select><i></i> </label>
+																		    </section> 
+																		    
+																		   
+																				
+																				
+																		     
+																		
+																		</div>-->
+																		
+																		<div class="row">
+																		 
+																			<section class="col col-6">
+																			<label class="label">Duration Time</label>
+																			<label class="select" id ="durationTime">
+																				<select>
+																					<option value="5">5min</option>
+																					<option value="10">10min</option>
+																					<option value="15">15min</option>
+																					<option value="20">20min</option>
+																					<option value="25">25min</option>
+																					<option value="30">30min</option>
+																					<option value="35">35min</option>
+																					<option value="40">40min</option>
+																					<option value="45">45min</option>
+																					<option value="50">50min</option>
+																					<option value="55">55min</option>
+																					<option value="60">1h</option>
+																					<option value="65">1h 5min</option>
+																					<option value="70">1h 10min</option>
+																					<option value="75">1h 15min</option>
+																					<option value="80">1h 20min</option>
+																					<option value="85">1h 25min</option>
+																					<option value="90">1h 30min</option>
+																					<option value="95">1h 35min</option>
+																					<option value="100">1h 40min</option>
+																					<option value="105">1h 45min</option>
+																					<option value="110">1h 50min</option>
+																					<option value="115">1h 55min</option>
+																					<option value="120">2h</option>
+																					<option value="135">2h 15min</option>
+																					<option value="150">2h 30min</option>
+																					<option value="165">2h 45min</option>
+																					<option value="180">3h</option>
+																					<option value="195">3h 15min</option>
+																					<option value="210">3h 30min</option>
+																					<option value="225">3h 45min</option>
+																					<option value="240">4h</option>
+																					<option value="270">4h 30min</option>
+																					<option value="300">5h</option>
+																					<option value="330">5h 30min</option>
+																					<option value="360">6h</option>
+																					<option value="390">6h 30min</option>
+																					<option value="420">7h</option>
+																					<option value="450">7h 30min</option>
+																					<option value="480">8h</option>
+																					<option value="540">9h</option>
+																					<option value="600">10h</option>
+																					<option value="660">11h</option>
+																					<option value="720">12h</option>
+																				</select><i></i> </label>
+																		     </section> 
+																		
+																		
+																			<section class="col col-6">
+																			<label class="label">Available For</label>
+																			<label class="select" id ="availableFor">
+																				<select>
+																					<option value="Every one">Every one</option>
+																					<option value="Males Only">Males Only</option>
+																					<option value="Females Only">Females Only</option>
+																				</select><i></i> </label>
+																		    </section>
+																		</div>
+																	
+																		  <!-- <div class="row">
+																		
+																		    
+																		  <section class="col col-6">
+																			<label class="label">Extra Time Type</label>
+																			<label class="select" id ="extraTimeType">
+																				<select>
+																					<option value="No Extra Time">No Extra Time</option>
+																					<option value="Processing Time After">Processing Time After</option>
+																					<option value="Blocked Time After">Blocked Time After</option>
+																				</select><i></i> </label>
+																		     </section>
+																		
+																		</div> -->
+																		
+																	
+																		
+																	
+																	</fieldset>
+																	
+																	<footer>
+																
+																    <button id="validateForm" type="submit"
+																		class="btn btn-primary">
+																		Save
+																	</button>
+																	<div id="saveServiceDetailBtn"></div>
+																	
+																	<a id="cancelAddService" class="btn btn-default btn-lg">Cancel</a>
+																	
+														            </footer>
+																
+																</form>
+																
+																		
+														</div>
+													
+													
+													</div>
+													
+												</div>
+													
+												<div class="tab-pane fade" id="s2">
+													
+													<div class ="row" id="reminderMessageTemplate">
+														<div class="col-sm-12 col-md-12 col-lg-12">
+															<form class="smart-form" id = "newService1-form">
+																<fieldset>
+																
+																   <div class="row">
+																		    
+																				<section>
+																						
+																						<div class="inline-group">
+																							<label class="checkbox">
+																								<input type="checkbox" name="checkbox-inline" checked="checked">
+																								<i></i>Select All</label>
+																							
+																						</div>
+																							
+																					</section>
+																		
+																		</div>
+																		
+																	<div class="row">
+																	
+																		          <section>
+																						
+																						<div class="inline-group">
+																							<label class="checkbox">
+																								<input type="checkbox" name="checkbox-inline" checked="checked">
+																								<i></i>Aniket</label>
+																							<label class="checkbox">
+																								<input type="checkbox" name="checkbox-inline">
+																								<i></i>Rahul</label>
+																						</div>
+																							
+																					</section>
+																		
+																	</div>
+																	
+																        
+																</fieldset>
+																
+																<footer>
+																
+																    <button id="validateForm" type="submit"
+																		class="btn btn-primary">
+																		Save
+																	</button>
+																	<div id="saveNewService1Btn"></div>
+																	
+																	<a href="javascript:void(0);" class="btn btn-default btn-lg">Cancel</a>
+																	
+														        </footer>
+																
+															</form>	
+																		
+														</div>
+													
+													</div>
+													
+												</div>
+												
+											<!-- 	<div class="tab-pane fade" id="s3">
+													
+													<div class ="row" id="reminderMessageTemplate">
+														<div class="col-sm-12 col-md-12 col-lg-12">
+															<form class="smart-form" id = "newService2-form">
+																<fieldset>
+																	<div class="row">
+																	
+																		          <section>
+																						
+																						<div class="row">
+																							<div class="col col-4">
+																								<label class="checkbox">
+																									<input type="checkbox" name="checkbox" checked="checked">
+																									<i></i>Enable Online Booking</label>
+																								<label class="checkbox">
+																									<input type="checkbox" name="checkbox" checked="checked">
+																									<i></i>Enable Voucher Sales</label>
+																							</div>
+																								
+																						</div>
+																					</section> 
+																		</div>
+																		
+																		<div class="row">
+																	
+																		<section class="col col-6">
+																				Voucher Expiry Period 1<label class="input"> <input
+																					type="text" name="vep1" id="vep1"
+																					>
+																				</label>
+																		</section>
+																		</div>
+																		
+																		<div class="row">
+																	
+																		<section class="col col-6">
+																				Voucher Expiry Period<label class="input"> <input
+																					type="text" name="vep2" id="vep2"
+																					>
+																				</label>
+																		</section>
+																		</div>
+																		
+																	</fieldset>
+																	
+																	<footer>
+																
+																    <button id="validateForm" type="submit"
+																		class="btn btn-primary">
+																		Save
+																	</button>
+																	<div id="saveNewService2Btn"></div>
+																	
+																	<a href="javascript:void(0);" class="btn btn-default btn-lg">Cancel</a>
+																	
+														            </footer>
+																
+																</form>
+																
+																		
+														</div>
+													
+													
+													</div>
+														
+													
+												</div> -->
+											
+											</div>
+					
+										</div>
+										<!-- end widget content -->
+					
+						            </div>
+						            <!-- end widget div -->
+					
+					</div>
+					<!-- end widget -->
+					
+				</article>
+		
+			</div>
+			
+		</div>
+		
+	</div>
+<!-- END MAIN CONTENT -->
+	
+</div>
+<!-- END MAIN PANEL -->
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+				
+			});
+	
+	
+	 $("#serviceName").keypress(function(event){
+			var inputValue = event.charCode;
+			if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+			event.preventDefault();
+          }
+
+			});
+	 $("#retailPrice").keypress(function(event){
+	        var inputValue = event.charCode;
+	        if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+	            event.preventDefault();
+	        }
+	    });
+	 $("#specialPrice").keypress(function(event){
+	        var inputValue = event.charCode;
+	        if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+	            event.preventDefault();
+	        }
+	    });
+ 
+				 pageSetUp();
+
+				 function chkform()
+				 {
+
+					 //alert("inchk form validation");
+					 //console.log("in chkform");
+						
+						
+						var validator = $( "#newService-form" ).validate({
+							
+							
+							// Step-1 validations
+							rules: {
+						
+								serviceName: 
+								{
+						        	required: true
+						      	},
+						      	retailPrice:
+						      	{
+						      		required: true
+						      	},
+						      	specialPrice:
+						      	{
+						      		required:true
+						      	}
+						    },
+						    
+						    messages: {
+							//step1
+						      serviceName:{
+								required: "Please specify your Service Name"      
+							},
+							retailPrice:
+					      	{
+					      		required: "Please specify Service Price"
+					      	},
+					      	specialPrice:
+					      	{
+					      		required:"Please specify Special Price"
+					      	}
+						   },
+						   
+							
+							
+							submitHandler: function() {					
+								//alert("inchk1111 form");
+								$("#saveServiceDetailBtn").click();
+							    
+							  },
+							  invalidHandler: function() {
+							    
+							  }
+							});
+					}
+			
+				 $('#validateForm').click(function(e){
+				       
+				        //console.log(validator.numberOfInvalids();
+				        //alert("inchk3333 form");
+				        chkform();
+				    });	
+				        
+				        
+				        
+				     
+				    function chkform2()
+					 {
+
+						 //alert("inchk form validation");
+						 //console.log("in chkform");
+							
+							
+							var validator = $( "#newService2-form" ).validate({
+								
+								
+								// Step-1 validations
+								rules: {
+							
+									vep1: 
+									{
+							        	required: true
+							      	},
+							      	vep2:
+							      	{
+							      		required: true
+							      	}
+							    },
+							    
+							    messages: {
+								//step1
+							      vep1:{
+									required: "Please specify your vep1"      
+								},
+								vep2:
+						      	{
+						      		required: "Please specify vep2"
+						      	}
+							   },
+							   
+								
+								
+								submitHandler: function() {					
+									//alert("inchk form");
+									$("#saveNewService2Btn").click();
+								    
+								  },
+								  invalidHandler: function() {
+								    
+								  }
+								});
+						}
+				
+					 $('#validateForm').click(function(e){
+					       
+					        //console.log(validator.numberOfInvalids();
+					        //alert("inchk form");
+					        chkform2();
+					    });	
+
+		</script>
+	

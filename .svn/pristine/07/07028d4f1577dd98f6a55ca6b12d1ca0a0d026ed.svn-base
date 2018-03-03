@@ -1,0 +1,195 @@
+
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Campaign Manager</li>
+			
+		</ol>
+		<!-- end breadcrumb -->
+
+		<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:-->
+	</div>
+	<!-- END RIBBON -->
+	
+	<!-- MAIN CONTENT -->
+	<div id="content">
+		<div class="animated fadeInRight">
+
+			<div class="row">
+				
+				<div class="col-sm-12">
+					
+					<div class="well well-light">
+						
+						<form class="smart-form">
+		
+							 <label class="toggle">
+								<input type="checkbox" name="checkbox-toggle" class="input-lg" id ="enable" checked="checked">
+								<i data-swchon-text="ON" data-swchoff-text="OFF"></i>
+							</label> <h3 class="semi-bold hidden-xs">Enable Campaign Manager Messages</h3><h3 class="semi-bold hidden-sm hidden-md hidden-lg">Enable Messages</h3>
+						
+						</form>
+			
+					</div>
+					
+				</div>
+				
+			</div>
+	
+			<div class="row" id="tabView">
+				
+				<div class="col-sm-12">
+		
+					<button type="button" class="btn btn-primary btn-sm pull-right" id="newCampaign">New Campaign </button>
+						
+				</div>
+				
+				<br>
+				<br>
+					
+					<article class="col-sm-12 col-md-12 col-lg-12">
+		
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget well" id="wid-id-1 data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+								
+								<header>
+									<span class="widget-icon"> <i class="fa fa-gift"></i> </span>
+									<h2>Promotional Offers </h2>
+				
+								</header>				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+				
+									<!-- widget content -->
+									<div class="widget-body">
+										
+										<div class="table-responsive">
+											
+											<table class="table table-hover">
+														
+												<thead>
+													
+													<tr>
+														<th></th>
+														<th>Offer Type</th>
+														<th class="hidden-lg hidden-md">Share</th>
+														<th>Offer End Date</th>
+														<th>Offer Send Date</th>
+														<th>Offer Status</th>
+														<th>Remove</th>
+														<th></th>
+														
+													</tr>
+												</thead>
+												<tbody>
+													<%  _.each(campaignList, function(campaign){ 
+										       		 console.log(campaign);
+										       		 
+										       		   var sdate = new Date(campaign.attributes.reminderNotice).toLocaleDateString('ca-indian');
+										       		   var edate = new Date(campaign.attributes.endDate).toLocaleDateString('ca-indian');
+										 
+										        	 %>
+										        	 
+										      
+													
+													<tr id="row1">
+													
+														<td><i class="fa fa-reorder"></i></td>
+														<td><a href="#" id="editCampaign"><%= campaign.attributes.offerType %></a></td>
+														    
+														 <td class="hidden-lg hidden-md"><a href="whatsapp://send?text=Hi,%0ASpecial *<%= campaign.attributes.offerType %>* Offer for u.%0AGet *<%= campaign.attributes.offerDiscountPer %> % * discount on all services
+														    %0A at *<%= campaign.attributes.locationName %>*%0AOffer *Valid* from *<%= sdate %> - <%= edate %>*
+														    %0A For more details Please contact%0A
+														    * <%= campaign.attributes.locationName %> - <%= campaign.attributes.contactNo %>*" data-action="share/whatsapp/share"><img src="img/whatsapp1.png" width="39" height="32"></a></td>
+														    
+														<td><%= edate %></td>
+														<td><%= sdate %></td>
+														<td><span class="label label-success">Active</span></td>
+														<td><a href="#" class="btn btn-default btn-sm " id="delete" ><i class="fa fa-lg  fa-trash-o"></i></a></td>
+														<td><div class="smart-form"><label class="toggle">
+															<input type="checkbox" name="checkbox-toggle" checked="checked" id="offerStatus" offerId="<%= campaign.attributes.offerId %>" onclick="switchOffer(this)">
+															<i data-swchon-text="ON" data-swchoff-text="OFF"></i></label></div></td>
+													</tr>
+													<% }); %>
+												
+												</tbody>
+												
+											</table>
+											<div id="changeOrderStatus"></div>
+										</div>
+									
+									</div>
+									<!-- end widget content -->
+				
+								</div>
+								<!-- end widget div -->
+				
+						</div>
+						<!-- end widget -->
+				
+					</article>
+			
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- END MAIN CONTENT -->
+
+<!-- END MAIN PANEL -->
+<script>
+
+function switchOffer(element){
+	 console.log($(element));
+	 var offerStatus = $(element).val();
+	 var offerId = $(element).attr("offerId");
+	 
+	 if($(element).prop('checked')){
+		 console.log(offerId +"turning ON now ");		 
+		 var offerTrue = {offerStatus:true,offerId:offerId};
+		 CommonUtils.setOffer(offerTrue);
+		 console.log();
+		 $("#changeOrderStatus").click();
+	 }
+	 else{
+		 var offerFalse = {offerStatus:false,offerId:offerId};
+		 CommonUtils.setOffer(offerFalse);
+		 console.log(offerId +"turning OFF now ");
+		 $("#changeOrderStatus").click();
+	 }
+	 
+	 
+}
+
+$(document).ready(function(){
+   
+    $('#enable').change(function(){
+        if(this.checked)
+            $('#tabView').fadeIn('slow');
+        else
+            $('#tabView').fadeOut('slow');
+    });
+    
+   
+ 
+ 
+});
+
+</script>

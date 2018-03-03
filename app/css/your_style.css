@@ -1,0 +1,316 @@
+/*
+ * It is advised not to edit the smartadmin_production.css
+ * as this will override any changes you make in the 
+ * later versions of this theme. 
+ * 
+ * We advise that you use use this CSS to override 
+ * SmartAdmin styles. 
+ * 
+ * Rename the stylesheet to whatever your liking so it will stay
+ * unique to you with each update of SmartAdmin.
+ */
+
+/*
+ * INDEX
+ * 
+ * - HTML
+ * - BODY
+ * - CUSTOM STYLES
+ */
+ 
+ #header {
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#f4f4f4),to(#f1f1f1)) !important;
+}
+
+.friends-list img {
+   width: 50px;
+}
+
+.modal-header {
+    background-color: #f4f4f4;
+}
+.modal-footer {
+	background-color: #f4f4f4;
+}
+
+
+div.row.map {
+margin-left: -200px;;
+}
+
+p.lead.info{
+  font-weight:bold;
+}
+div.row.gallery {
+margin-top:2px;
+}
+div.col-sm-6.uploadpmc{
+	margin-left:30px;
+}
+
+div.col-sm-6.uploadscreen{
+	margin-left:30px;
+}
+div.row2{
+	margin-top:2px;
+}
+h2.heading{
+height: 100%;
+width: auto;
+display: inline-block;
+font-size: 14px;
+position: relative;
+margin: 0;
+line-height: 34px;
+font-weight: bold;
+letter-spacing: 0;
+}
+div.row.data {
+	padding-left:20px;
+}
+.btn-primary.upl{
+	margin-left: 390px;
+}
+.list img {
+   width: 200px;
+   height: 136px;
+}
+h2.head{
+	height: 100%;
+width: auto;
+display: inline-block;
+font-size: 14px;
+position: relative;
+margin-left: 14px;
+line-height: 34px;
+font-weight: bold;
+letter-spacing: 0;
+}
+.bootstrapWizard li {
+    display: block;
+    float: left;
+    width: 20%;
+    text-align: center;
+    padding-left: 0;
+}
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 791px;
+}
+div.row.display {
+	padding-top:15px;
+}
+.well.well-change{
+	background:#143051;
+}
+
+.maping{
+	width: 327px;
+height: 229px;
+padding-left: 20px;
+padding-top: 20px;
+padding-bottom: 20px;
+}
+
+.dropdown-menu1{
+position: absolute;
+top: 100%;
+z-index: 1000;
+display: none;
+float: left;
+min-width: 160px;
+padding: 2px 12px;
+margin: -1px -75px 0px;
+list-style: none;
+font-size: 13px;
+text-align: left;
+background-color: #EAEAEA;
+border: 1px solid #ccc;
+border: 1px solid rgba(0,0,0,.15);
+border-radius: 2px;
+-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+box-shadow: 0 6px 12px rgba(0,0,0,.175);
+background-clip: padding-box;
+}
+.btn-primary{
+	margin-right:18px;
+}
+.dropdown:hover .dropdown-menu1{
+    display: block;
+}
+.myLogin {
+    position: relative;
+    z-index: 1;
+}
+
+.myLogin .bg{
+	position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 400px;
+    background: url(../img/custom/times1.jpeg);
+    opacity: .8;
+    width: 100%;
+    height: 118%;
+
+	
+}
+.myDiv1 {
+    position: relative;
+    z-index: 1;
+}
+
+.myDiv1 .bg{
+	position: absolute;
+    z-index: -1;
+    top: -32px;
+    bottom: 0;
+    left: -98px;
+    right: 0px;
+    background: url(img/custom/times.jpg);
+    opacity: .7;
+    width: 777px;
+    height: 601px;
+
+	
+}
+.ownReg{
+    position: relative;
+    z-index: 1;
+}
+
+.ownReg .bg{
+	position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 400px;
+    background: url(../img/custom/2.jpg) no-repeat;
+    opacity: .7;
+    width: 100%;
+    height: 100%;
+	
+}
+.advtReg{
+    position: relative;
+    z-index: 1;
+}
+
+.advtReg .bg{
+	position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 400px;
+    background: url(../img/custom/3.jpg) no-repeat;
+    opacity: .7;
+    width: 100%;
+    height: 100%;
+	
+}
+.screen-list img {
+   width: 200px;
+}
+
+.fulldivimage img{
+	max-width:100%;
+	height:auto;
+	
+}
+h1.txt-color-blue.logintext{
+margin-left: 113px;
+line-height: 44px;
+}
+
+
+.well.screen-info{
+min-height: 20px;
+padding: 3px;
+margin-bottom: 20px;
+}
+td, th {
+    padding: 2px;
+   
+}
+
+.headerlocation{
+	 border-bottom: 1px solid #C2C2C2;
+	 background-color:#FAFAFA
+}
+td.searchdata{
+	color:yellow;
+	
+}
+td.tableimage{
+	width:50px;
+	
+}
+h1.screenheader{
+	margin-top:15px;
+}
+.screen-list img {
+   width: 194px;
+   height:151px;
+}
+.btn.btn-primary.btn-sm.logout.pull-right{
+	margin-top:17px;
+	color:#fff;
+}
+.campaignName{
+	cursor: move;
+}
+#logo img {
+	width:137px;
+	height:31px;
+}
+
+.superbox-img:hover {
+    opacity: .8;
+     -webkit-transform: scale3d(1.1, 1.1, 1.1);
+              transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.alert-darken {
+    border-color: #404040;
+    color: #fff;
+    background-color: #404040;
+    border-radius: 2px;
+}
+
+.fa-big {
+    font-size: 2.1em;
+    line-height: 1.75em;
+    vertical-align: -15%;
+}
+
+.bckimg {
+	position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(../img/superbox/1.jpg) no-repeat;
+    opacity: .7;
+    width: 100%;
+    height: 100%;
+   
+}
+
+span.linkpointer:hover  {
+    color: #48b0f7;
+    cursor:pointer;
+}
+
+section.col.col-1.top {
+    padding-top: 25px;
+}
+section.col.col-2.top {
+    padding-top: 20px;
+}

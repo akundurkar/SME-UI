@@ -1,0 +1,274 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<script src="js/plugin/clockpicker/clockpicker.min.js"></script>
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Order Confirm Status</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+<div id="content">
+	
+	<div class="animated fadeInRight">
+		
+		<div class="row">
+			
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			
+				<div class="well">
+
+					<%		
+					console.log(oredeResModelColList);
+					_.each(oredeResModelColList, function(order){ 
+										
+						var orderDate = new Date(order.attributes.date).toLocaleDateString('ca-indian');
+						var orderTime = new Date(order.attributes.date).toLocaleTimeString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
+						
+					%>
+						<div id="orderId" class="hidden"> <%=order.attributes.bookingId%> </div>
+							
+							<div class="row">
+								
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								
+									<table class="responsive">
+					
+										<tbody>
+											
+											<tr>
+												<td><h6><%=order.attributes.clientFirstName%> <%=order.attributes.clientLastName%></h6></td>
+											</tr>
+											<tr>
+												<td><h5><%=order.attributes.mobile%></h5></td>
+											</tr>
+											<!-- <tr>
+												<td><span class="label label-primary">New Client</span></td>
+											</tr> -->
+											
+										</tbody>
+										
+									</table>
+											
+								</div>
+								
+							</div>
+							
+							<br>
+							
+							<div class="row" id="scheduleForm">
+								
+								<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+									
+									<table class="table table-bordered table-hover"">
+										
+										<tbody>
+										
+											<%
+												var json = JSON.stringify(order.attributes.serviceList);
+												var parsed = JSON.parse(json);
+												var i = 0;
+												for(var x in parsed)
+												{
+													i++;
+											%>
+													<tr>
+													
+														<td>Service<%=i%></td>
+																			
+														<td><b><%= parsed[x].serviceName%> <%= parsed[x].serviceTime%></b></td>
+														
+													</tr>
+													<tr>
+													
+														<td>Staff</td>
+														
+														<td><b><%= parsed[x].staffName%></b></td>
+														
+													</tr>
+											<%}%>	
+													<tr>
+													
+														<td>Date</td>
+														
+														<td><b id="orderDate"><%=orderDate%></b></td>
+														
+													</tr>
+													<tr>
+													
+														<td>Time</td>
+														
+														<td><b id="orderTime"><%=orderTime%></b></td>
+														
+													</tr>
+													<tr>
+													
+														<td>Total Price</td>
+														
+														<td><b><%=order.attributes.totalCost%> <i class="fa fa-inr"></i></b></td>
+														
+													</tr>
+													
+										</tbody>
+										
+									</table>
+									
+								</div>
+								
+								<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+									
+									<button id="reschedule" type="button" class="btn btn-default btn-sm">
+										<i class="fa fa-clock-o"></i>	Reschedule
+									</button>
+								
+									<button id="rejectOrder" type="button" class="btn btn-danger btn-sm pull-right">
+																<i class="fa fa-ban"></i>				Reject
+									</button>
+									<button id="confirmOrder" type="button" class="btn btn-primary btn-sm pull-right">
+																	<i class="fa  fa-check"></i>			Confirmed
+									</button>
+																		
+									<!-- <label class="btn btn-block btn-default">
+										<input type="radio" name="Status" value="Confirmed">
+										Confirmed </label>
+									<label class="btn btn-block btn-default">
+										<input type="radio" name="" status""="" value="Started">
+										Reject </label> -->
+										
+								</div>
+								
+							<% }); %>	
+							</div>
+							
+							<div class="row" id="rescheduleForm">
+								
+								<form id="rescheduleOrderform" class="smart-form" >
+									
+									<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+									
+										<div class="smart-form">
+										
+											<%		
+												console.log(oredeResModelColList);
+												_.each(oredeResModelColList, function(order){ 
+										
+												//var orderDate = new Date(order.attributes.date).toLocaleDateString('en-US');
+												var orderDate =  $.datepicker.formatDate('yy-mm-dd', new Date(order.attributes.date));
+												var orderTime = new Date(order.attributes.date).toLocaleTimeString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
+											%>
+											<div id="orderId" class="hidden"> <%=order.attributes.bookingId%> </div>
+												<div class="row">
+												
+													<div class="col col-6">
+													<label class="label">Select Date</label>	
+														<label class="input"> <i class="icon-append fa fa-calendar"></i>
+														<input type="text" name="bookingDate" id="bookingDate" value="<%=orderDate%>">
+														</label>
+													</div>
+												
+													<div class="col col-6">
+													<label class="label">Select Time</label>
+													<label class="input"> <i class="icon-append fa fa-clock-o"></i>
+														<input type="text" name="time" id="time" value="<%=orderTime%>" data-autoclose="true">
+														</label>
+													
+													</div>
+														
+												</div>
+												
+											<% }); %>	
+											
+										</div>
+																					
+									</div>
+									<br><br><br><br>
+									<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+							
+												<button id="cancelReschedule" type="button" class="btn btn-danger btn-sm pull-right">
+																						 Cancel
+												</button>
+												<button id="rescheduleOrder" type="button" class="btn btn-primary btn-sm pull-right">
+																						Reschedule
+												</button>
+																					
+									</div>
+								
+								</form>
+							
+							</div>
+							
+				</div>
+				
+			</div>		
+	
+	</div>
+		
+</div>
+<!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->
+
+<script>
+
+
+//START AND FINISH DATE
+$('#bookingDate').datepicker({
+	dateFormat : 'yy-mm-dd',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	minDate: 0,
+	onSelect : function(selectedDate) {
+		var maxDate = new Date(Date.parse(selectedDate));
+         //maxDate.setDate( selectedDate +"+10D");     
+		//$('#endDate').datepicker('option', 'minDate', selectedDate);
+		//$('#endDate').datepicker('option', 'maxDate');
+	}
+});
+
+$('#time').clockpicker({
+	placement: 'top',
+    donetext: 'Done',
+    twelvehour:true,
+    onHourShow: function( hour ) { 
+        var currenttime = new Date();
+        if ( $('#date').val() == $.datepicker.
+                                  formatDate ( 'mm/dd/yy', currenttime ) ) {
+            if ( hour <= currenttime.getHours() ) {
+                alert('nope');
+                return false;
+            }
+        }
+        return true;
+    }
+});
+
+$('#rescheduleForm').hide();
+
+
+$('#reschedule').click(function(e){
+
+	$('#rescheduleForm').show();
+	$('#scheduleForm').hide();
+
+});
+
+$('#cancelReschedule').click(function(e){
+
+	$('#scheduleForm').show();
+	$('#rescheduleForm').hide();
+
+});
+
+
+</script>

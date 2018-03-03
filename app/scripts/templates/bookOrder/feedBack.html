@@ -1,0 +1,220 @@
+<script type="text/javascript" src="js/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="js/jquery/dist/jquery-ui-1.10.3.min.js"></script>
+<script src="js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+<!-- JQUERY VALIDATE -->
+		<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<script src="js/plugin/clockpicker/clockpicker.min.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+
+
+ <aside id="left-panel">
+ 
+ </aside>
+
+
+
+		<!-- MAIN PANEL -->
+		<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+				<li>FeedBack</li>
+				
+		</ol>
+		<!-- end breadcrumb -->
+				
+	</div>
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+			
+				
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+				
+					<!-- row -->
+					<div class="row">
+				
+						<!-- NEW WIDGET START -->
+						<article class="col-sm-12 col-md-12 col-lg-12">
+				
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false">
+							
+				
+									<header>
+									<span class="widget-icon"> <i class="fa  fa-thumbs-o-up"></i> </span>
+									<h2>FeedBack Form</h2>
+				
+								</header>
+				
+							<!-- widget div-->
+						<div>
+						
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+							</div>
+							<!-- end widget edit box -->
+							
+								<!-- widget content -->
+								<div class="widget-body no-padding">
+
+									<form id="feedback-form" class="smart-form" novalidate="novalidate">
+
+									
+											<!-- <input id="serviceExperienceQuestion_id" type="hidden" value="1"> -->
+											
+											<fieldset>
+										
+												<div class="row">
+												
+													<section class="col col-8" >
+													<label class="label">Overall experience with our service</label>
+													<div class="inline-group" required>
+														<label class="radio">
+															<input type="radio" name="serviceExperience" value="EXCELLENT">
+															<i></i>Excellent</label>
+														<label class="radio">
+															<input type="radio" name="serviceExperience" value="GOOD">
+															<i></i>Good</label>
+														<label class="radio">
+															<input type="radio" name="serviceExperience" value="FAIR">
+															<i></i>Fair</label>
+														<label class="radio">
+															<input type="radio" name="serviceExperience" value="POOR">
+															<i></i>Poor</label>
+														<label class="radio">
+															<input type="radio" name="serviceExperience" value="VERYPOOR">
+															<i></i>Very Poor</label>
+													</div>
+												</section>
+												
+												</div>
+												</fieldset>
+												
+												<!-- <input id="offerExperienceQuestion_id" type="hidden" value="2"> -->
+												<fieldset>
+												
+													<div class="row">
+												
+													<section class="col col-8" >
+													<label class="label">How satisfied are you with the comprehensiveness of our offer?</label>
+													<div class="inline-group" >
+														<label class="radio">
+															<input type="radio" name="offerExperience"  value="EXCELLENT">
+															<i></i>Excellent</label>
+														<label class="radio">
+															<input type="radio" name="offerExperience" value="GOOD">
+															<i></i>Good</label>
+														<label class="radio">
+															<input type="radio" name="offerExperience" value="FAIR">
+															<i></i>Fair</label>
+														<label class="radio">
+															<input type="radio" name="offerExperience" value="POOR">
+															<i></i>Poor</label>
+														<label class="radio">
+															<input type="radio" name="offerExperience" value="VERYPOOR">
+															<i></i>Very Poor</label>
+													</div>
+												</section>
+												
+												</div>
+												</fieldset>
+												<!-- <input id="commentsQuestion_id" type="hidden" value="3"> -->
+												<fieldset>
+												<div class="row">
+											
+													<section class="col col-8" >
+														Comments<label class="textarea textarea-resizable" > 
+														                  <textarea rows="6" class="custom-scroll" name="comments" id="comments" placeholder=""></textarea>
+														           </label>
+												    </section>
+												   
+												
+												</div>
+												
+											
+											
+											</fieldset>
+
+											
+									
+										<footer>
+											<button id="validateForm" type="button"  
+												class="btn btn-primary">
+												<i class="fa fa-check "></i> Send Your Feedback
+											</button>
+											<div id="sendFeedback"  clientId =""  orderId="" branchId="" ></div>
+	
+										</footer>
+									
+									</form>
+
+								</div>
+				
+							</div>
+							<!-- end widget -->
+				
+						</article>
+						<!-- WIDGET END -->
+				
+						<!-- NEW WIDGET START -->
+					
+				
+					</div>
+				
+					<!-- end row -->
+				
+				</section>
+				<!-- end widget grid -->
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->
+
+
+<script type="text/javascript">
+$('#validateForm').off().on('click', function() {
+	
+	//alert(window.location.href); 
+
+	var str = window.location.href ;
+	var res = str.slice(32,41);
+	var ser = str.slice(42,51);
+	var ber = str.slice(52,61);
+	
+	// alert(ber);
+	
+       $("#sendFeedback").attr("clientId", res);
+       
+       $("#sendFeedback").attr("orderId", ser);
+       
+       $("#sendFeedback").attr("branchId", ber);
+       
+        //alert( $("#sendFeedback").attr("clientId"));  
+   
+        // alert( $("#sendFeedback").attr("orderId"));
+       
+        //  alert( $("#sendFeedback").attr("branchId"));
+       
+	//alert("The btn Save was clicked.");
+	var formCheck = $("#feedback-form").valid();
+    if(formCheck){
+    	console.log("formcheck true");
+    	$("#sendFeedback").click();
+    }
+    console.log("formcheck false");
+});
+
+
+
+</script>

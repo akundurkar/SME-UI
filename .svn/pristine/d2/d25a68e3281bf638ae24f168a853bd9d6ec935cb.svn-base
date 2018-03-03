@@ -1,0 +1,321 @@
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Services</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+	<div id="content">
+		<div class="animated fadeInRight">
+		
+		<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					
+					
+					
+						<h1 class="page-title txt-color-blueDark">
+							<!-- PAGE HEADER -->
+							<i class="fa-fw fa fa-slack"></i> 
+								Services
+						</h1>
+								
+					</div>
+			</div>		
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		
+		<button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#addNewServiceGroupModal">New Group</button>
+						
+		</div>
+		</div>
+		<br>
+		
+		<!-- widget grid -->
+				
+				
+					<!-- row -->
+					<div class="row">
+				
+						<!-- NEW WIDGET START -->
+						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				
+							<div class="well well-light">
+							
+									<div class=" table-responsive">				
+										<table  class="table table-hover">
+
+					<% _.each(servicesList, function(serviceObject){ %>
+								<thead>
+									            <tr>
+									            <th><i class="fa fa-reorder fa-lg"></i></th>
+									                <th><span class="linkpointer"><font size="3" data-toggle="modal" data-target="#serviceNameGroup"><%= serviceObject.attributes.serviceGroupName %></font></span></th>
+								                    <th><a href="#" id="newService" serviceGroupId="<%= serviceObject.attributes.id %>" class="btn btn-primary pull-right btn-md hidden-md hidden-lg  hidden-sm""><i class="fa fa-plus"></i></a></th>
+								                    <th></th>
+								                    <th></th>
+								                    <th><button id="newService" serviceGroupId="<%= serviceObject.attributes.id %>" type="button" class="btn btn-success btn-sm addNewServiceToGroup hidden-xs pull-right">New Service</button></th>
+								                    
+									            </tr>
+									        </thead>
+				
+									        <tbody>
+									        
+									        
+									        <%    	
+									        var arr = [];
+									        var json = JSON.stringify(serviceObject.attributes.serviceList);
+									        var parsed = JSON.parse(json);
+									        
+									        for(var x in parsed)
+									        {
+                                               arr.push(parsed[x]);
+                                               
+                                               var timeValue=parsed[x].durationTime;
+    
+                                               var hours=Math.floor(timeValue/60);
+                                               console.log("hours print"+ hours);
+                                               if (hours>0)
+                                               {
+													min=hours*60;
+													finalMin=timeValue-min;
+													if(finalMin!=0)
+													{
+														timeString=hours + " h " +finalMin + " min";
+														console.log("hours print"+ timeString);
+													}
+													else{
+														timeString=hours + " h";
+														console.log("hours print"+ timeString);
+													}
+												}
+												else{
+												
+													timeString=timeValue + " min";
+													console.log("hours print"+ timeString);
+												}
+                                               
+                                               %>
+                                               <tr>
+													<td><i class="fa fa-reorder"></i></td>
+													<td><%= parsed[x].serviceName %></td>
+													<td><%= timeString %></td>
+													<td><span><%= parsed[x].retailPrice %> &nbsp;&nbsp;<i class="fa fa-rupee"></i></span></td>
+													<td><a href="#" id="deleteServiceDetails" serviceId="<%= parsed[x].serviceId %>" ><i class="fa fa-lg  fa-trash-o"></i></a></td>
+													<td></td>												
+												</tr>
+                                               
+                                           <% }
+									        
+									        %>
+
+
+											</tbody>
+
+											<% }); %>
+									
+										</table>
+				
+									</div>
+									
+						</div>
+								
+						</article>
+						<!-- WIDGET END -->
+				
+					</div>
+				
+					<!-- end row -->
+		</div>
+		<!-- end widget grid -->
+		
+<!-- Modal -->
+				<div class="modal" id="addNewServiceGroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+										&times;
+									</button>
+										<h4 class="modal-title" id="myModalLabel"> &nbsp;New Service Group</h4>
+								</div>
+								<div class="modal-body">
+							
+									<div class="row">
+										<div class="col-md-12">
+											<form class="form " role="form" id="groupName-form" >
+										<!-- 	<div class="row">
+												<div class="col-md-1">
+												</div>
+												
+												<div class="col-md-8">										
+													<div class="form-group">
+														<label class="input">
+														Group Name<input type="text" class="form-control"  required name="groupName" id="groupName" placeholder="e.g.card or Cash" />
+													    </label>		   
+													</div>
+																						
+												</div>
+												
+												<div class="col-md-3">
+												</div>
+										
+											</div> -->
+											
+											<div class="row">
+									
+												<div class="col-md-8">
+										
+													<div class="smart-form">
+													<label>GROUP NAME</label>
+														<label class="input">
+														<input type="text" class="form-control"  required name="groupName" id="groupName" placeholder="e.g.Hair or Facial" />
+														</label>
+													</div>									
+									
+												</div>
+									
+									
+											</div>
+											<br>
+											<br>
+											
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+										Cancel
+												</button>
+												<button type="button" class="btn btn-success btn-sm" id ="saveServiceGroupModalBtn">
+													<span class="glyphicon glyphicon-floppy-disk"></span> Save
+												</button>
+												<div id= "saveServiceGroupBtn"></div>
+											</div>
+									</form>
+										</div>
+									</div>
+						
+								</div>
+								
+							
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+				
+			
+<!-- Modal -->
+				<div class="modal" id="serviceNameGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+										&times;
+									</button>
+										<h4 class="modal-title" id="myModalLabel"> &nbsp;Edit Service Group</h4>
+								</div>
+								<div class="modal-body">
+							
+									<div class="row">
+										<div class="col-md-12">
+											<form class="form " role="form" id="groupName-form" >
+										<!-- 	<div class="row">
+												<div class="col-md-1">
+												</div>
+												
+												<div class="col-md-8">										
+													<div class="form-group">
+														<label class="input">
+														Group Name<input type="text" class="form-control"  required name="groupName" id="groupName" placeholder="e.g.card or Cash" />
+													    </label>		   
+													</div>
+																						
+												</div>
+												
+												<div class="col-md-3">
+												</div>
+										
+											</div> -->
+											
+											<div class="row">
+									
+												<div class="col-md-8">
+										
+													<div class="smart-form">
+													<label>GROUP NAME</label>
+														<label class="input">
+														<input type="text" class="form-control"  required name="groupName" id="editgroupName" placeholder="e.g.Hair or Facial" />
+														</label>
+													</div>									
+									
+												</div>
+									
+									
+											</div>
+											<br>
+											<br>
+											
+											<div class="modal-footer">
+											<button type="button" class="btn btn-default btn-danger pull-left" data-dismiss="modal">
+										Delete
+												</button>
+												<button type="button" class="btn btn-default" data-dismiss="modal">
+										Cancel
+												</button>
+												<button type="button" class="btn btn-success btn-sm" id ="editsaveServiceGroupModalBtn" >
+													<span class="glyphicon glyphicon-floppy-disk"></span> Save
+												</button>
+												<div id= "saveServiceGroupBtn"></div>
+											</div>
+									</form>
+										</div>
+									</div>
+						
+								</div>
+								
+							
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+	</div>
+
+<!-- END MAIN CONTENT -->
+				
+				
+</div>
+
+<!-- END MAIN PANEL -->
+<script type="text/javascript">
+
+
+	$(document).ready(function() {
+				
+			});
+	
+	 $("#groupName").keypress(function(event){
+			var inputValue = event.charCode;
+			if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+			event.preventDefault();
+          }
+
+	});
+	 
+	 $('#saveServiceGroupModalBtn').off().on('click', function() {
+			//alert("The btn Save was clicked.");
+			var formCheck = $("#groupName-form").valid();
+		    if(formCheck){
+		    	console.log("formcheck true");
+		    	$("#saveServiceGroupBtn").click();
+		    }
+		    console.log("formcheck false");
+		});
+	 
+</script>

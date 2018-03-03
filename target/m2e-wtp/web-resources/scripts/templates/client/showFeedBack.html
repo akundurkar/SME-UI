@@ -1,0 +1,134 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>FeedBack</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+	<div id="content">
+		<div class="animated fadeInRight">
+
+			<div class="col-sm-12">
+			
+		
+			
+			<button id="newClients" type="button" class="btn btn-primary btn-default pull-right" >FeedBack </button>
+			
+			<!-- <button id="clientsProfile" type="button" class="btn btn-primary btn-default pull-right" data-toggle="modal" data-target="#myModal">Clients profile</button> -->
+							
+			</div>
+			
+			<br>
+			<br>
+		
+			<!-- widget grid -->
+				<section id="widget-grid" class="">
+				
+					<!-- row -->
+					<div class="row">
+				
+						<!-- NEW WIDGET START -->
+						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+								<header>
+									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+									<h2>FeedBack </h2>
+				
+								</header>
+				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+									
+									<!-- widget content -->
+									<div class="widget-body no-padding">
+									
+										<div class="table-responsive">
+										<table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
+					
+									        <thead>
+									            <tr>
+									                <th data-hide="phone">Id</th>
+								                    <th data-class="expand">Name</th>
+								                    <th data-hide="phone">order</th>
+								                    <th data-hide="phone">feedback</th>
+													<th>Checkout</th>
+									            </tr>
+									        </thead>
+				
+									        <tbody>
+									        <%  									        
+									        _.each(feedbackList, function(feedbackDetails){ 
+									        console.log(feedbackDetails);
+									    
+									         %>
+												<tr>
+													<td><%= feedbackDetails.attributes.feedbackId %></td>
+													<!-- <td><a href="#" id="<%= singleClient.attributes.clientId %>" clientId="<%= singleClient.attributes.clientId %>" class="viewClientProfile"><%= singleClient.attributes.fname %> <%= singleClient.attributes.lname %></a></td>
+													<td><%= singleClient.attributes.ownermobile %></td>
+													<td><%= appointmentDetail %></td>
+													
+													<%if("NA" === appointmentDetail ){%>
+													<td><button id="<%= singleClient.attributes.clientId %>" clientId="<%= singleClient.attributes.clientId %>" orderId ="<%= singleClient.attributes.orderid %>"  type="button" class="btn btn-primary btn-sm getOrderDetailsInClient" disabled="disabled">
+																	View
+																</button></td>
+													<%}else{%>
+													<td><button id="<%= singleClient.attributes.clientId %>" clientId="<%= singleClient.attributes.clientId %>" orderId ="<%= singleClient.attributes.orderid %>"  type="button" class="btn btn-primary btn-sm getOrderDetailsInClient">
+																	View
+																</button></td>
+													<%}%>	
+																																									
+													<td><button id="<%= singleClient.attributes.clientId %>" clientName="<%= singleClient.attributes.fname %> <%= singleClient.attributes.lname %>" orderId ="<%= singleClient.attributes.orderid %>" clientMobile="<%= singleClient.attributes.ownermobile %>" type="button" class="btn btn-success btn-sm bookNewOrder">
+																	Checkout
+																</button></td> -->
+													
+												</tr>												
+												<% }); %>
+											</tbody>
+									
+										</table>
+										</div>
+									</div>
+									<!-- end widget content -->
+				
+								</div>
+								<!-- end widget div -->
+				
+							</div>
+							<!-- end widget -->
+							
+						</article>
+						<!-- WIDGET END -->
+				
+					</div>
+					<!-- end row -->
+				</section>
+				
+		</div>
+		<!-- end widget grid -->
+		
+	</div>
+<!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->

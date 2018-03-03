@@ -1,0 +1,651 @@
+
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Staff</li>
+			<li>New Staff</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+	</div>
+	<!-- END RIBBON -->
+	<!-- MAIN CONTENT -->
+	<div id="content">
+		<div class="animated fadeInRight">
+		
+		    <div class="row">
+					<div class="col-sm-12">
+						<div class="well">
+							<form class="smart-form">
+							   <label class="toggle">
+								  
+							  </label> <h3 class="semi-bold">New Staff</h3>
+							</form>
+						</div>				
+					</div>
+			</div>
+		
+			<div class="row" id=tabView>
+		
+				<article class="col-sm-12 col-md-12 col-lg-12">
+					
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget well" id="wid-id-1 data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+						<!-- widget options:
+						usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+		
+						data-widget-colorbutton="false"
+						data-widget-editbutton="false"
+						data-widget-togglebutton="false"
+						data-widget-deletebutton="false"
+						data-widget-fullscreenbutton="false"
+						data-widget-custombutton="false"
+						data-widget-collapsed="true"
+						data-widget-sortable="false"
+		
+						-->
+							
+									<!-- widget div-->
+									<div>
+					
+										<!-- widget edit box -->
+										<div class="jarviswidget-editbox">
+											<!-- This area used as dropdown edit box -->
+					
+										</div>
+										<!-- end widget edit box -->
+					
+										<!-- widget content -->
+										<div class="widget-body">
+					
+											
+											<br>
+											<br>
+											
+											<ul id="myTab1" class="nav nav-tabs bordered">
+												<li class="active">
+													<a href="#t1" data-toggle="tab">Details</a>
+												</li>
+												<li>
+													<a href="#t2" data-toggle="tab">Address</a>
+												</li>
+												<li>
+													<a href="#t3" data-toggle="tab">Services</a>
+												</li>
+												
+											</ul>
+					
+											<div id="myTabContent1" class="tab-content padding-10">
+												
+												<div class="tab-pane fade in active" id="t1">
+												
+													<div class ="row">
+														
+														<div class="col-sm-12 col-md-12 col-lg-12">
+
+															<form class="smart-form"  id="details-form">
+															
+																	
+																<fieldset>
+																	
+																	<div class="row">	
+								 
+																		<section class="col col-4">	
+														
+																			<label class="input">
+																				First Name<input type="text"  name="fName" id="fName" >
+																			</label>
+																			
+																		</section>
+																		
+																		<section class="col col-4">
+																			
+																			<label class="input">
+																			
+																				Last Name<input type="text"   name="lName" id="lName" >
+																			
+																			</label>
+																		
+																		</section>
+													
+																		<section class="col col-4">
+																			
+																			<label class="input">
+																				
+																				Mobile No<input data-mask="9999999999" type="text"  name="mob" id="mob"  >
+																			
+																			</label>
+																		
+																		</section>
+																	
+																	</div>
+											
+																	<div class="row">
+												   
+																		<section class="col col-4">
+																			
+																			<label class="input">
+																				
+																				E-mail<input type="text"  name="email" id="email"  >
+															
+																			</label>
+																	
+																		</section>
+														
+																		<section class="col col-4">
+																	
+																			Join Date
+																			<label class="input">
+																				<i class="icon-append fa fa-calendar"></i>
+																				<input type="text" name="startDate" id="startDate" >
+																			</label>
+																		
+																		</section>
+																	
+																		<section class="col col-4">
+																		
+																			<label class="label">User Permission</label>
+																			
+																				<label class="select" id ="userPermission" name="userPermission" >
+																				
+																					<select>
+																				
+																						<option value="0">No Access</option>
+																						<option value="1">Low</option>
+																						<option value="2">Medium</option>																						
+																						<option value="3">High</option>
+																							
+																					</select> <i></i> 
+																			
+																				</label>
+																	
+																		</section>
+																		
+																	</div>
+												
+																	<div class="row" >
+													
+																		<section class="col col-12">
+																			<p>Assign locations where this staff member can be booked.</p>
+																	             <label class="input">
+																					<div class="inline-group">
+																						<label class="checkbox">
+																							<input type="checkbox" name="assignLocation"  id="checkAll" value="checkAll">
+																							<i></i>All Location
+																						</label>	
+																						
+																						<%  _.each(locationList, function(locationDetails){  %>	
+																						
+																						<label class="checkbox">
+																								<input type="checkbox" name="assignLocation" id="location" value="location">
+																								<i></i><%= locationDetails.attributes.locationName %>
+																						</label>
+																						
+																						<% }); %>	
+																						
+																					</div>
+																				 </label>
+																		</section>
+													
+																	</div>
+											
+																</fieldset>
+															    
+																<footer>
+											
+																	<button  id= "saveStaffDetailsModelBtn" type="submit" class="btn btn-success btn-sm">
+																		<span class="glyphicon glyphicon-floppy-disk"></span> Update
+																	</button>
+						                           					<div id= "saveStaffDetailsBtn"></div>
+						                           					
+						                           					<a href="javascript:void(0);" class="btn btn-danger btn-lg" id ="cancelNewStaffDetails">Cancel</a>
+												
+																</footer>
+																
+															</form>
+															
+														</div>
+															
+													</div>
+													
+												</div>
+													
+												<div class="tab-pane fade" id="t2">
+												
+													<form id="address-form" class="smart-form" >
+													
+													
+													
+														<fieldset>
+												
+																<section>
+																	
+																	Address<label class="textarea">
+																				 <textarea rows="3"  name="address" id="address">
+																				 </textarea>
+																			</label>
+															
+																</section>
+											
+													
+															<div class="row">
+																
+																<section class="col col-4">
+																	<label class="input">
+																		State<input type="text"  name="state" id="state" style="text-transform:uppercase" >
+																	</label>
+																</section>
+																<section class="col col-4">
+																	<label class="input">
+																		city<input type="text"  name="city" id="city"  style="text-transform:uppercase" >
+																	</label>
+																</section>
+																<section class="col col-4">
+																	<label class="input">
+																		Pin Code<input type="text" data-mask="999999"  name="pincode" id="pincode" >
+																	</label>
+																</section>
+															
+															</div>
+														
+														</fieldset>
+														
+														
+										
+														<footer>
+												
+															<button   id= "saveStaffAddressModelBtn" type="submit" class="btn btn-success btn-sm">
+																<span class="glyphicon glyphicon-floppy-disk"></span> Update
+															</button>
+															<div id= "saveStaffAddressBtn"></div>	
+															
+															<a href="javascript:void(0);" class="btn btn-danger btn-lg" id ="cancelNewStaffAddress">Cancel</a>
+												
+														</footer>
+														
+													
+													
+													</form>
+													
+												</div>				
+								
+												<div class="tab-pane fade" id="t3">
+												
+													<form id="service-form" class="smart-form" >
+													
+														<fieldset>
+														
+															<p>Assign services this staff member can perform.</p><br>
+																
+																<div class="row" >
+													
+																	<section class="col col-12">
+																		
+																		<label class="input">
+																			
+																			<div class="inline-group">
+																				
+																				<label class="checkbox">
+																					
+																					<input type="checkbox" name="assignService"  id="checkAllService" value="checkAll">
+																					
+																					<i></i>All Service
+																				
+																				</label>	
+																
+																			<%  _.each(serviceDetailsList, function(serviceDetails){  %>	
+															         
+																				<label class="checkbox">
+																					
+																					<input type="checkbox" name="serviceCheckbox" id="serviceCheckbox" value="services">
+																					<i></i><%= serviceDetails.attributes.groupName %></label>
+																	
+																			 <% }); %>
+																			
+																			</div>
+																		
+																		</label>
+															
+																	</section>
+													
+																</div>
+														
+														</fieldset>
+												
+														<footer>
+												
+															<button  id ="saveStaffServiceModalBtn" type="submit" class="btn btn-success btn-sm">
+																<span class="glyphicon glyphicon-floppy-disk"></span> Update
+															</button>
+															<div id= "saveStaffServiceBtn"></div>
+													<a href="javascript:void(0);" class="btn btn-danger btn-lg" id ="cancelNewStaffService">Cancel</a>
+														</footer>								
+													
+													</form>
+													
+												</div>				
+								
+											</div>
+											<!-- end widget content -->
+
+										</div>
+										<!-- end widget div -->
+
+									</div>
+									<!-- end widget -->
+
+					</div>
+				
+				</article>
+		
+			</div>
+			<!-- end row -->
+
+		</div>
+		
+	</div>
+	<!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->
+
+<script type="text/javascript">
+
+ $("#description").keypress(function(event){
+		var inputValue = event.charCode;
+		if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		   event.preventDefault();
+      }
+
+});
+
+ $("#fName").keypress(function(event){
+		var inputValue = event.charCode;
+		if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		   event.preventDefault();
+      }
+
+});
+ 
+ $("#lName").keypress(function(event){
+		var inputValue = event.charCode;
+		if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		   event.preventDefault();
+       }
+
+});
+ 
+ $("#mob").keypress(function(event){
+       var inputValue = event.charCode;
+       if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+           event.preventDefault();
+       }
+       
+});
+ 
+ $("#state").keypress(function(event){
+		var inputValue = event.charCode;
+		if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		    event.preventDefault();
+        }
+
+});
+
+ $("#city").keypress(function(event){
+		var inputValue = event.charCode;
+		if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		  event.preventDefault();
+        }
+
+});
+
+ $("#pincode").keypress(function(event){
+	     var inputValue = event.charCode;
+	     if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+	         event.preventDefault();
+	     }
+	     
+});
+ 
+
+//START AND FINISH DATE
+	$('#startDate').datepicker({
+			dateFormat : 'yy-mm-dd',
+			prevText : '<i class="fa fa-chevron-left"></i>',
+			nextText : '<i class="fa fa-chevron-right"></i>',
+			//minDate: 0,
+			onSelect : function(selectedDate) {
+				var maxDate = new Date(Date.parse(selectedDate));
+	             //maxDate.setDate( selectedDate +"+10D");     
+				//$('#endDate').datepicker('option', 'minDate', selectedDate);
+				//$('#endDate').datepicker('option', 'maxDate');
+			}
+		});
+
+
+
+$("#checkAll").click(function () {
+    $('input:checkbox').not(this).prop('checked', this.checked);
+});
+
+$("#checkAllService").click(function () {
+    $('input:checkbox').not(this).prop('checked', this.checked);
+});
+
+/* $('#updateEditedStaffDetailsModelBtn').off().on('click', function() {
+	//alert("The btn Save was clicked.");
+	var formCheck = $("#updateDetails-form").valid();
+    if(formCheck){
+    	console.log("formcheck true");
+    	$('#updateEditedStaffDetailsBtn').click();
+    }
+    console.log("formcheck false");
+}); 
+
+$('#updateEditedStaffAddressModelBtn').off().on('click', function() {
+	//alert("The btn Save was clicked.");
+	var formCheck = $("#updateAddress-form").valid();
+    if(formCheck){
+    	console.log("formcheck true");
+    	$("#updateEditedStaffAddressBtn").click();
+    }
+    console.log("formcheck false");
+});  */
+
+$(document).ready(function() {
+	
+});
+
+$("#cancelNewStaffAddress").click(function () {
+	 $('.nav-tabs a[href="#t1"]').tab('show');
+});
+		
+$("#cancelNewStaffService").click(function () {
+	 $('.nav-tabs a[href="#t1"]').tab('show');
+});
+			function chkform()
+			{
+				
+	  			    $('.nav-tabs a[href="#t1"]').tab('show');
+	    
+					var validator = $( "#details-form" ).validate({
+			
+					rules: {
+						
+								fName: 
+								{
+						        	required: true
+						      	},
+						      	lName:
+						      	{
+						      		required: true
+						      	},
+						      	mob:
+						      	{
+						      		required:true
+						      	},
+						      	email:
+						      	{
+						      		required:true
+						      	},
+						      	startDate:
+						      	{
+						      		required:true
+						      	}
+						      	
+				    },
+				    
+				    messages: {
+				    	
+				    			fName:
+							    {
+									required : "Please specify your First Name"      
+								},
+								lName:
+						      	{
+						      		required: "Please specify your Last Name"
+						      	},
+						      	mob:
+						      	{
+						      		required:"Please specify your Mobile Number"
+						      	},
+						      	email:
+						      	{
+						      		required:"Please specify your Email"
+						      	},
+						      	startDate:
+						      	{
+						      		required:"Please specify Year"
+						      	}
+				   },
+				   
+				   submitHandler: function() {					
+					  
+							$("#saveStaffDetailsBtn").click();
+					    
+				   },
+					
+				   invalidHandler: function() {
+					  
+				   }
+					
+		});
+		
+}
+
+$('#saveStaffDetailsModelBtn').click(function(e){
+
+       chkform();
+       
+});	
+       
+              
+function chkform1()
+{ 
+
+			
+			var validator = $( "#address-form" ).validate({
+				
+					rules: {
+			
+					
+									address:
+							      	{
+							      		required:true
+							      			
+							      	},
+							      	city:
+							      	{
+							      		required:true
+							      			
+							      	},
+							      	state:
+							      	{
+							      		required:true
+							      			
+							      	},
+							      	pincode:
+							      	{
+							      		required:true
+							      			
+							      	}
+			   	 	},
+			    
+			    	messages: {
+				
+			     
+			    					address:
+							      	{
+							      		required:"Please specify your Address"
+							      			
+							      	},
+							      	city:
+							      	{
+							      		required:"Please specify your City"
+							      			
+							      	},
+							      	state:
+							      	{
+							      		required:"Please specify your State"
+							      			
+							      	},
+							      	pincode:
+							      	{
+							      		required:"Please specify your Postal Code"
+							      			
+							      	}
+		      	
+			 	  	},
+			   
+					submitHandler: function() {					
+						
+								chkform();
+					
+				 	},
+				 	
+				 	invalidHandler: function() {
+				 		
+				  	}
+				 	
+			});
+		
+}
+      
+$('#saveStaffAddressModelBtn').click(function(e){
+	
+       chkform1();
+       
+});	 
+
+function chkform2()
+{ 
+
+			
+			var validator = $( "#service-form" ).validate({
+					
+					submitHandler: function() {					
+						
+						chkform1();
+					
+				 	},
+				 	
+				 	invalidHandler: function() {
+				 		
+				  	}
+				 	
+			});	
+				
+}
+      
+$('#saveStaffServiceModalBtn').click(function(e){
+
+       chkform2();
+       
+});	 
+</script>

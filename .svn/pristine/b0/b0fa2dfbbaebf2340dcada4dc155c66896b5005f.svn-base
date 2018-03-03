@@ -1,0 +1,162 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>SME-UI</groupId>
+  <artifactId>Adcast</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>SME</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+  <!-- <pluginManagement> -->
+  <plugins>
+  <plugin>
+  	<artifactId>maven-antrun-plugin</artifactId>
+  	<version>1.7</version>
+  	<executions>
+      <execution>
+		<phase>generate-sources</phase>
+			<configuration>
+    			<target name="building">
+	        		<echo>
+					<!--  NPM INSTALL  -->
+	        		</echo>
+	        		<exec executable="cmd" dir="${project.basedir}"  osfamily="windows" failonerror="true">
+	            		<arg line="/c npm config set color false"/>
+	        		</exec>
+	        		<exec executable="bash" dir="${project.basedir}"  osfamily="unix" failonerror="true">
+	            		<arg line="npm config set color false"/>
+	        		</exec>
+	        		<exec executable="cmd" dir="${project.basedir}" osfamily="windows" failonerror="true">
+	            		<arg line="/c npm install"/>
+	        		</exec>
+	        		<exec executable="bash" dir="${project.basedir}" osfamily="unix" failonerror="true">
+	            		<arg line="npm install"/>
+	        		</exec>
+	        		<echo>
+						<!-- GRUNT  -->
+	        		</echo>
+	        		<exec executable="cmd" dir="${project.basedir}" osfamily="windows" resultproperty="cmdresult">
+	            		<arg line="/c grunt serve --force"/>
+	        		</exec>     
+    			</target>
+			</configuration>
+          <goals>
+              <goal>run</goal>
+          </goals>
+      </execution>
+  </executions>
+</plugin>
+
+<plugin>
+    <groupId>com.github.trecloux</groupId>
+    <artifactId>yeoman-maven-plugin</artifactId>
+    <version>0.1</version>
+    <executions>
+        <execution>
+        <id>run-grunt</id>
+        <phase>generate-source</phase>
+            <goals>
+                <goal>build</goal>
+            </goals>
+                           
+            
+        </execution>
+    </executions>
+     <configuration>
+                    <yeomanProjectDirectory>${project.basedir}</yeomanProjectDirectory>
+                </configuration>
+</plugin>
+
+<plugin>
+    <artifactId>maven-war-plugin</artifactId>
+    <version>2.3</version>
+            <configuration>
+        <webResources>
+            <resource>
+                <directory>app</directory>
+            </resource>
+        </webResources>
+    </configuration>
+</plugin>
+
+<plugin>
+    <artifactId>maven-clean-plugin</artifactId>
+    <version>2.5</version>
+    <configuration>
+        <filesets>
+            <fileset>
+                <directory>app/dist</directory>
+            </fileset>
+            <fileset>
+                <directory>app/.tmp</directory>
+            </fileset>
+            <fileset>
+                <directory>app/components</directory>
+            </fileset>
+            <fileset>
+              <directory>app/node_modules</directory>
+            </fileset>
+        </filesets>
+    </configuration>
+</plugin>
+
+ <!--This plugin's configuration is used to store Eclipse 
+                m2e settings only. It has no influence on the Maven build itself. -->
+            <plugin>
+                <groupId>org.eclipse.m2e</groupId>
+                <artifactId>lifecycle-mapping</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <lifecycleMappingMetadata>
+                        <pluginExecutions>
+                            <pluginExecution>
+                                <pluginExecutionFilter>
+                                    <groupId>org.codehaus.mojo</groupId>
+                                    <artifactId>aspectj-maven-plugin</artifactId>
+                                    <versionRange>[1.0,)</versionRange>
+                                    <goals>
+                                        <goal>test-compile</goal>
+                                        <goal>compile</goal>
+                                    </goals>
+                                </pluginExecutionFilter>
+                                <action>
+                                    <execute />
+                                </action>
+                            </pluginExecution>
+                        </pluginExecutions>
+                    </lifecycleMappingMetadata>
+                </configuration>
+            </plugin>
+
+<!-- 	<plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>yuicompressor-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compress</goal>
+            </goals>
+          </execution>
+        </executions>        
+        <configuration>
+          <excludes>
+            <exclude>**/*.pack.js</exclude>
+            <exclude>**/compressed.css</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+ -->  </plugins>
+<!--     </pluginManagement> -->
+    <finalName>Sme-UI</finalName>
+    
+  </build>
+</project>

@@ -1,0 +1,950 @@
+<script type="text/javascript" src="js/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="js/jquery/dist/jquery-ui-1.10.3.min.js"></script>
+<script src="js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+<!-- JQUERY VALIDATE -->
+		<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<script src="js/plugin/clockpicker/clockpicker.min.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+
+
+ <aside id="left-panel">
+ 
+ </aside>
+
+
+
+		<!-- MAIN PANEL -->
+		<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+				<li>Booking Order</li>
+				<li>Online Booking</li>
+		</ol>
+		<!-- end breadcrumb -->
+				
+	</div>
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+			
+				
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+				
+					<!-- row -->
+					<div class="row">
+				
+						<!-- NEW WIDGET START -->
+						<article class="col-sm-12 col-md-12 col-lg-12">
+				
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+				
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+				
+								-->
+								<header>
+									<span class="widget-icon"> <i class="fa fa-cloud"></i> </span>
+									<h2>Online Booking Service </h2>
+				
+								</header>
+				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+				
+									<!-- widget content -->
+									<div class="widget-body">
+				
+										<div class="row">
+											<form id="wizard-1" novalidate="novalidate">
+												<div id="bootstrap-wizard-1" class="col-sm-12">
+													<div class="form-bootstrapWizard">
+														<ul class="bootstrapWizard form-wizard">
+															<li class="active" data-target="#step1" stepno="1">
+																<a href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Choose Branch Location</span> </a>
+															</li>
+															<li data-target="#step2" stepno="2">
+																<a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Choose Services</span> </a>
+															</li>
+															<li data-target="#step3" stepno="3">
+																<a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title"> Pick Date And Time</span> </a>
+															</li>
+															<li data-target="#step4" stepno="4">
+																<a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Confirmation</span> </a>
+															</li>
+															<li data-target="#step5" stepno="5">
+																<a href="#tab5" data-toggle="tab"> <span class="step">5</span> <span class="title">Booking Success</span> </a>
+															</li>
+														</ul>
+														<div class="clearfix"></div>
+													</div>
+									
+													<div class="tab-content">
+									
+															<div class="tab-pane active" id="tab1">
+																<br>
+																<h3><strong>Step 1</strong> -  Where you want to get a service</h3>
+																
+																
+															
+															
+																	<div class="row">
+																														
+																			<div class="col-sm-12">
+																				<ol class="dd-list" style="cursor:pointer">
+															<%   _.each(locationList, function(location){  %>
+																					<li class="dd-item"  id="<%= location.attributes.branchId %>" branchname="<%= location.attributes.locationName %>"  onclick="setBranch(this)">
+																						<div class="dd-handle">
+																							<h3><%= location.attributes.locationName %></h3>
+		                                                      								<em class="pull-right" rel="tooltip" title="" data-placement="left" data-original-title="next"><i class="fa fa-chevron-right fa-lg "></i></em>
+		                                                      									<small><font color="gray"><%= location.attributes.area %></font></small>
+																						</div>
+																					
+																					</li>														
+														<% }); %>
+																				</ol>
+				
+																			</div>
+				
+																	</div>
+																
+																
+																
+															</div>
+									
+														<div class="tab-pane" id="tab2">
+															<br>
+															<h3><strong>Step 2 </strong> - Choose Services</h3>
+															<!-- wizard form starts here -->
+													<div class="smart-form">
+													<div class="repeatingSection row">
+															 		 <!-- <a href="#" type="button" class="btn btn-primary btn-sm buttonright deleteService"><i class="fa fa-times "></i> Delete</a> -->
+															            <input type="hidden" name="fighter_a_id_1" id="fighter_a_id_1" value="" />
+															            <input type="hidden" name="fighter_b_id_1" id="fighter_b_id_1" value="" />
+															            <input type="hidden" name="winner_id_1" id="winner_id_1" value="" />
+															 		
+																		<!-- <div class="row"> 
+																			 <div id = "directorpartner">
+																    			<div class="form-group box"> -->
+																    			
+																    			
+																            		<section class="col col-4">	
+																            		
+																						<label class="label">Services</label>
+																						<label class="select" for="serviceId_1">
+																						<div class="form-group">
+																							<select id="serviceId_1" name="serviceId_1" onchange=addPriceTobookingTotal(this)>
+																								<option value="0" selected="" disabled="">Select</option>
+
+																																																																				
+																							<% 
+																								serviceMap = {};
+																								_.each(servicesList, function(serviceObject){ %>
+																									
+																									<optgroup label="<%= serviceObject.attributes.serviceGroupName %>">									                													        
+																							        
+																							        <%    	
+																							        var arr = [];
+																							        var json = JSON.stringify(serviceObject.attributes.serviceList);
+																							        var parsed = JSON.parse(json);
+																							        
+																	        for(var x in parsed)
+																	        {
+								                                               var key = parsed[x].serviceId;
+								                                               
+								                                               arr.push(parsed[x]);
+								                                                                      
+																                var timeValue=parsed[x].durationTime;
+								    
+								                                               var hours=Math.floor(timeValue/60);
+								                                               console.log("hours print"+ hours);
+								                                               if (hours>0)
+								                                               {
+																					min=hours*60;
+																					finalMin=timeValue-min;
+																					if(finalMin!=0)
+																					{
+																						timeString=hours + " h " +finalMin + " min";
+																						console.log("hours print"+ timeString);
+																					}
+																					else{
+																						timeString=hours + " h";
+																						console.log("hours print"+ timeString);
+																					}
+																				}
+																				else{
+																				
+																					timeString=timeValue + " min";
+																			
+																					console.log("hours print"+ timeString);
+																				}
+								                                                    
+															                           parsed[x].durationTime=timeString;
+															                         
+															                            serviceMap[key] = parsed[x]; 
+															                            
+															                                                %>
+															                                               
+															                                               <option value="<%= parsed[x].serviceId %>"><%= parsed[x].serviceName %> - <%= parsed[x].retailPrice %>Rs , (<%= timeString %>)</option>
+															                                               	<!-- <td><%= parsed[x].durationTime %></td> -->
+																											
+															                                            <% }
+																							        
+																							        %>
+														
+																								<% }); %>
+
+																								
+																							</select> <i></i> 
+																						</label>
+																	</div>
+																					</section>
+																				
+																					
+																					
+																					<section class="col col-4 ">
+																						
+																						<label class="label">Select Staff</label>
+																						<div class="form-group">
+																						<label class="select" for="staffId_1">
+																						
+																							<select id="staffId_1" name="staffId_1" onchange=addStaff(this)>
+																								<option value="0" selected="" disabled="">Select</option>
+																									<%  
+																									staffMap = {};
+																									 _.each(staffList, function(staffDetails){ 
+																									 	var staffKey =staffDetails.attributes.staffId;								                                               							
+																									 	staffMap[staffKey] = staffDetails.attributes.fullName; 
+																									 %>	
+																										
+																										
+																										<option value="<%= staffDetails.attributes.staffId %>"><%= staffDetails.attributes.fullName %></option>
+																								
+																									<% }); %>						
+																							</select> <i></i> </label>														
+																						</div>	
+																					</section>
+																					
+				       													<!--        </div>
+				       													    </div>
+
+				       													 </div> -->
+															        <label><font color="white">.</font></label><br>	
+															        <a href="#" id="delete"><i class="fa fa-big  fa-trash-o"></i></a>														       
+															 							<!-- <i class="fa fa-lg fa-trash-o delete"></i> -->
+
+															           </div>
+				       										
+				       										<div class="row">
+				       										<div class="col col-6">
+															<div class="formRowRepeatingSection">
+					               											 <a href="#" type="button" align="right" 
+					               											 class="btn btn-primary btn-sm buttonRight addMyService" value="Clone box">
+					               											 <i class="fa fa-plus "></i> Add Services</a>
+															</div>
+															</div>
+															</div>
+								</div>
+				
+														</div>
+														<div class="tab-pane" id="tab3">
+															<br>
+															<h3><strong>Step 3</strong> -  Pick Date And Time</h3>
+															
+															<div class="smart-form">
+														
+															<div class="row">
+																	<section class="col col-5">
+																	<div class="form-group">	
+																	<label class="label">Date</label>	
+																		<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																		<input type="text" name="bookingDate" id="bookingDate" >
+																		</label>
+																		</div>
+																	</section>
+																	
+																	<section class="col col-5">
+																	<div class="form-group">	
+																	<label class="label">Time</label>
+																	<label class="input"> <i class="icon-append fa fa-clock-o"></i>
+																		<input type="text" name="time" id="time" data-autoclose="true">
+																		</label>
+																	</div>
+																	</section>
+																	
+																</div>
+															
+														
+														
+														</div>
+															
+														</div>
+														<div class="tab-pane" id="tab4">
+															<br>
+															<h3><strong>Step 4</strong> - Confirmation</h3>
+															
+															<div class="row">
+													<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													
+													<div class="col-sm-8">
+													
+
+											<div class="smart-form"  novalidate="novalidate">
+									
+											<fieldset>
+										
+										
+										
+											<div class="row">
+																	<section class="col col-12">
+																		   <div id="myRadioGroup">
+																				
+																					<div class="inline-group">
+																						<label class="radio">
+																							<input type="radio" name="existsUser" id="existsUser"checked="checked" value="OLDUSER">
+																							<i></i>Existing User</label>
+																							
+																						<label class="radio">
+																							<input type="radio" name="existsUser" id="existsUser" value="NEWUSER">
+																							<i></i>New User</label>
+																																
+																					</div>
+																			</div>			
+																	</section>
+																</div>
+																
+																<div id="existsUserOLDUSER"  class="desc">
+																<div class="row">
+																	<section class="col col-6">
+																	<div class="form-group">	
+																				MOBILE NUMBER<label class="input"> <i
+																					class="icon-append fa fa-mobile"></i> <input
+																					data-mask="9999999999" type="text" id="mobile" name="mobile">
+																				</label>
+																				</div>
+																			</section>
+																</div>
+																</div>
+																
+												<div id="existsUserNEWUSER" class="desc">
+												<div class="row">
+												
+													<section class="col col-6">
+													<div class="form-group">	
+														First Name<label class="input"><i class="icon-append fa fa-user"></i> 
+																		<input type="text" name="newClientFname" id="newClientFname" class="form-control" required>
+																	 </label>
+																	 </div>
+													</section>
+												
+												<section class="col col-6">
+												<div class="form-group">	
+														Last Name<label class="input"><i class="icon-append fa fa-user"></i> 
+																		<input type="text" name="newClientLname" id="newClientLname" class="form-control" required>
+																	 </label>
+																	 </div>
+													</section>	
+												
+												</div>
+												
+												<div class="row">
+												
+													<section class="col col-6">
+													<div class="form-group">	
+														Email<label class="input">  <i
+														class="icon-append fa fa-envelope"></i><input
+															type="text" name="newClientEmail" id="newClientEmail"
+															>
+														</label>
+														</div>
+													</section>
+													
+													<section class="col col-6">
+													<div class="form-group">	
+														 Contact<label class="input">  <i
+														class="icon-append fa fa-phone"></i><input
+															type="text" name="newClientMobile" id="newClientMobile"
+															>
+														</label>
+														</div>
+													</section>
+													
+													
+												
+												</div>
+												
+												<div class="row">
+											
+													<section class="col col-10" >
+														Booking Notes<label class="textarea"> 
+														                  <textarea rows="3" name="info" id="info" placeholder=""></textarea>
+														           </label>
+												    </section>
+												
+												</div>
+												
+												</div>
+												
+												<div class="row">
+											
+													<section class="col col-10" >
+												<!-- <button id="saveOnlineBooking" type="button"
+													class="btn btn-sm btn-primary">
+													 Confirm booking
+												</button> -->
+												<div id="saveCompanyProfileBtn"></div>
+												</section>
+												</div>
+												
+												
+											</fieldset>
+								
+									</div>
+									
+										
+														
+													</div>
+													
+													<div class="col-sm-4">
+													<div id="saveOnlineBooking"></div>
+													<h5><strong><font color="gray">Your Booking Details</font></strong></h5>
+													<hr>
+													<div id="services"></div> 
+													<p id="staffs"><font color="gray"></font></p>
+													
+													<p><font color="gray">Date -</font></p><h5 id="hiddenDate" class="hidden"></h5> <h6 id="getDate"></h6>
+													
+													<p><font color="gray">At</font></p><h6 id="selectedBranch"></h6>
+													
+													<p><font color="gray">Total Price -</font></p><h6 id="bookingTotalAmt">   <i class="fa fa-inr"></i></h6>
+													</div>
+													
+													
+													</div>
+													</div>
+															
+														</div>
+														<div class="tab-pane" id="tab5">
+															<br>
+															<h3><strong>Step 5</strong> - Booking Success</h3>
+															<br>
+															<h1 class="text-center text-success"><strong><i class="fa fa-check fa-lg"></i> Congrats!</strong></h1>
+															<h4 class="text-center"> Your booking has been created. 
+																An e-mail with booking Status will be sent to your register email address.</h4>
+															<br>
+															<br>
+														</div>
+				
+														<div class="form-actions">
+															<div class="row">
+																<div class="col-sm-12">
+																	<ul class="pager wizard no-margin">
+																		<!--<li class="previous first disabled">
+																		<a href="javascript:void(0);" class="btn btn-lg btn-default"> First </a>
+																		</li>-->
+																		<li class="previous disabled">
+																			<a href="javascript:void(0);" class="btn btn-lg btn-default"> Previous </a>
+																		</li>
+																		<!--<li class="next last">
+																		<a href="javascript:void(0);" class="btn btn-lg btn-primary"> Last </a>
+																		</li>-->
+																		<li class="next">
+																			<a href="javascript:void(0);" class="btn btn-lg txt-color-darken"> Next </a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+				
+													</div>
+												</div>
+											</form>
+										</div>
+				
+									</div>
+									<!-- end widget content -->
+				
+								</div>
+								<!-- end widget div -->
+				
+							</div>
+							<!-- end widget -->
+				
+						</article>
+						<!-- WIDGET END -->
+				
+						<!-- NEW WIDGET START -->
+					
+				
+					</div>
+				
+					<!-- end row -->
+				
+				</section>
+				<!-- end widget grid -->
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->
+
+<script type="text/javascript">
+
+</script>
+
+<script type="text/javascript">
+		
+		// DO NOT REMOVE : GLOBAL FUNCTIONS!
+		
+		
+		function setBranch(element){
+			
+			var selBranchId = $(element).attr('id');
+			var branch = {branchId:selBranchId};
+	    	CommonUtils.setBranch(branch);	    		   
+	    	$("#selectedBranch").text($(element).attr('branchName'));
+	    	console.log("changing branch");
+	    	branchSelected = true;
+	    	$('.next').click();
+		}
+		
+		function addStaff(element){
+			
+			var curSelector = $(element).attr('id');
+			deleteStaffMap[curSelector] = staffMap[element.value];
+		}
+		
+		function addPriceTobookingTotal(element){
+			var curSelector = $(element).attr('id');
+			if(typeof(deleteServiceMap[curSelector]) == "undefined"){
+				var serviceObj1 = {retailPrice:serviceMap[element.value].retailPrice,serviceName:serviceMap[element.value].serviceName,durationTime:serviceMap[element.value].durationTime}
+				deleteServiceMap[curSelector] = serviceObj1;			
+				curBookingTotal = curBookingTotal + deleteServiceMap[curSelector].retailPrice;			
+			}
+			else{
+				curBookingTotal = curBookingTotal - deleteServiceMap[curSelector].retailPrice;
+				var serviceObj2 = {retailPrice:serviceMap[element.value].retailPrice,serviceName:serviceMap[element.value].serviceName,durationTime:serviceMap[element.value].durationTime}
+				deleteServiceMap[curSelector] = serviceObj2;			
+				curBookingTotal = curBookingTotal + deleteServiceMap[curSelector].retailPrice;
+			}
+	
+			$("#bookingTotalAmt").html(curBookingTotal+' <i class="fa fa-inr"></i>');
+			console.log(deleteServiceMap);
+			//$("#bookingTotalAmt").addclass("fa fa-inr");
+		}
+		
+		 $('#tab4').click(function(e){
+		
+		var dateValue=$('#hiddenDate').text();
+    	$('#getDate').text(dateValue+","+" "+$('#time').val());
+		
+    	var serviceNames="";
+    	
+    	for (var k in deleteServiceMap) {
+    		var staffSel = k;
+    		var staffSelArray = staffSel.split("_");
+	        var staffIndex = staffSelArray[1];
+	        var delStaffIndex = "staffId_"+staffIndex;
+    		if(typeof(deleteServiceMap[k]) !== "undefined"){
+    			serviceNames=serviceNames+" <h6>"+deleteServiceMap[k].serviceName+"  ("+deleteServiceMap[k].durationTime +")</h6><p><font color=\"gray\"> with "+ deleteStaffMap[delStaffIndex]+"</font></p>";
+    			 
+    			 
+    		}
+    	}
+    	
+    	$('#services').html(serviceNames);
+    	
+		 });
+		
+		$(document).ready(function() {
+			deleteServiceMap = {};
+			deleteStaffMap = {};
+			
+			curBookingTotal=0;
+			last = 2;
+					    
+		    $('.addMyService').click(function(e){
+		        e.preventDefault();
+		        
+		        if(last == 1)
+		        {
+		        	$('.repeatingSection').show();
+		        	last = 2;		        	
+		        	curBookingTotal = curBookingTotal + lastPrice;
+		        	
+		        	$("#bookingTotalAmt").html(curBookingTotal+' <i class="fa fa-inr"></i>');
+		        }
+		        else
+		        {
+		        	var lastRepeatingGroup = $('.repeatingSection').last();
+		        	var cloned = lastRepeatingGroup.clone(true)  
+		        	cloned.insertAfter(lastRepeatingGroup);
+		        	clonedFlag = true;
+		        	resetAttributeNames(cloned);
+		        	console.log(last);
+		        }
+		    });
+		    
+		    
+		    $(document).on("click", ".close", function() {
+		        $(this).closest(".box").remove();
+		    });
+			
+		
+		    $("input[name$='existsUser']").click(function() {
+		        var test = $(this).val();
+
+		        $("div.desc").hide();
+		        $("#existsUser" + test).show();
+		    });
+			
+			
+			$("#existsUserNEWUSER").hide();
+		
+			
+			  $('#bootstrap-wizard-1').bootstrapWizard({
+				    'tabClass': 'form-wizard',
+				    'onNext': function (tab, navigation, index) {
+				    	if(typeof(branchSelected) != "undefined" ){
+				      var $valid = $("#wizard-1").valid();
+				      if (!$valid) {
+				        $validator.focusInvalid();
+				        return false;
+				      } else {
+				        $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
+				          'complete');
+				        
+				        $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
+				        .html('<i class="fa fa-check"></i>');
+				        				      
+				        console.log(index);
+				        if(index === 3)
+				        {				        	
+				        		var dateValue=$('#hiddenDate').text();
+				        	$('#getDate').text(dateValue+","+" "+$('#time').val());
+				        	
+				        	
+				        	
+				        	var serviceNames="";
+				        	
+				        	
+				        	for (var k in deleteServiceMap) {
+				        		var staffSel = k;
+				        		var staffSelArray = staffSel.split("_");
+				    	        var staffIndex = staffSelArray[1];
+				    	        var delStaffIndex = "staffId_"+staffIndex;
+				        		if(typeof(deleteServiceMap[k]) !== "undefined"){
+				        			serviceNames=serviceNames+" <h6>"+deleteServiceMap[k].serviceName+"  ("+deleteServiceMap[k].durationTime +")</h6><p><font color=\"gray\"> with "+ deleteStaffMap[delStaffIndex]+"</font></p>";
+				        			
+				        			 }
+				        	}
+				        	
+				        	$('#services').html(serviceNames);
+				        	
+				        		
+				        	/* 	var staffNames="";
+								for (var k in deleteStaffMap) {
+				        		
+				        		if(typeof(deleteStaffMap[k]) !== "undefined"){
+				        			staffNames=staffNames+" "+deleteStaffMap[k];
+				        		}
+				        	}
+					        	$('#staffs').text(staffNames);
+								*/
+
+				        
+				        		
+				        }
+				        
+				        if(index === 4)
+				        {				        	
+				        	$('#saveOnlineBooking').click();
+				        }				        
+				      }
+				    }
+				    	else{
+				    		alert("Please select service location!!!");
+				    		return false;
+				    	}
+				    }
+				  });
+
+		
+		})
+		
+		 
+		
+		 $('#delete').click(function(e){
+			e.preventDefault();
+	        console.log(e);
+	        var current_fight = $(this).parent('div');	        	       
+	        var other_fights = current_fight.siblings('.repeatingSection');
+	        var curSelecter = current_fight.find("select").attr('id');
+	        var staffSel = current_fight.find("select").attr('id');
+	        var staffSelArray = staffSel.split("_");
+	        var staffIndex = staffSelArray[1];
+	        console.log(other_fights);
+	        console.log(last);
+	        if (other_fights.length === 0) {
+	        	$('.repeatingSection').hide();
+	        	last = 1;
+	        	
+	        	if(typeof(deleteServiceMap[curSelecter]) != "undefined"){
+	        		console.log("deleting "+current_fight.find("select").attr('id'));	        	
+	        		curBookingTotal = curBookingTotal - deleteServiceMap[curSelecter].retailPrice;
+	        		lastPrice = deleteServiceMap[curSelecter].retailPrice;
+	        		
+	        		
+					$("#bookingTotalAmt").html(curBookingTotal+' <i class="fa fa-inr"></i>');
+	        	}
+	            //alert("You should atleast have one Service");
+	            return;
+	        }
+	        current_fight.slideUp('slow', function() {
+	        	console.log("deleting "+current_fight.find("select").attr('id'));	        	
+	        	if(typeof(deleteServiceMap[curSelecter]) != "undefined"){	        	
+	        		
+	        		curBookingTotal = curBookingTotal - deleteServiceMap[curSelecter].retailPrice;
+	        
+	        		
+					$("#bookingTotalAmt").html(curBookingTotal+' <i class="fa fa-inr"></i>');
+					deleteServiceMap[curSelecter] = undefined;
+					var staffSelector = "staffId_"+ staffIndex;
+					//alert(staffSelector);
+					deleteStaffMap[staffSelector] = undefined;
+	        	}
+				current_fight.remove();
+	            
+	            // reset fight indexes
+	             other_fights.each(function() {
+	               resetAttributeNames($(this)); 
+	            })   
+	        })
+	        
+	    });
+		
+		
+		var attrs = ['for', 'id', 'name'];
+		function resetAttributeNames(section) { 
+		    var tags = section.find('select, label'), idx = section.index();
+		    
+		    var curSelecterReset = section.find("select").attr('id');
+		    
+		    var curPriceReset = deleteServiceMap[curSelecterReset].retailPrice;		    
+		    console.log(curSelecterReset+"-----reseting"+curPriceReset);
+		    //delete deleteServiceMap[curSelecter];
+		    console.log(deleteServiceMap);
+		    var index = section.parent().find('.repeatingSection').index(section);
+		    var newKey = "serviceId_"+(index +1);
+		    var newStaffKey = "staffId_"+(index +1);
+		    console.log(newKey+"-----reseting"+curPriceReset);
+		    if(clonedFlag){
+		    	deleteServiceMap[newKey] = undefined;
+		    	deleteStaffMap[newStaffKey] = undefined;
+		    	clonedFlag = false;
+		    }
+		    else{
+		    	deleteServiceMap[newKey].retailPrice = curPriceReset;		    	
+		    }
+		    console.log(deleteServiceMap);
+		    console.log(index + "------"+ idx);
+		    tags.each(function() {
+		      var $this = $(this);
+		      $.each(attrs, function(i, attr) {
+		        var attr_val = $this.attr(attr);
+		        if (attr_val) {
+		            $this.attr(attr, attr_val.replace(/_\d+$/, '_'+(index + 1)))
+		        }
+		      })
+		    })
+		}
+		
+		// START AND FINISH DATE
+		$('#bookingDate').datepicker({
+			dateFormat : 'yy-mm-dd',
+			prevText : '<i class="fa fa-chevron-left"></i>',
+			nextText : '<i class="fa fa-chevron-right"></i>',
+			minDate: 0,
+			onSelect : function(selectedDate) {
+				var maxDate = new Date(Date.parse(selectedDate));
+				var dateString = $.datepicker.formatDate ( 'dd/mm/yy', maxDate )
+				$("#hiddenDate").text(dateString);
+	             //maxDate.setDate( selectedDate +"+10D");     
+				//$('#endDate').datepicker('option', 'minDate', selectedDate);
+				//$('#endDate').datepicker('option', 'maxDate');
+			}
+		});
+		
+		/*
+		 * CLOCKPICKER
+		 */
+		$('#time').clockpicker({
+			placement: 'bottom',
+		    donetext: 'Done',
+		    twelvehour:true,
+			    
+		    onHourShow: function( hour ) { 
+		        var currenttime = new Date();
+		        if ( $('#date').val() == $.datepicker.
+		                                  formatDate ( 'mm/dd/yy', currenttime ) ) {
+		            if ( hour <= currenttime.getHours() ) {
+		               // alert('nope');
+		                return false;
+		            }
+		        }
+		        return true;
+		    }
+		}); 
+		
+		
+		 var $validator = $("#wizard-1").validate({
+			    
+			    rules: {
+			    	serviceId_1: {
+				        required: true
+				      },
+				      staffId_1: {
+				        required: true
+				      },
+				      serviceId_2: {
+					        required: true
+					      },
+					  staffId_2: {
+					        required: true
+					  },
+					  serviceId_3: {
+					        required: true
+					  },
+					  staffId_3: {
+					        required: true
+					  },
+					  serviceId_4: {
+						        required: true
+					  },
+					  staffId_4: {
+						        required: true
+					  },
+					  serviceId_5: {
+					        required: true
+					  },
+					  staffId_5: {
+					        required: true
+					  },
+					  serviceId_6: {
+						        required: true
+					  },
+					  staffId_6: {
+						        required: true
+					  },
+					  serviceId_7: {
+						        required: true
+					  },
+				      staffId_7: {
+						        required: true
+					  },
+					  serviceId_8: {
+							        required: true
+					  },
+					  staffId_8: {
+							        required: true
+					  },
+			      bookingDate : {
+			        required: true
+			      },
+			      time: {
+			        required: true
+			      },
+			      mobile : {
+			        required: true,
+			        minlength: 10,
+			        maxlength:10
+			      },
+			      newClientFname : {
+				        required: true
+				      },
+				      newClientLname  : {
+					        required: true
+					      },
+					      newClientEmail : {
+						        required: true,
+						        email: "Your email address must be in the format of name@domain.com"
+						      },      
+						      newClientMobile: {
+			        required: true,
+			        minlength: 10,
+			        maxlength:10
+			      }
+			     
+			    },
+			    
+			    messages: {
+			    	serviceId_1: "Please select your Service",
+			    	staffId_1: "Please select your Staff",
+			    	serviceId_2: "Please select your Service",
+			    	staffId_2: "Please select your Staff",
+			    	serviceId_3: "Please select your Service",
+			    	staffId_3: "Please select your Staff",
+			    	serviceId_4: "Please select your Service",
+			    	staffId_4: "Please select your Staff",
+			    	serviceId_5: "Please select your Service",
+			    	staffId_5: "Please select your Staff",
+			    	serviceId_6: "Please select your Service",
+			    	staffId_6: "Please select your Staff",
+			    	serviceId_7: "Please select your Service",
+			    	staffId_7: "Please select your Staff",
+			    	serviceId_8: "Please select your Service",
+			    	staffId_8: "Please select your Staff",
+			    	bookingDate: "Please select appointment Date",
+			    	time: "Please select appointment Time",
+			    	mobile: "Please enter your Register No",
+			    	newClientFname : "Please enter your First Name",
+			    	newClientLname  : "Please entr your Last Name",
+			    	newClientEmail : {
+			        required: "We need your email address to contact you",
+			        email: "Your email address must be in the format of name@domain.com"
+			      },
+			      newClientMobile  : "Please enter your Mobile No. to contact you",
+			    },
+			    
+			    highlight: function (element) {
+			      $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+			    },
+			    unhighlight: function (element) {
+			      $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+			    },
+			    errorElement: 'span',
+			    errorClass: 'help-block',
+			    errorPlacement: function (error, element) {
+			      if (element.parent('.input-group').length) {
+			        error.insertAfter(element.parent());
+			      } else {
+			        error.insertAfter(element);
+			      }
+			    }
+			  });
+
+		</script>

@@ -1,0 +1,103 @@
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+				<li>Booking Order</li>
+				<li>Online Booking</li>
+		</ol>
+		<!-- end breadcrumb -->
+				
+	</div>
+<!-- MAIN CONTENT -->
+	<div id="content">
+		
+		<div class="animated fadeInRight">
+		
+			<!-- row -->
+			<div class="row">
+				
+				<!-- NEW WIDGET START -->
+				<article class="col-sm-12 col-md-12 col-lg-12">
+				
+				<div class="well well-light">
+				
+				<h1>Online Booking Page</h1>
+				<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+				<p>Here's the link to your very own online bookings page. Clicking this link opens your online bookings as a full page, you can link to it from your own website, email signature, basically anywhere!</p>
+				</div>
+				
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p>SME online bookings are super easy to use and your page works great on desktop, tablets and mobiles.</p>
+				</div>
+				</div>
+				<div class="row">
+				<div class="hidden-xs col-sm-12 col-md-12 col-lg-12">
+				<% var link ="http://localhost:9000/#booking/"+CommonUtils.getUser("organisationId")%>
+				<h5><a target="_blank" id="booking-page-link" href="<%=link%>"><%=link%></a></h5>
+				</div>
+				
+				<div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+				<p><a target="_blank" id="booking-page-link"  href="<%=link%>"><%=link%></a></p>
+				</div>
+				</div>
+				<!-- <a class="btn btn-default btn-default" onclick="copyToClipboard('#booking-page-link')" rel="tooltip" title="Copied" data-placement="top" data-original-title="Copied">Copy Link</a> -->
+				
+				
+				<button id="copybutton" type="button" class="btn btn-primary btn-sm" onclick="copyToClipboard('#booking-page-link')" title="Copy" data-placement="top" >
+																	Copy Link
+																</button>
+																
+																
+				<h1>Feed Back Form</h1>
+				<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+				<p>Here's the link to your very own online bookings page. Clicking this link opens your online bookings as a full page, you can link to it from your own website, email signature, basically anywhere!</p>
+				</div>
+				
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p>SME online bookings are super easy to use and your page works great on desktop, tablets and mobiles.</p>
+				</div>
+				</div>
+				<div class="row">
+				<div class="hidden-xs col-sm-12 col-md-12 col-lg-12">
+				<% var link ="http://localhost:9000/#feedBack/"+CommonUtils.getUser("organisationId")%>
+				<h5><a target="_blank" id="booking-page-link" href="<%=link%>"><%=link%></a></h5>
+				</div>
+				
+				<div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+				<p><a target="_blank" id="booking-page-link"  href="<%=link%>"><%=link%></a></p>
+				</div>
+				</div>
+				
+				</div>
+				
+				</article>
+				<!-- WIDGET END -->
+				
+			</div>
+	
+		</div>
+		
+	</div>
+<!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->
+<script type="text/javascript">
+		
+		// DO NOT REMOVE : GLOBAL FUNCTIONS!
+		function copyToClipboard(element) {
+  			var $temp = $("<input>");
+  			$("body").append($temp);
+  			$temp.val($(element).text()).select();
+  			$("#copybutton").attr("title","Copied");
+  			document.execCommand("copy");
+  			$temp.remove();
+		}
+		
+</script>

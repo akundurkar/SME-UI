@@ -1,0 +1,1253 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>SetUp</li>
+			<li>Location</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+		<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:-->
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+	<div id="content">
+		
+		<div class="animated fadeInRight">
+
+		<div class="col-sm-12">
+		
+		<button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#locationModal">New Location </button>
+						
+		</div>
+		<br>
+		<br>
+		
+			<div class="row" id="company-detail-form">
+				
+				<div class="col-sm-12">
+
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget" id="wid-id-1"
+						data-widget-editbutton="false" data-widget-custombutton="false">
+						<header>
+							<span class="widget-icon"> <i class="fa  fa-map-marker"></i>
+							</span>
+							<h2>Business Locations</h2>
+						</header>
+						<!-- widget div-->
+						<div>
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+							</div>
+							<!-- end widget edit box -->
+							<!-- widget content -->
+							<div class="widget-body no-padding">
+								
+								<div class="table-responsive">
+								
+									<table class="table table-hover">
+												
+											<thead>
+													<tr>
+													
+														<th></th>
+														<th>Location Name</th>
+														<th>Address</th>
+														<th>Scheduled</th>
+														<th>Remove</th>
+														
+													</tr>
+											</thead>
+											<tbody>
+												
+												<%   _.each(locationList, function(location){  %>
+											
+													<tr>
+													
+														<td><i class="fa fa-reorder"></i></td>
+														<td><a href="#" id= "editCompanyLocation" branchId ="<%= location.attributes.branchId %>" data-toggle="modal" data-target="#locationEdit" ><%= location.attributes.locationName %></a></td>
+														<td><%= location.attributes.area %></td>
+															<!-- <td><a href="#" class="btn btn-default txt-color-blueLight" branchId ="<%= location.attributes.branchId %>" data-toggle="modal" data-target="#scheduleModal"><i class="fa fa-clock-o fa-lg"></i></a></td> -->
+														<td><a href="#" id="branchSchedule" branchId ="<%= location.attributes.branchId %>" class="btn btn-default btn-sm txt-color-blueLight"><i class="fa fa-clock-o fa-lg"></i></a></td> 
+															<!-- <td><a href="#" class="btn btn-default btn-sm txt-color-blueLight" id="deleteCompanyLocationTest" branchId ="<%= location.attributes.branchId %>"><i class="fa fa-lg  fa-trash-o"></i></a></td> -->
+													    <td><button id="deleteCompanyLocation" branchId ="<%= location.attributes.branchId %>" type="button" class=" btn btn-primary btn-sm deleteCompanyLocationTest" ><i class="fa fa-lg  fa-trash-o"></i></button></td>
+													
+													</tr>
+													
+												 <% }); %>
+											 
+											</tbody>
+											
+									</table>
+									
+								</div>
+
+							</div>
+							<!-- end widget content -->
+
+						</div>
+						<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+
+				</div>
+				<!-- end row -->
+				
+			</div>
+			<!-- end widget grid -->
+
+		</div>
+		
+	</div>
+<!-- Modal -->
+	
+	<div class="modal" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					
+		<div class="modal-dialog modal-lg">
+			
+			<div class="modal-content">
+				
+				<form class="form " role="form" id="branchDetails-form" >
+					
+					<div class="modal-header">
+						
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+						</button>
+								<h4 class="modal-title" id="myModalLabel"><i class="fa fa-map-marker"></i> New Location</h4>
+					</div>
+					<div class="modal-body">
+							
+						<div class="row">
+						
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					
+								<div class="row">
+									
+									<div class="smart-form">
+									
+										<div class="col col-4">
+											<label class="input"> 
+												Branch Name<input type="text" class="form-control"  required name="locationName" id="locationName" placeholder="e.g Deccan" />
+											</label>
+										</div>
+										
+										<div class="col col-4">
+											<label class="input">
+												Phone No<input type="text" class="form-control"  required name="phone" id="phone" />
+											</label>
+										</div>
+										
+										<div class="col col-4">
+											<label class="input">
+												Contact No <input type="text" class="form-control"  required name="contactNo" id="contactNo" />
+											</label>
+										</div>
+										
+									</div>
+											
+								</div>
+								
+								<hr>
+									
+								<div class="row">
+									
+									<div class="smart-form">
+											
+										<div class="col col-4">
+										 	<label class="input">
+									    		 Area<input type="text" class="form-control"  required name="area" id="area" placeholder="e.g.Satara Road" />
+											</label>
+										</div>
+									
+										<div class="col col-4">
+										 	<label class="input">
+									     		State<input type="text" class="form-control"  required name="state" id="state" placeholder="" style="text-transform:uppercase" />
+											</label>
+										</div>
+									
+										<div class="col col-4">
+											<label class="input">
+												City<input type="text" class="form-control"  required name="city" id="city" placeholder="" style="text-transform:uppercase"/>
+											</label>
+										</div>
+													
+									</div>
+											
+								</div>
+								
+								<br>
+								
+								<div class="row">
+									
+									<div class="smart-form">
+										
+										<div class="col col-4">
+											<label class="input">
+												Pin Code <input type="text" data-mask="999999" class="form-control"  required name="locationPin" id="locationPin" />
+											</label>
+										</div>
+										
+										<div class="col col-4">
+											<label class="input">
+									    		latitude <input type="text" class="form-control"  required name="latitude" id="latitude" placeholder="e.g.18.233" />
+											</label>
+										</div>
+										
+										<div class="col col-4">
+										 	<label class="input">
+												longitude<input type="text" class="form-control"  required name="longitude" id="longitude" placeholder="e.g.75.233" />
+											</label>
+										</div>
+											
+									</div>
+											
+								</div>
+										
+								<hr>
+									
+								<div class="row" >
+									
+									<div class="smart-form">
+										
+										<div class="col col-6">
+											
+											<div class="inline-group">
+												
+												<label class="radio">
+													<input type="radio" name="gender" checked="checked" value="UNISEX">
+													<i></i>Unisex</label>
+												<label class="radio">
+													<input type="radio" name="gender" value="FEMALE">
+													<i></i>Female</label>
+												<label class="radio">
+													<input type="radio" name="gender" value="MALE">
+													<i></i>Male</label>
+															
+											</div>
+											
+										</div>
+											
+										<div class="col col-6">
+											
+											<div class="inline-group">
+												<label class="radio">
+													<input type="radio" name="shopType" checked="checked" value="true">
+													<i></i>AC</label>
+												<label class="radio">
+													<input type="radio" name="shopType" value="false">
+													<i></i>Non-AC</label>	
+											</div>
+											
+										</div>
+											
+									</div>
+											
+								</div>
+								
+								<hr>
+								
+								<div class="row">
+									
+									<div class="smart-form">
+										
+										<div class="col col-6">
+											
+											<label class="label">Online booking available</label>
+													
+													<div class="inline-group">
+														<label class="checkbox">
+															<input type="radio" name="online_bookng_status" checked="checked" value="true">
+															<i></i>Yes</label>
+														<label class="checkbox">
+															<input type="radio" name="online_bookng_status" value="false">
+															<i></i>No</label>
+													</div>
+											
+										</div>
+										
+										<div class="col col-6">
+											
+											<label class="label">Wi-Fi available</label>
+													
+													<div class="inline-group">
+														<label class="checkbox">
+															<input type="radio" name="wiFiAvailable" checked="checked" value="true">
+															<i></i>Yes</label>
+														<label class="checkbox">
+															<input type="radio" name="wiFiAvailable" value="false">
+															<i></i>No</label>
+													</div>
+											
+										</div>
+											
+									</div>
+									
+								</div>
+								
+								<br>
+								
+							</div>
+						
+						</div>
+							
+						<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">
+									Cancel
+								</button>
+								<button type="button" class="btn btn-success btn-sm" id="saveCompanyLocationModalBtn"  >
+											<span class="glyphicon glyphicon-floppy-disk"></span> Save
+								</button>
+								<div id="saveCompanyLocationBtn"></div> 
+						</div>
+						
+					</div>
+					
+				</form>
+				
+			</div><!-- /.modal-content -->
+			
+		</div><!-- /.modal-dialog -->
+		
+	</div><!-- /.modal -->
+				
+						
+<!-- Modal -->
+						
+	<div class="modal" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		
+		<div class="modal-dialog modal-lg">
+			
+			<div class="modal-content">
+						
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title" id="myModalLabel"><i class="fa fa-clock-o"></i> Scheduled</h4>
+				</div>
+				
+				<div class="modal-body">
+										
+					<div class="row">
+						
+						<div class="col-md-12">
+							     
+							<form class="form " role="form" id="branchSchedule-form" >
+								
+								<div class="row">		
+											
+									<div class="row">	
+										
+										<div class="col-md-1">		
+										<input id="branchId" type="hidden" >
+										</div>
+										<div class="col-md-1">		
+											SUN
+										</div>
+										
+										<div class="col-md-4">	
+											<select class="form-control" id="openTimeSun">
+												<option selected="" disabled="">Open Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+											</select>
+										</div>
+										<div class="col-md-4">	
+											<select class="form-control" id="closeTimeSun">
+												<option selected="" disabled="">Closed Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+												
+											</select>
+										</div>
+										
+										<div class="col-md-2">	
+											<div class="checkbox">
+												<label>
+													  <input type="checkbox" class="checkbox style-0" id="closedSun">
+													  <span>Closed</span>
+												</label>
+											</div>
+										</div>
+											
+									</div>
+									
+									<hr>
+									
+									<div class="row">
+										
+										<div class="col-md-1">		
+										
+										</div>
+										<div class="col-md-1">		
+											MON
+										</div>
+										
+										<div class="col-md-4">	
+											<select class="form-control" id="openTimeMon">
+												<option selected="" disabled="">Open Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+											</select>
+										</div>
+										
+										<div class="col-md-4">	
+											<select class="form-control" id="closeTimeMon">
+												<option selected="" disabled="">Closed Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+												
+											</select>
+										</div>
+										
+										<div class="col-md-2">	
+											<div class="checkbox">
+												<label>
+												  <input type="checkbox" class="checkbox style-0" id="closedMon">
+												  <span>Closed</span>
+												</label>
+											</div>
+										</div>
+											
+									</div>
+									
+									<hr>
+									
+									<div class="row">	
+										
+										<div class="col-md-1">		
+										
+										</div>
+										<div class="col-md-1">		
+											TUE
+										</div>
+										
+										<div class="col-md-4">	
+											<select class="form-control" id="openTimeTue">
+												<option selected="" disabled="">Open Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+											</select>
+										</div>
+										
+										<div class="col-md-4">	
+											<select class="form-control" id="closeTimeTue">
+												<option selected="" disabled="">Closed Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+											</select>
+										</div>
+										
+										<div class="col-md-2">	
+											<div class="checkbox">
+												<label>
+												  <input type="checkbox" class="checkbox style-0" id="closedTue">
+												  <span>Closed</span>
+												</label>
+											</div>
+										</div>	
+									
+									</div>
+											
+									<hr>
+									
+									<div class="row">	
+										
+										<div class="col-md-1">		
+										
+										</div>
+										<div class="col-md-1">		
+											WED
+										</div>
+											
+										<div class="col-md-4">	
+											<select class="form-control" id="openTimeWed">
+												<option selected="" disabled="">Open Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+											</select>
+										</div>
+										
+										<div class="col-md-4">	
+											<select class="form-control" id="closeTimeWed">
+												<option selected="" disabled="">Closed Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+											</select>
+										</div>
+										
+										<div class="col-md-2">	
+											<div class="checkbox">
+												<label>
+												  <input type="checkbox" class="checkbox style-0" id="closedWed">
+												  <span>Closed</span>
+												</label>
+											</div>
+										</div>	
+									
+									</div>
+									
+									<hr>
+									
+									<div class="row">	
+										
+										<div class="col-md-1">		
+										
+										</div>
+										<div class="col-md-1">		
+											THU
+										</div>
+										
+										<div class="col-md-4">	
+											<select class="form-control" id="openTimeThr">
+												<option selected="" disabled="">Open Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+											</select>
+										</div>
+											<div class="col-md-4">	<select class="form-control" id="closeTimeThr">
+												<option selected="" disabled="">Closed Time</option>
+													<option value="6:00AM">6:00AM</option>
+													<option value="6:30AM">6:30AM</option>
+													<option value="7:00AM">7:00AM</option>
+													<option value="7:30AM">7:30AM</option>
+													<option value="8:00AM">8:00AM</option>
+													<option value="8:30AM">8:30AM</option>
+													<option value="9:00AM">9:00AM</option>
+													<option value="9:30AM">9:30AM</option>
+													<option value="10:00AM">10:00AM</option>
+													<option value="10:30AM">10:30AM</option>
+													<option value="11:00AM">11:00AM</option>
+													<option value="11:30AM">11:30AM</option>
+													<option value="12:00PM">12:00PM</option>
+													<option value="12:30PM">12:30PM</option>
+													<option value="1:00PM">1:00PM</option>
+													<option value="1:30PM">1:30PM</option>
+													<option value="2:00PM">2:00PM</option>
+													<option value="2:30PM">2:30PM</option>
+													<option value="3:00PM">3:00PM</option>
+													<option value="3:30PM">3:30PM</option>
+													<option value="4:00PM">4:00PM</option>
+													<option value="4:30PM">4:30PM</option>
+													<option value="5:00PM">5:00PM</option>
+													<option value="5:30PM">5:30PM</option>
+													<option value="6:00PM">6:00PM</option>
+													<option value="6:30PM">6:30PM</option>
+													<option value="7:00PM">7:00PM</option>
+													<option value="7:30PM">7:30PM</option>
+													<option value="8:00PM">8:00PM</option>
+													<option value="8:30PM">8:30PM</option>
+													
+												</select>
+											</div>
+											<div class="col-md-2">	
+												<div class="checkbox">
+													<label>
+													  <input type="checkbox" class="checkbox style-0" id="closedThr">
+													  <span>Closed</span>
+													</label>
+												</div>
+											</div>
+											
+									
+									</div>
+									
+									<hr>
+									<div class="row">	
+									<div class="col-md-1">		
+										
+										</div>
+										<div class="col-md-1">		
+											FRI
+										</div>
+										<div class="col-md-4">	
+											<select class="form-control" id="openTimeFri">
+												<option selected="" disabled="">Open Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+											</select>
+										</div>
+										<div class="col-md-4">	
+											<select class="form-control" id="closeTimeFri">
+												<option selected="" disabled="">Closed Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+												
+											</select>
+										</div>
+										<div class="col-md-2">	
+											<div class="checkbox">
+												<label>
+												  <input type="checkbox" class="checkbox style-0" id="closedFri">
+												  <span>Closed</span>
+												</label>
+											</div>
+										</div>
+										
+									</div>
+									<hr>
+									<div class="row">	
+									<div class="col-md-1">		
+										
+										</div>
+										<div class="col-md-1">		
+											SAT
+										</div>
+										<div class="col-md-4">	
+											<select class="form-control" id="openTimeSat">
+												<option selected="" disabled="">Open Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+											</select>
+										</div>
+										<div class="col-md-4">	
+											<select class="form-control" id="closeTimeSat">
+												<option selected="" disabled="">Closed Time</option>
+												<option value="6:00AM">6:00AM</option>
+												<option value="6:30AM">6:30AM</option>
+												<option value="7:00AM">7:00AM</option>
+												<option value="7:30AM">7:30AM</option>
+												<option value="8:00AM">8:00AM</option>
+												<option value="8:30AM">8:30AM</option>
+												<option value="9:00AM">9:00AM</option>
+												<option value="9:30AM">9:30AM</option>
+												<option value="10:00AM">10:00AM</option>
+												<option value="10:30AM">10:30AM</option>
+												<option value="11:00AM">11:00AM</option>
+												<option value="11:30AM">11:30AM</option>
+												<option value="12:00PM">12:00PM</option>
+												<option value="12:30PM">12:30PM</option>
+												<option value="1:00PM">1:00PM</option>
+												<option value="1:30PM">1:30PM</option>
+												<option value="2:00PM">2:00PM</option>
+												<option value="2:30PM">2:30PM</option>
+												<option value="3:00PM">3:00PM</option>
+												<option value="3:30PM">3:30PM</option>
+												<option value="4:00PM">4:00PM</option>
+												<option value="4:30PM">4:30PM</option>
+												<option value="5:00PM">5:00PM</option>
+												<option value="5:30PM">5:30PM</option>
+												<option value="6:00PM">6:00PM</option>
+												<option value="6:30PM">6:30PM</option>
+												<option value="7:00PM">7:00PM</option>
+												<option value="7:30PM">7:30PM</option>
+												<option value="8:00PM">8:00PM</option>
+												<option value="8:30PM">8:30PM</option>
+												
+											</select>
+										</div>
+										<div class="col-md-2">	
+											<div class="checkbox">
+												<label>
+												  <input type="checkbox" class="checkbox style-0" id="closedSat">
+												  <span>Closed</span>
+												</label>
+											</div>
+										</div>	
+									
+									</div>
+											
+								</div>
+									
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Cancel
+									</button>
+									<button type="button" class="btn btn-success btn-sm"  id= "saveBranchScheduleModalBtn" >
+											<span class="glyphicon glyphicon-floppy-disk"></span> Save
+									</button>
+									<div id= "saveBranchScheduleBtn"></div>
+														
+								</div>
+									
+							</form>
+						
+						</div>
+					
+					</div>
+						
+				</div>
+							
+			</div><!-- /.modal-content -->
+		
+		</div><!-- /.modal-dialog -->
+	
+	</div><!-- /.modal -->
+				
+				
+	<!--  </form>
+				 -->			
+</div>
+
+<!-- END MAIN CONTENT -->
+
+
+<!-- END MAIN PANEL -->
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		$('#closedSun').change(function(){
+			   $("#openTimeSun").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedSun').change(function(){
+			   $("#closeTimeSun").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedMon').change(function(){
+			   $("#openTimeMon").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedMon').change(function(){
+			   $("#closeTimeMon").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedTue').change(function(){
+			   $("#openTimeTue").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedTue').change(function(){
+			   $("#closeTimeTue").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedWed').change(function(){
+			   $("#openTimeWed").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedWed').change(function(){
+			   $("#closeTimeWed").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedThr').change(function(){
+			   $("#openTimeThr").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedThr').change(function(){
+			   $("#closeTimeThr").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedFri').change(function(){
+			   $("#openTimeFri").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedFri').change(function(){
+			   $("#closeTimeFri").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedSat').change(function(){
+			   $("#openTimeSat").prop("disabled", !$(this).is(':unchecked'));
+			});
+			
+			$('#closedSat').change(function(){
+			   $("#closeTimeSat").prop("disabled", !$(this).is(':unchecked'));
+			});
+				
+ 	});
+
+	/* $(document).on('click', '#saveCompanyLocationModalBtn', function(){
+	    //alert("The btn Save was clicked.");
+	    var formCheck = $("#branchDetails-form").valid();
+	    if(formCheck){
+	   	$("#saveCompanyLocationBtn").click();
+	    }
+	});
+	 */
+	 $("#locationName").keypress(function(event){
+			var inputValue = event.charCode;
+			if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+			event.preventDefault();
+       }
+
+	});
+	 
+	 $("#phone").keypress(function(event){
+	        var inputValue = event.charCode;
+	        if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+	            event.preventDefault();
+	        }
+	 });
+	 
+	 $("#contactNo").keypress(function(event){
+	        var inputValue = event.charCode;
+	        if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+	            event.preventDefault();
+	        }
+	 });
+	 
+	
+	 $("#city").keypress(function(event){
+			var inputValue = event.charCode;
+			if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+			event.preventDefault();
+    }
+
+	});
+	 
+	 $("#state").keypress(function(event){
+			var inputValue = event.charCode;
+			if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+			event.preventDefault();
+    }
+
+	});
+	 
+	 $("#locationPin").keypress(function(event){
+	        var inputValue = event.charCode;
+	        if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+	            event.preventDefault();
+	        }
+	 });
+	 
+	
+	 $("#latitude").keypress(function(event){
+	       var inputValue = event.charCode;
+	        if(!(inputValue >= 48 && inputValue <= 57 )&& (inputValue != 0 && inputValue != 46 ) ){
+	            event.preventDefault();
+	        }
+	    });
+	    
+	    $("#longitude").keypress(function(event){
+	        var inputValue = event.charCode;
+	        if(!(inputValue >= 48 && inputValue <= 57 )&& (inputValue != 0 && inputValue != 46 ) ){
+	            event.preventDefault();
+	        }
+	    });
+	 
+	 
+	 $('#saveCompanyLocationModalBtn').off().on('click', function() {
+			//alert("The btn Save was clicked.");
+			var formCheck = $("#branchDetails-form").valid();
+		    if(formCheck){
+		    	console.log("formcheck true");
+		    	$("#saveCompanyLocationBtn").click();
+		    }
+		    console.log("formcheck false")
+		});
+	 
+	 $('#updateCompanyLocationModalBtn').off().on('click', function() {
+			//alert("The btn Save was clicked.");
+			var formCheck = $("#editBranchDetails-form").valid();
+		    if(formCheck){
+		    	console.log("formcheck true");
+		    	$("#updateCompanyLocationBtn").click();
+		    }
+		    console.log("formcheck false")
+		});
+	 
+/* 	// With Callback
+		$(".deleteCompanyLocationTest").click(function(e) {
+			
+			$.SmartMessageBox({
+				title : "<i class='fa-lg fa fa-trash-o'></i> Remove Alert!",
+				content : "Do you Really want to remove this Location",
+				buttons : '[No][Yes]'
+			}, function(ButtonPressed) {
+				if (ButtonPressed === "Yes") {
+					$.smallBox({
+						title : "Success",
+						content : "<i class='fa fa-trash-o'></i>  <i>You pressed Yes...</i>",
+						color : "#659265",
+						iconSmall : "fa fa-check fa-2x fadeInRight animated",
+						timeout : 4000
+					});
+					$(this).closest('tr').remove();
+				}
+				
+				if (ButtonPressed === "No") {
+					$.smallBox({
+						title : "Callback function",
+						content : "<i class='fa fa-trash-o'></i> <i>You pressed No...</i>",
+						color : "#C46A69",
+						iconSmall : "fa fa-times fa-2x fadeInRight animated",
+						timeout : 4000
+					});
+				}
+	
+			});
+			
+			e.preventDefault();
+		}) */
+	 
+	 
+	/*  $('#delete').on('click', function() {
+	    	
+	    	$(this).closest('tr').remove();
+	    	
+	    }); */
+	    
+	 $('#saveBranchScheduleModalBtn').off().on('click', function() {
+			//alert("The btn Save was clicked.");
+			var formCheck = $("#branchSchedule-form").valid();
+		    if(formCheck){
+		    	console.log("formcheck true");
+		    	$("#saveBranchScheduleBtn").click();
+		    }
+		    console.log("formcheck false");
+		});
+	    
+	    $('#scheduleModal').on('show.bs.modal', function (e) {
+		       
+	    	var branchId = $(e.relatedTarget).attr('branchId');
+		       
+		    /* console.log("in model function"); */
+	
+	        $(".modal-body #branchId").val( branchId);
+	        
+	        /* console.log(branchId); */
+		       
+		    });
+	
+</script>

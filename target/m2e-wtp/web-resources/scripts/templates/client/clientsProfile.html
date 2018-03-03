@@ -1,0 +1,819 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js" ></script>
+	
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Clients</li>
+			<li>Clients Profile</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+<div id="content">
+
+	<!-- row -->
+	<div class="row">
+									
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					
+			<div class="row">
+			
+				<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+				
+					<div class="well well-light">
+					
+						<% _.each(clietProfiles, function(clientPro){
+						
+						  var date = new Date(clientPro.attributes.dob).toLocaleDateString('ca-indian');
+						 %>
+						
+							<div class="row">
+							
+								<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+							
+									<h1 class="semi-bold">
+							           <%= clientPro.attributes.fname %> <%= clientPro.attributes.lname %>
+							        </h1>
+								
+								</div>
+						
+								<!-- <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+									
+								
+										<a  class="btn btn-primary" id="editClients" name="editClients" data-screenid="${<%= clientPro.attributes.clientId %>}">Edit</a> 
+								     
+								</div> -->
+								
+								<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+							
+									<button id="editClientProfile" clientId="<%= clientPro.attributes.clientId %>" type="button" class="btn btn-success">
+										Edit
+									</button>
+								
+								</div>
+						
+							</div>
+						
+						<hr>
+					
+						<div class="row">
+							
+							<div class="col-xs-10 col-sm-10 col-md-6 col-lg-6">
+								
+								<table class="responsive">
+								
+									<tbody>
+									
+										<tr>
+										<td>Mobile</td>
+										<td></td>
+										<td><b><%= clientPro.attributes.ownermobile %></b></td>
+										</tr>
+										
+										<tr>
+										<td>Email</td>
+										<td></td>
+										<td><b><%= clientPro.attributes.email %></b></td>
+										</tr>
+										
+										<tr>
+										<td>Notification</td>
+										<td></td>
+											<% if (clientPro.attributes.notificationSendBy == "BOTH" ) { %>
+												<td><b>Email and SMS</b></td>
+											<% }else if (clientPro.attributes.notificationSendBy == "EMAIL") { %>
+												<td><b>Email</b></td>
+											<% }else if (clientPro.attributes.notificationSendBy == "SMS") { %>
+												<td><b>SMS</b></td>
+											<% }else { %>
+												<td><b>Don't Send Notification</b></td>
+											<% } %>
+										</tr>
+										
+										<tr>
+										<td>Gender</td>
+										<td></td>
+										<td><b><%= clientPro.attributes.gender %></b></td>
+										</tr>
+										
+										<tr>
+										<td>Birthday</td>
+										<td></td>
+										<td><b><%= date %></b></td>
+										</tr>
+										
+										<tr>
+										<td>client id</td>
+										<td></td>
+										<td><b><%= clientPro.attributes.clientId %></b></td>
+										</tr>
+									
+									</tbody>
+								
+								</table>
+							
+							</div>
+				
+						</div>
+						
+					<% }); %>
+				
+				</div>
+			
+			<!-- </div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				
+					<h1 class="alert alert-info">Appointments	&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;1</h1>
+					<h1 class="alert alert-warning">No-Shows	&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;0</h1>
+					<h1 class="alert alert-success">Total Sales	&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;0</h1>
+					<h1 class="alert alert-danger">Outstanding	&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;0</h1>
+					
+				</div>
+				
+			</div> -->
+			</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<% _.each(appointmentCount, function(appointmentCountDetails){ %>
+					<h1 class="alert alert-info">Appointments	&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;<%= appointmentCountDetails.attributes.orderCount %></h1>
+					<h1 class="alert alert-warning">No-Shows	&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;<%= appointmentCountDetails.attributes.noShowCount %></h1>
+					<h1 class="alert alert-success">Total Sales	&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;<%= appointmentCountDetails.attributes.totalSales %></h1>
+					<h1 class="alert alert-danger">Outstanding	&nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;&nbsp;<%= appointmentCountDetails.attributes.outstanding %></h1>
+					<% }); %>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+					
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				
+						<!-- Widget ID (each widget will need unique ID)-->
+						<div class="jarviswidget well" id="wid-id-1 data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+							<!-- widget options:
+							usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+			
+							data-widget-colorbutton="false"
+							data-widget-editbutton="false"
+							data-widget-togglebutton="false"
+							data-widget-deletebutton="false"
+							data-widget-fullscreenbutton="false"
+							data-widget-custombutton="false"
+							data-widget-collapsed="true"
+							data-widget-sortable="false"
+			
+							-->
+							<header>
+								<span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+								<h2>Default Tabs with border </h2>
+			
+							</header>
+			
+							<!-- widget div-->
+							<div>
+			
+								<!-- widget edit box -->
+								<div class="jarviswidget-editbox">
+									<!-- This area used as dropdown edit box -->
+			
+								</div>
+								<!-- end widget edit box -->
+			
+								<!-- widget content -->
+								<div class="widget-body">
+			
+									
+									<br>
+									<br>
+									
+									<ul id="myTab1" class="nav nav-tabs bordered">
+										<li class="active">
+											<a href="#s1" data-toggle="tab">UPCOMING APPOINTMENTS</a>
+										</li>
+										<li>
+											<a href="#s2" data-toggle="tab">APPOINTMENTS HISTORY</a>
+										</li>
+										<li>
+											<a href="#s3" data-toggle="tab">INVOICE</a>
+										</li>
+										
+									
+									</ul>
+			
+									<div id="myTabContent1" class="tab-content padding-10">
+										
+										<div class="tab-pane fade in active" id="s1">
+										
+											<div class="row">
+						
+												<!-- NEW WIDGET START -->
+												<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													
+													
+													<div class="table-responsive">
+													<table  class="table table-hover" width="100%">
+							
+												        <thead>
+												            <tr>
+												                <th>ID</th>
+											                    <th>SERVICE</th>
+											                    <th>DATE</th>
+											                    <th>TIME</th>
+											                    <th>SERVICE TIME</th>
+																<th>STAFF</th>
+																<th>STATUS</th>
+																
+												            </tr>
+												        </thead>
+						
+												        <tbody>
+														 <% 	 _.each(upcomingAppointmentList, function(upcomingAppointment){ 
+												        
+												         console.log("upcomingAppointment");
+												        console.log(upcomingAppointment);
+												        console.log(upcomingAppointment.attributes);
+												        
+															  var date = new Date(upcomingAppointment.attributes.date).toLocaleDateString('ca-indian');
+									       					  var time = new Date(upcomingAppointment.attributes.date).toLocaleTimeString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
+									       					  
+									       					   var timeValue = upcomingAppointment.attributes.serviceTime;
+    
+                                               var hours=Math.floor(timeValue/60);
+                                               console.log("hours print"+ hours);
+                                               if (hours>0)
+                                               {
+													min=hours*60;
+													finalMin=timeValue-min;
+													if(finalMin!=0)
+													{
+														timeString=hours + " h " +finalMin + " min";
+														console.log("hours print"+ timeString);
+													}
+													else{
+														timeString=hours + " h";
+														console.log("hours print"+ timeString);
+													}
+												}
+												else{
+												
+													timeString=timeValue + " min";
+													console.log("hours print"+ timeString);
+												}
+									         
+																
+														%>		
+														<tr>
+																
+																<td><%= upcomingAppointment.attributes.orderId %></td>
+																<td><%= upcomingAppointment.attributes.serviceName %></td>
+																<td><%= date %></td>
+																<td><%= time %></td>
+																<td><%= timeString %></td>
+																<td><%= upcomingAppointment.attributes.staffName %></td>
+																
+																<%if(upcomingAppointment.attributes.orderStatus == "BOOKED" ){%>
+																<td><span class="label label-warning">BOOKED</span></td>
+																<%}else if(upcomingAppointment.attributes.orderStatus == "CONFIRMED" ){%>
+																<td><span class="label label-info">CONFIRMED</span></td>
+																<%}else if(upcomingAppointment.attributes.orderStatus == "REJECT" ){%>
+																<td><span class="label label-danger">REJECT</span></td>
+																<%}else if(upcomingAppointment.attributes.orderStatus == "NOSHOW" ){%>
+																<td><span class="label label-default">NOSHOW</span></td>
+																<%}else if(upcomingAppointment.attributes.orderStatus == "COMPLETE" ){%>
+																<td><span class="label label-success">COMPLETE</span></td>
+																<%}else if(upcomingAppointment.attributes.orderStatus == "CHECKOUT" ){%>
+																<td><span class="label label-primary">CHECKOUT</span></td>
+																<%}%>	
+																
+															</tr>
+														<% }); %> 
+														</tbody>
+											
+													</table>
+													</div>
+												</article>
+												
+											</div>
+											
+										</div>
+										<div class="tab-pane fade" id="s2">
+												
+											<div class="row">
+			
+												<!-- NEW WIDGET START -->
+												<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													<div class="table-responsive">
+													<table  class="table table-hover" width="100%">
+							
+												        <thead>
+												            <tr>
+												                <th>ID</th>
+											                    <th>SERVICE</th>
+											                    <th>DATE</th>
+											                    <th>TIME</th>
+											                    <th>SERVICE TIME</th>
+																<th>STAFF</th>
+																<th>STATUS</th>
+																
+												            </tr>
+												        </thead>
+						
+												        <tbody>
+												        <% 	 _.each(appointmentHistoryList, function(appointmentHistory){ 
+												        
+															  var date = new Date(appointmentHistory.attributes.date).toLocaleDateString('ca-indian');
+									       					  var time = new Date(appointmentHistory.attributes.date).toLocaleTimeString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
+									       					   var timeValue = appointmentHistory.attributes.serviceTime;
+    
+                                               var hours=Math.floor(timeValue/60);
+                                               console.log("hours print"+ hours);
+                                               if (hours>0)
+                                               {
+													min=hours*60;
+													finalMin=timeValue-min;
+													if(finalMin!=0)
+													{
+														timeString=hours + " h " +finalMin + " min";
+														console.log("hours print"+ timeString);
+													}
+													else{
+														timeString=hours + " h";
+														console.log("hours print"+ timeString);
+													}
+												}
+												else{
+												
+													timeString=timeValue + " min";
+													console.log("hours print"+ timeString);
+												}
+									         
+														%>	
+															<tr>
+																
+																<td><%= appointmentHistory.attributes.orderId %></td>
+																<td><%= appointmentHistory.attributes.serviceName %></td>
+																<td><%= date %></td>
+																<td><%= time %></td>
+																<td><%= timeString %></td>
+																<td><%= appointmentHistory.attributes.staffName %></td>
+																
+																<%if(appointmentHistory.attributes.orderStatus == "BOOKED" ){%>
+																<td><span class="label label-warning">BOOKED</span></td>
+																<%}else if(appointmentHistory.attributes.orderStatus == "CONFIRMED" ){%>
+																<td><span class="label label-info">CONFIRMED</span></td>
+																<%}else if(appointmentHistory.attributes.orderStatus == "REJECT" ){%>
+																<td><span class="label label-danger">REJECT</span></td>
+																<%}else if(appointmentHistory.attributes.orderStatus == "NOSHOW" ){%>
+																<td><span class="label label-default">NOSHOW</span></td>
+																<%}else if(appointmentHistory.attributes.orderStatus == "COMPLETE" ){%>
+																<td><span class="label label-success">COMPLETE</span></td>
+																<%}else if(appointmentHistory.attributes.orderStatus == "CHECKOUT" ){%>
+																<td><span class="label label-primary">CHECKOUT</span></td>
+																<%}%>	
+																
+																
+																
+															</tr>
+														<% }); %> 
+															
+														</tbody>
+											
+													</table>
+													</div>
+										
+												</article>
+											
+											</div>
+											
+										</div>
+										<div class="tab-pane fade" id="s3">
+											
+											<div class="row">
+			
+												<!-- NEW WIDGET START -->
+												<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													<div class="table-responsive">
+													<table  class="table table-hover" width="100%">
+							
+												        <thead>
+												            <tr>
+												                <th>INVOICE #</th>
+												                <th>STATUS</th>
+											                    <th>SERVICE</th>
+											                    <th>INVOICE DATE</th>
+																<th>STAFF</th>
+																<th>VIEW</th>
+																
+																
+												            </tr>
+												        </thead>
+						
+												        <tbody>
+												        <% 	 _.each(appointmentHistoryList, function(appointmentHistory){ 
+												        
+															  var date = new Date(appointmentHistory.attributes.date).toLocaleDateString('ca-indian')
+														%>	
+															<tr>
+																
+																<td><%= appointmentHistory.attributes.orderId %></td>
+																
+																<%if(appointmentHistory.attributes.orderStatus == "BOOKED" ){%>
+																<td><span class="label label-warning">BOOKED</span></td>
+																<%}else if(appointmentHistory.attributes.orderStatus == "CONFIRMED" ){%>
+																<td><span class="label label-info">CONFIRMED</span></td>
+																<%}else if(appointmentHistory.attributes.orderStatus == "REJECT" ){%>
+																<td><span class="label label-danger">REJECT</span></td>
+																<%}else if(appointmentHistory.attributes.orderStatus == "NOSHOW" ){%>
+																<td><span class="label label-default">NOSHOW</span></td>
+																<%}else if(appointmentHistory.attributes.orderStatus == "COMPLETE" ){%>
+																<td><span class="label label-success">COMPLETE</span></td>
+																<%}else if(appointmentHistory.attributes.orderStatus == "CHECKOUT" ){%>
+																<td><span class="label label-primary">CHECKOUT</span></td>
+																<%}%>	
+																
+																<td><%= appointmentHistory.attributes.serviceName %></td>
+																<td><%= date %></td>
+																<td><%= appointmentHistory.attributes.staffName %></td>
+																<td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#invoiceModal">
+																	View
+																</button></td>
+															</tr>
+														<% }); %> 
+															
+														</tbody>
+											
+													</table>
+													</div>
+										
+												</article>
+											
+											</div>
+											
+										</div>
+										
+									</div>
+			
+								</div>
+								<!-- end widget content -->
+			
+							</div>
+							<!-- end widget div -->
+			
+						</div>
+				
+				</div>
+				
+			</div>
+		
+		</article>
+	
+	</div>
+				
+					<!-- Modal -->
+				<div class="modal fade" id="invoiceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								
+							</div>
+							<div class="modal-body" id="invoiceBody">
+							
+										<div class="padding-10">
+											<br>
+											<div class="pull-left">
+												<!-- <img src="img/logo-blacknwhite.png" width="150" height="32" alt="invoice icon"> -->
+				
+												<address>
+													<br>
+													<h4 class="semi-bold">SME</h4>
+													<br>
+													Shop No 19 G Wing, K K Market,
+													<br> Pune Satara Road, Balajinagar,
+													<br>
+													 Pune, Maharashtra 411043
+													<br>
+													<abbr title="Phone">P:</abbr> 098238 38393
+												</address>
+											</div>
+											<div class="pull-right">
+												<h1 class="font-400">INVOICE</h1>
+											</div>
+											<div class="clearfix"></div>
+											<br>
+											<br>
+											<div class="row">
+												<div class="col-sm-8">
+														
+														
+													<h4 class="semi-bold">Anuja Kulkarni</h4>
+													<address>
+														361 Shukrawar Peth
+														<br>
+														Pune Maharshtra
+														<br>
+														<abbr title="Phone">P:</abbr> 9730204066
+													</address>
+													
+												</div>
+												<div class="col-sm-4">
+													<div>
+														<div>
+															<strong>INVOICE NO :</strong>
+															<span class="pull-right">100029384</span>
+														</div>
+				
+													</div>
+													<div>
+														<div class="font-md">
+															<strong>INVOICE DATE :</strong>
+															<span class="pull-right"> <i class="fa fa-calendar"></i> 16/09/2017</span>
+														</div>
+													
+													</div>
+													<br>
+													<div class="well well-sm  bg-color-darken txt-color-white no-border">
+														<div class="fa-lg">
+															Total Due :
+															<span class="pull-right"><i class="fa fa-inr"></i>2000</span>
+														</div>
+				
+													</div>
+													<br>
+													<br>
+												</div>
+												
+												
+												
+											</div>
+											<table class="table table-hover">
+											
+												<!-- <thead>
+													<tr>
+														<th width="15%" class="text-center">QTY</th>
+														<th width="30%">Service</th>
+														<th width="70%">Staff</th>
+														<th width="20%">PRICE</th>
+														<th width="20%">TOTAL</th>
+													</tr>
+												</thead> -->
+												<thead>
+													<tr>
+														<th class="text-center">QTY</th>
+														<th>Service</th>
+														<th>Staff</th>
+														<th>PRICE</th>
+														<th>SUBTOTAL</th>
+													</tr>
+												</thead>
+												<tbody>
+											
+													<tr>
+														<td class="text-center"><strong>1</strong></td>
+														<td><a href="javascript:void(0);">Facial</a></td>
+														<td>Sonal Patel</td>
+														<td><i class="fa fa-inr"></i>1800</td>
+				
+														<td><i class="fa fa-inr"></i>1800</td>
+													</tr>
+													
+												
+													<tr>
+														<td colspan="4">Total</td>
+														<td><strong><i class="fa fa-inr"></i> 2000</strong></td>
+													</tr>
+													<tr>
+														<td colspan="4">Offer Discount</td>
+														<td><strong>10 %</strong></td>
+													</tr>
+													<tr>
+														<td colspan="4">GST</td>
+														<td><strong>12 %</strong></td>
+													</tr>
+												
+														
+												</tbody>
+											</table>
+											
+											<div class="invoice-footer">
+				
+												<div class="row">
+				
+													<!-- <div class="col-sm-7">
+														<div class="payment-methods">
+															<h5>Payment Methods</h5>
+															<img src="img/invoice/paypal.png" width="64" height="64" alt="paypal">
+															<img src="img/invoice/americanexpress.png" width="64" height="64" alt="american express">
+															<img src="img/invoice/mastercard.png" width="64" height="64" alt="mastercard">
+															<img src="img/invoice/visa.png" width="64" height="64" alt="visa">
+														</div>
+													</div> -->
+													<div class="col-sm-10">
+														<div class="invoice-sum-total pull-right">
+															<h3><strong>Total: <span class="text-success"><i class="fa fa-inr"></i>2000</span></strong></h3>
+														</div>
+													</div>
+				
+												</div>
+													
+												<div class="row">
+													<div class="col-sm-12">
+														<p class="note">**Thank you.If any query related to invoice please contact us.</p>
+													</div>
+												</div>
+				
+											</div>
+										</div>
+				
+									<div id="editor"></div>
+									
+				
+								
+				
+							</div>
+							<div class="modal-footer">
+							
+								<button type="button" class="btn btn-danger" data-dismiss="modal" >
+									Cancel
+								</button>
+								<button type="button" class="btn btn-primary btn-sm" id="downloadInvoice">
+														 Download
+													</button>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+				
+				
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								
+							</div>
+							<div class="modal-body">
+							
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								
+								<table class="responsive">
+					
+										<tbody>
+										<tr>
+										<td><h6><font color="blue">Aniket Bahadurkar</font></h6></td>
+										</tr>
+										<tr>
+										<td><h6>aniket@gmail.com</h6></td>
+										</tr>
+										<tr>
+										<td><span class="label label-primary">New Client</span></td>
+										</tr>
+										</tbody>
+										</table>		
+								</div>
+								</div>
+								<br>
+								<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+										
+										<table class="table table-hover">
+					
+					<tbody>
+					<tr>
+					<td>Service</td>
+					<td></td>
+					
+					<td><b>Haircut</b></td>
+					</tr>
+					
+					<tr>
+					<td>Date</td>
+					<td></td>
+					
+					<td><b>Sat,10 March 2017</b></td>
+					</tr>
+					
+					<tr>
+					<td>Time</td>
+					<td></td>
+					
+					<td><b>2.00pm</b></td>
+					</tr>
+					
+					<tr>
+					<td>Staff</td>
+					<td></td>
+				
+					<td><b>Rahul</b></td>
+					</tr>
+					
+					<tr>
+					<td>Price</td>
+					<td></td>
+					
+					<td><b>100 <i class="fa fa-inr"></i></b></td>
+					</tr>
+					
+					<tr>
+					<td>reference</td>
+					<td></td>
+					
+					<td><b>AD454Adfc </b></td>
+					</tr>
+					</tbody>
+					</table>
+								
+								</div>
+								
+								
+								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								
+								<div class="form-group">
+													
+														
+															<div class="btn-group" data-toggle="buttons">
+																<label class="btn btn-block btn-default">
+																	<input type="radio" name="Status" value="Confirmed" />
+																	Confirmed </label>
+																<label class="btn btn-block btn-default">
+																	<input type="radio" name=""Status"" value="Started" />
+																	Started </label>
+																<label class="btn btn-block btn-default">
+																	<input type="radio" name=""Status"" value="Arrived" />
+																	Arrived </label>
+																	<label class="btn btn-block btn-default">
+																	<input type="radio" name=""Status"" value="No-Show" />
+																	No-Show </label>
+																	<label class="btn btn-block btn-default">
+																	<input type="radio" name=""Status"" value="Completed" />
+																	Completed </label>
+															</div>
+														
+													</div>
+								</div>
+								
+								</div>
+							</div>
+							<div class="modal-footer">
+							<button type="button" class="btn btn-md btn-default pull-left" >
+									Edit
+								</button>
+								<button type="button" class="btn btn-md btn-default pull-left" >
+									Reschedule
+								</button>
+								<button type="button" class="btn btn-danger" data-dismiss="modal" >
+									Cancel
+								</button>
+								<button type="submit" class="btn btn-success btn-sm">
+										<span class="glyphicon glyphicon-floppy-disk"></span> Checkout
+								</button>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+				
+				</div>
+			
+
+<!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->
+
+<script>
+
+var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+
+$('#downloadInvoice').on('click', function() { window.print(); });
+
+
+/* 
+$("#editClientProfile").click(function(){
+    alert("The paragraph was clicked.");
+}); */
+</script>

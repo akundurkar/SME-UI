@@ -1,0 +1,792 @@
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Campaign Manager</li>
+			<li>New Campaign</li>
+			
+		</ol>
+		<!-- end breadcrumb -->
+
+		<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:-->
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+<div id="content">
+		
+	<div class="animated fadeInRight">
+
+		<div class="row" id="tabView">
+		
+		<br>
+		<br>
+			
+			<article class="col-sm-12 col-md-12 col-lg-12">
+		
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget well" id="wid-id-1 data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+				
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+				
+								-->
+								<header>
+									<span class="widget-icon"> <i class="fa fa-gift"></i> </span>
+									<h2>Promotional Offers </h2>
+				
+								</header>				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+				
+									<!-- widget content -->
+									<div class="widget-body">
+										
+									<div class="row">
+									<div class="col-md-12">
+									
+										<div class="row">
+											
+											<div class="col-md-10">
+													
+													<div class="btn-group" data-toggle="buttons">
+																<label class="btn btn-default active" id="basedOnEvents">
+																	<input type="radio" name="gender" value="events" data-bv-field="gender">
+																	Based on Events </label>
+																<label class="btn btn-default" id="basedOnFestivals">
+																	<input type="radio" name="gender" value="festivals" data-bv-field="gender">
+																	Based on Festivals</label>
+																	
+													</div>
+													
+											</div>
+										</div>
+									
+											<div class ="row" id="reminderMessageTemplate">
+												
+												<div class="col-sm-12 col-md-12 col-lg-12">
+													
+													<form class="smart-form" id="newCampaignForm">
+													
+														<fieldset>
+											
+															 <div class="row">
+															<section class="col col-4 pull-right">
+																	<a class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#addtype">Add New Offer</a>	
+															</section>
+															<section class="col col-4">
+															<label class="checkbox">
+																<input type="checkbox" name="sendNowCheck" id="sendNowCheck" >
+																<i></i>Offer Send Now</label>
+															</section>
+															</div> 
+															</fieldset>
+															<fieldset>
+											
+																<div class="row">
+																
+																
+														
+																	<section class="col col-4" id="events">
+																		
+																		<label class="label">Offer Type</label>
+																		<label class="select">
+																			<select id="offerType" required>
+																			
+																			    <option value="0" selected="" disabled="">Select</option>
+																				<%  _.each(eventNameList, function(event){ 
+																       		    console.log(event);
+																        	     %>
+																				   <option value="<%= event.attributes.id %>"><%= event.attributes.offerType %></option>
+																				    
+																				<% }); %>
+																			</select> 
+																		<i></i> </label>
+																	 
+																	</section> 
+												
+																	<section class="col col-4" id="festivals">
+																		
+																		<label class="label">Offer Type</label>
+																		<label class="select">
+																			<select required>
+																			    <option value="0" selected="" disabled="">Select</option>
+																				<%  _.each(festivalNameList, function(festival){ 
+																       		    console.log(festival);
+																        	     %>
+																        	        <option value="<%= festival.attributes.id %>"><%= festival.attributes.offerType %></option>
+																        	       			
+																				<% }); %>	
+																			</select> 
+																		<i></i> </label>
+																	 
+																	</section>
+																	<section class="col col-4">
+																		 Offer Valid From<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																			<input type="text" required name="offerStartDate" id="offerStartDate" placeholder="">
+																		</label>
+																	</section>  
+																
+																	<section class="col col-4">	
+																			Offer Valid UpTo<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																				<input type="text" required name="offerEndDate" id="offerEndDate" placeholder="">
+																			</label>
+																	</section>
+											
+																</div>
+										
+											
+																<div class="row">
+																	<section class="col col-4">
+																		<label class="label">Send By</label>
+																		<label class="select">
+																			<select required id="sendby">
+																			    <option value="0" selected="" disabled="">Select</option>
+																				<option value="email">Email</option>
+																				<option value="sms">SMS</option>
+																				<option value="both">Email and SMS</option>																						
+																				
+																			</select> 
+																		<i></i> </label>
+																	</section> 
+																	
+																	
+																	<section class="col col-4" >
+																		<label class="label">Offer Discount(%)</label>
+																		<label class="input"> <i
+																				class="icon-append fa fa-tag"></i> <input type="text"
+																				name="offerDiscountPer" required id="offerDiscountPer" placeholder="e.g. 5%">
+																			</label> 
+																	 
+																	</section> 
+																	
+																	<section class="col col-4" id="sendOnCol">
+																	<label class="label">Send On Date</label>
+																	<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																				<input type="text" required name="remindernotice" id="remindernotice" placeholder="">
+																			</label>
+																		
+																		<!-- <label class="select">
+																			<select required id="remindernotice" >
+																			    <option value="0" selected="" disabled="">Select</option>
+																				<option value="2">2 Hours</option>
+																				<option value="3">3 Hours</option>
+																				<option value="6">6 Hours</option>
+																				<option value="12">12 Hours</option>
+																				<option value="24">24 Hours</option>
+																				<option value="48">48 Hours</option>
+																																										
+																				
+																			</select> 
+																		<i></i> </label> -->
+																	</section> 
+																</div>
+																
+																<div class="row">
+																<section class="col col-4">
+																		<label class="label">Filter Customer</label>
+																		<label class="select select-multiple">
+																			<select multiple="multiple"  class="custom-scroll" required id="customerType" >
+																				
+																				<option >Only for Female</option>
+																				<option>Only For Male</option>
+																				<option>Student</option>
+																				<option>Bride</option>
+																				<option>No Shows Customer</option>
+																				<option>Most Visited Customer</option>
+																				<option>Non-returning Customer</option>
+																				<option>Returning Customer</option>
+																				<option>All Customer</option>
+																			</select> </label>
+																		<div class="note">
+																			<strong>Note:</strong> hold down the ctrl/cmd button to select multiple options.
+																		</div>
+																	
+																	</section> 
+																	
+																	
+																
+																
+																	</div>
+																				
+														</fieldset>
+														
+														<fieldset id="emailDiv">
+														<div class="row">
+																	<div class="col col-4">
+																	<label class="label">Email Send By</label>
+																			<div class="inline-group">
+																<label class="radio">
+																	<input type="radio" name="radio-inline" id="textTemplate" checked="checked" >
+																	<i></i>Text</label>
+																<label class="radio">
+																	<input type="radio" name="radio-inline" id="imageTemplate">
+																	<i></i>Image</label>
+															
+															</div>
+																	</div>
+															
+															</div>
+															<br>
+															<div class="row">
+															
+																<div class="col col-10" id="col-email">
+																	<h6>Email Template</h6><br>
+																		<div class="row">
+																		<section class="col col-10">
+																			<label class="input"> <input
+																				type="text" name="emailSubject" required id="emailSubject" placeholder="Email Subject"
+																				>
+																			</label>
+																		</section>
+																		
+																		</div>
+																
+																		<div class="row" id="textArea">
+																		
+																			<section class="col col-10">
+																	
+																				<label class="textarea textarea-resizable"> <textarea
+																						rows="12" class="custom-scroll" name="emailTemplate" id="emailTemplate" placeholder="Email Template">					
+																						Hi CLIENT_FIRST_NAME,
+																						
+																						[Offer_Type] Offer
+																						
+																						get [Discount] off 
+																						Valid Till[VALID_TO]
+																						
+																						At this location:
+																						
+																						LOCATION_NAME
+																						LOCATION_PHONE
+																						
+																						For details contact BUSINESS_NAME on LOCATION_PHONE.
+																						</textarea>
+																				</label>
+																			</section>
+																		
+																		</div>
+																
+																		<div class="row" id="uploadImage">
+																		
+																			<section class="col col-10">
+																			<label class="label">Upload Image</label>
+																				<div class="input input-file">
+																					<span class="button"><input type="file" id="file" name="file"  onchange="this.parentNode.nextSibling.value = this.value">Browse</span><input type="text" required placeholder="Include some files" readonly="">
+																				</div>
+																			</section>
+																		
+																		</div>
+																
+																		<div class="row" id="preview">
+																		
+																			<section class="col col-10">
+																			<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#emailPreview">Preview Message</a>	
+																			
+																			<a class="btn btn-sm btn-default">Reset To Default</a>	
+																			</section>
+																		
+																		</div>
+																		
+															    </div>
+														
+														
+																
+													
+															</div>
+															</fieldset>
+															<fieldset id="smsDiv">
+															<div class="row">
+															<div class="col col-10" id="col-sms">
+																	<h6 >SMS Template</h6><br>
+																	
+																		<div class="row">
+																		
+																		<label class="textarea textarea-resizable"> 										
+														
+													</label>
+																		
+																			<section class="col col-10">
+																			<label class="textarea textarea-resizable"> <textarea
+																						rows="12" class="custom-scroll" name="emailTemplate" id="smsTemplate" placeholder="Email Template">
+																						 HI [CUSTOMER_NAME], [Offer_Type] Offer get [Discount] off  Visit [BUSINESS_NAME], [LOCATION_NAME].Valid Till[VALID_TO]
+																						</textarea>
+																				</label>
+																				
+																				<p>
+																			    <span id="remaining">160 characters remaining</span>
+																			    <span id="messages">1 message(s)</span>
+																				</p>
+																			</section>
+																		
+																		
+																		</div>
+																	
+																		<div class="row">
+																		
+																			<section class="col col-10">
+																				<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#smsPreview">Preview Message</a>	
+																				
+																				<a class="btn btn-sm btn-default">Reset To Default</a>	
+																			</section>
+																		
+																		</div>
+																</div>
+															</div>
+															
+														</fieldset>
+												<!-- 		<fieldset>
+														<div class="row">
+														<section class="col-12">
+														<div class="panel-group smart-accordion-default" id="accordion">
+													<div class="panel panel-default">
+												<div class="panel-heading">
+													<h6 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i> Email Template </a></h6>
+												</div>
+												<div id="collapseOne" class="panel-collapse collapse in">
+													<div class="panel-body">
+														<div class="row">
+																		
+																		<label class="textarea textarea-resizable"> 										
+														
+													</label>
+																		
+																			<section class="col col-10">
+																			<label class="textarea textarea-resizable"> <textarea
+																						rows="12" class="custom-scroll" name="emailTemplate" id="smsTemplate" placeholder="Email Template">
+																						HI [CUSTOMER_NAME], [Offer_Type] Offer get [Discount] off  Visit [BUSINESS_NAME], [LOCATION_NAME].Valid Till[VALID_TO]
+																						</textarea>
+																				</label>
+																				
+																				<p>
+																			    <span id="remaining">160 characters remaining</span>
+																			    <span id="messages">1 message(s)</span>
+																				</p>
+																			</section>
+																		
+																		
+																		</div>
+																	
+																		<div class="row">
+																		
+																			<section class="col col-10">
+																				<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#smsPreview">Preview Message</a>	
+																				
+																				<a class="btn btn-sm btn-default">Reset To Default</a>	
+																			</section>
+																		
+																		</div>
+													</div>
+												</div>
+											</div>
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h6 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i> SMS Template </a></h6>
+												</div>
+												<div id="collapseTwo" class="panel-collapse collapse">
+													<div class="panel-body">
+														<div class="row">
+																		
+																		<label class="textarea textarea-resizable"> 										
+														
+													</label>
+																		
+																			<section class="col col-10">
+																			<label class="textarea textarea-resizable"> <textarea
+																						rows="12" class="custom-scroll" name="emailTemplate" id="smsTemplate" placeholder="Email Template">
+																						HI [CUSTOMER_NAME], [Offer_Type] Offer get [Discount] off  Visit [BUSINESS_NAME], [LOCATION_NAME].Valid Till[VALID_TO]
+																						</textarea>
+																				</label>
+																				
+																				<p>
+																			    <span id="remaining">160 characters remaining</span>
+																			    <span id="messages">1 message(s)</span>
+																				</p>
+																			</section>
+																		
+																		
+																		</div>
+																	
+																		<div class="row">
+																		
+																			<section class="col col-10">
+																				<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#smsPreview">Preview Message</a>	
+																				
+																				<a class="btn btn-sm btn-default">Reset To Default</a>	
+																			</section>
+																		
+																		</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+														
+														</section>
+														
+														</div>
+														</fieldset> -->
+														
+														<footer>
+														
+														<button type="button" class="btn btn-success" id="sendNewCampaign">
+															Send Now
+														</button>
+														
+														<button type="button" class="btn btn-success" id="saveNewCampaignValid">
+															Save
+														</button>
+														<div id="saveNewCampaign"></div>
+														</footer>
+												
+													</form>
+															
+												</div>
+											
+											</div>
+								
+									</div>
+									
+									</div>
+									
+									</div>
+									<!-- end widget content -->
+				
+									</div>
+									<!-- end widget div -->
+				
+									</div>
+									<!-- end widget -->
+				
+			</article>
+			
+			<!-- <article class="col-sm-12 col-md-3 col-lg-3">
+			
+<h5>
+<span class="semi-bold">Messaging Settings</span>
+</h5>
+<div class="tips-text">
+<p>Message types setup here will be automatically sent to clients. All messages generated can be easily accessed on the messages page (in your main menu).</p>
+
+<p>Adjust the settings for how and when messages are sent, and edit the templates to personalise the text.</p>
+
+<p>Use the below tags to include appointment details inside messages:</p>
+
+<p>CLIENT_FIRST_NAME<br>CLIENT_LAST_NAME<br>STAFF_FIRST_NAME<br>STAFF_LAST_NAME</p>
+
+<p>BOOKING_DATE_TIME<br>BOOKING_DATE<br>BOOKING_TIME</p><p>BOOKING_REFERENCE<br>SERVICE_NAME</p>
+
+<p>BUSINESS_NAME<br>LOCATION_NAME<br>LOCATION_PHONE</p>
+
+</div>
+</div>
+			</article> -->
+			
+		</div>
+
+	</div>
+	
+</div>
+	
+	<!-- Modal -->
+				<div class="modal fade" id="emailPreview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								<h6 class="modal-title" id="myModalLabel">Preview template</h6>
+							</div>
+							<div class="modal-body">
+							
+							<p>
+								Hi John,
+								
+								This is a friendly reminder about your appointment with booking reference E798276F7C. Here are the details:
+								
+								princes shine 
+								Haircut 
+								Thursday, 16 Mar 2017 at 8:15am
+								
+								At this location:
+								
+								princes shine
+								
+								Need to change your appointment? Please contact princes shine on . </p>
+								
+				
+							</div>
+							
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+				<!-- Modal -->
+				<div class="modal fade" id="smsPreview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								<h6 class="modal-title" id="myModalLabel">Preview template</h6>
+							</div>
+							<div class="modal-body">
+							
+							<p>Hi John, this is a friendly reminder about your appointment with princes shine on Thursday.</p>
+								
+				
+							</div>
+							
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+				<!-- Modal -->
+				<div class="modal fade" id="addtype" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+						<form class="form " role="form" id="addOfferType-form" >
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								<h6 class="modal-title" id="myModalLabel">Add Offer Type</h6>
+							</div>
+							<div class="modal-body">
+							
+							<div class="smart-form">
+								<div class="row">
+										
+										<div class="col col-10">
+												<label class="input">
+											Offer Type<input type="text" placeholder="e.g.Anniversary" name="offerTypeName" id="offerTypeName" >
+												</label>
+										</div>		
+								</div>
+								<br>
+									
+								<div class="row">
+								
+								<div class="col col-10">
+										<label class="input">
+											Select Date<label class="input"> <i class="icon-append fa fa-calendar"></i>
+												<input type="text" name="offerDate" id="offerDate" placeholder="" >
+											</label>
+										</label>
+										</div>
+								
+								</div>
+									
+									
+								</div>
+				
+							</div>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">
+									Cancel
+								</button>
+								<button type="button" class="btn btn-primary" id ="addOfferTypeBtn" offerType = "1" data-dismiss="modal">
+									Add Offer
+								</button>
+								<div id= "saveAddOfferTypeBtn"></div>
+							</div>
+							</form>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+</div>
+
+<!-- END MAIN CONTENT -->
+
+
+<!-- END MAIN PANEL -->
+
+
+
+<script>
+
+//START AND FINISH DATE
+$('#offerStartDate').datepicker({
+	dateFormat : 'yy-mm-dd',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	onSelect : function(selectedDate) {
+		$('#offerEndDate').datepicker('option', 'minDate', selectedDate);
+		$('#remindernotice').datepicker('option', 'maxDate', selectedDate);
+	}
+});
+
+$('#offerEndDate').datepicker({
+	dateFormat : 'yy-mm-dd',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	onSelect : function(selectedDate) {
+		$('#offerDate').datepicker('option', 'maxDate', selectedDate);
+	}
+});
+
+$('#offerDate').datepicker({
+	dateFormat : 'yy-mm-dd',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	
+});
+
+$('#remindernotice').datepicker({
+	dateFormat : 'yy-mm-dd',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	onSelect : function(selectedDate) {
+		//$('#offerStartDate').datepicker('option', 'minDate', selectedDate);
+		$('#remindernotice').datepicker({ minDate: 0 });
+	}
+	
+});
+		
+		
+		
+		$('#festivals').hide();
+		$('#addOfferTypeBtn').attr("offertype","1");
+		
+	 $('#basedOnFestivals').on('click', function() {
+    	
+		 $('#festivals').show();
+		 	 $('#events').hide();
+		 	$('#addOfferTypeBtn').attr("offertype","2");
+    });
+		
+		$('#basedOnEvents').on('click', function() {
+	    	
+			 $('#festivals').hide();
+			 	 $('#events').show();
+			 	 console.log("changing offertype ");
+			 	 $('#addOfferTypeBtn').attr("offertype","1");
+			 	 
+	    	
+	    });
+		
+		 $('#addOfferTypeBtn').off().on('click', function() {
+				
+				var formCheck = $("#addOfferType-form").valid();
+			    if(formCheck){
+			    	console.log("formcheck true");
+			    	$("#saveAddOfferTypeBtn").click();
+			    }
+			    console.log("formcheck false");
+			});
+    
+
+			var $remaining = $('#remaining'),
+            $messages = $remaining.next();
+
+        $('#smsTemplate').keyup(function(){
+            var chars = this.value.length,
+                messages = Math.ceil(chars / 160),
+                remaining = messages * 160 - (chars % (messages * 160) || messages * 160);
+
+            $remaining.text(remaining + ' characters remaining');
+            $messages.text(messages + ' message(s)');
+        });
+        
+        $('#saveNewCampaignValid').off().on('click', function() {
+			//alert("The btn Save was clicked.");
+			var formCheck = $("#newCampaignForm").valid();
+		    if(formCheck){
+		    	console.log("formcheck true");
+		    	$("#saveNewCampaign").click();
+		    }
+		    console.log("formcheck false")
+		});
+		 
+        $("#sendNewCampaign").hide();
+        
+        $("#sendNowCheck").click(function() {
+            if($(this).is(":checked")) {
+                $("#sendOnCol").hide();
+                $("#sendNewCampaign").show();
+                $("#saveNewCampaignValid").hide();
+                
+            } else {
+                $("#sendOnCol").show();
+                $("#sendNewCampaign").hide();
+                $("#saveNewCampaignValid").show();
+            }
+        });
+        
+   
+        
+        $('#sendby').change(function(){
+            if($('#sendby').val() == 'email') {
+                $('#smsDiv').hide(); 
+                $('#emailDiv').show(); 
+            } else  if($('#sendby').val() == 'sms') {
+            	 $('#emailDiv').hide(); 
+            	 $('#smsDiv').show();
+            } 
+            
+            else  if($('#sendby').val() == 'both') {
+           	 $('#emailDiv').show(); 
+           	 $('#smsDiv').show();
+           } 
+        });
+        
+        $('#uploadImage').hide(); 
+        
+            $("input[name='radio-inline']").click(function () {
+                if ($("#imageTemplate").is(":checked")) {
+                	 $('#textArea').hide(); 
+                	 $('#preview').hide();
+                	 $('#smsDiv').hide();
+                	 $('#uploadImage').show();
+                } else {
+                	 $('#uploadImage').hide(); 
+                     $('#textArea').show(); 
+                	 $('#preview').show();
+                	 $('#smsDiv').show();
+                }
+            });
+        
+/* $(function () {
+    $(.'data-toggle').click(function () {
+        if ($("#basedOnEvents").is("active")) {
+            $("#events").show();
+        } else {
+            $("#festivals").hide();
+        }
+    });
+    
+    
+    $(.'data-toggle').click(function () {
+        if ($("#basedOnFestivals").is("active")) {
+            $("#festivals").show();
+        } else {
+            $("#events").hide();
+        }
+    });
+}); */
+</script>

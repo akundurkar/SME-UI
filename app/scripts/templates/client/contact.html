@@ -1,0 +1,217 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Contact</li>	
+		</ol>
+		<!-- end breadcrumb -->
+
+		<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:-->
+	</div>
+	<!-- END RIBBON -->
+	<!-- MAIN CONTENT -->
+	<div id="content">
+
+		<div class="animated fadeInRight">
+	
+			<div class="row" id="company-detail-form">
+				
+				<div class="col-sm-9">
+
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+						
+						<header>
+							<span class="widget-icon"> <i class="fa fa-edit"></i></span>
+							<h2>Contact</h2>
+						</header>
+						
+						<!-- widget div-->
+						<div>
+						
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+							</div>
+							<!-- end widget edit box -->
+							
+								<!-- widget content -->
+								<div class="widget-body no-padding">
+
+									<form id="contact-form" class="smart-form" novalidate="novalidate">
+
+										<div id="companyFormDiv">
+									
+											<fieldset>
+										
+												<div class="row">
+												
+													<section class="col col-8">
+														 Name<label class="input"><i class="icon-append fa fa-user"></i> 
+																		<input type="text" name="name" id="name">
+																	 </label>
+													</section>
+												
+												</div>
+												
+													<div class="row">
+												
+													<section class="col col-8">
+														Email<label class="input">  <i
+														class="icon-append fa fa-globe"></i><input
+															type="text" name="email" id="email"
+															>
+														</label>
+													</section>
+												
+												</div>
+												
+												<div class="row">
+											
+													<section class="col col-8" >
+														Message<label class="textarea"> 
+														                  <textarea rows="6" name="message" id="message" placeholder=""></textarea>
+														           </label>
+												    </section>
+												
+												</div>
+												
+											
+											
+											</fieldset>
+
+										</div>
+									
+										<footer>
+											<button id="validateForm" type="submit"
+												class="btn btn-primary">
+												<i class="fa fa-check "></i> Save
+											</button>
+											<div id="saveContactBtn"></div>
+	
+										</footer>
+									
+									</form>
+
+								</div>
+								<!-- end widget content -->
+
+						</div>
+						<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+
+				</div>
+				<!-- end row -->
+			
+			</div>
+			<!-- end widget grid -->
+
+		</div>
+		
+	</div>
+	<!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->
+
+<script type="text/javascript">
+
+			 $(document).ready(function() {
+				
+ 			 });
+		
+			 $("#name").keypress(function(event){
+					var inputValue = event.charCode;
+					if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		  			    event.preventDefault();
+		             }
+
+			});
+			  
+			$("#message").keypress(function(event){
+					var inputValue = event.charCode;
+					if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+					   event.preventDefault();
+		           }
+
+			});
+			 
+							  
+				 pageSetUp();
+
+				 function chkform()
+				 {
+
+					 //alert("inchk form validation");
+					 //console.log("in chkform");
+						var validator = $( "#contact-form" ).validate({
+							
+							// Step-1 validations
+							rules: {
+						
+										name: 
+										{
+								        	required: true
+								      	},
+								      	message:
+								      	{
+								      		required: true
+								      	},
+								      	
+								      	email:
+								      	{
+								        	required: true
+								      	},
+						      
+						    },
+						    
+						    messages: {
+							//step1
+									     name:
+									    {
+											required : "Please specify Name"      
+										},
+										message:
+								      	{
+								      		required: "Please specify your Message"
+								      	},
+								      	
+								      	email:
+								      	{
+											required : "Please select your email"      
+										},
+					      	
+					      	
+						   },
+						   
+							submitHandler: function() {					
+								
+								$("#saveContactBtn").click();
+							    
+							  },
+							  invalidHandler: function() {
+							    
+							  }
+							});
+					}
+			
+				 $('#validateForm').click(function(e){
+				       
+				        chkform();
+				    });				        				       					
+
+</script>

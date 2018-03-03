@@ -1,0 +1,217 @@
+<!-- MAIN PANEL -->
+		<div id="main" role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+
+				<!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li>Home</li>
+				</ol>
+				<!-- end breadcrumb -->
+
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+				<div class="animated fadeInRight">
+					
+	
+				<!-- row -->
+					
+					<div class="row">
+				
+				<div class="col-sm-9">
+
+					<div class="well well-sm well-light">
+			<h3><b>Welcome to SME</b></h3>
+			<div id="accordion">
+				<div>
+					<h4>What is SME ?</h4>
+					<div class="padding-10">
+						   The SME platform is an automated solution which allows .
+                     
+					</div>
+				</div>
+
+				<div>
+					<h4>How it works ?</h4>
+					<div class="padding-10">
+					 SME is all about making your boutique available for customer across different locations to get appointment for beauty treatment 
+						</div>
+				</div>
+				
+			</div>
+
+		</div>
+
+					</div>
+				
+				<div class="col-sm-3">                              
+							<div class="col hidden-mobile">
+					<div class="row">
+						<div class="pull-left">
+							
+							<address>
+								<br> <strong>SME</strong>  <br>Office No:- 97-100, 3rd floor, G wing,<br> 
+								  KK Market, Pune Satara Road, <br>
+								  Near Shankar Maharaj Math, Dhankawadi, Pune, Maharashtra 411043.<br> <abbr
+									title="Phone">Phone:</abbr> 020-41201133
+									
+									
+							</address>
+						</div>
+					</div>
+					<!-- <div class="row">
+						<h1>
+							<small>Contact Person</small>
+						</h1>
+						<ul class="list-inline friends-list">
+							<li>
+								<div class="row">
+									<div class="col-sm-3">
+										<img class="responsive" src="img/avatars/4.png" alt="friend-1">
+									</div>
+									<div class="col-sm-9">
+										<address>
+											<strong>Mr.Shivam Dikshit</strong> <br> 
+												<i class="fa fa-phone"></i>&nbsp;&nbsp;<span
+												class="txt-color-darken">916</span> <span
+												class="txt-color-darken">876</span> <span
+												class="txt-color-darken">0208</span> <br> <i
+												class="fa fa-envelope"></i>&nbsp;&nbsp;<a
+												href="mailto:sales@sme.com">sales@sme.com</a> <br>
+										</address>
+									</div>
+								</div>
+							</li>
+						 <li>
+								<div class="row">
+									<div class="col-sm-3">
+										<img src="img/avatars/1.png" alt="friend-1">
+									</div>
+									<div class="col-sm-9">
+										<address>
+											<strong>Sania Mirza</strong> <br> <i class="fa fa-phone"></i>&nbsp;&nbsp;(<span
+												class="txt-color-darken">232</span>) <span
+												class="txt-color-darken">232</span> - <span
+												class="txt-color-darken">3964</span> <br> <i
+												class="fa fa-envelope"></i>&nbsp;&nbsp;<a
+												href="mailto:simmons@smartadmin">sania@gmail.com</a> <br>
+										</address>
+									</div>
+								</div>
+							</li> 
+						</ul>
+					</div> -->
+				</div>
+				</div>	
+					
+					</div>
+
+<!-- 
+										<div class="row">
+											<div class="col-sm-12">
+				
+												<table class="table table-bordered table-striped">
+													<thead>
+														<tr>
+															<th colspan="">Id</th>
+															<th colspan="">Campaign Name</th>													
+															<th colspan="">Start Date</th>
+															<th colspan="">Finish Date</th>
+															<th colspan="">Location</th>
+															<th colspan="">Advertiser Name</th>
+															
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>102354</td>
+															<td>Restaurant</td>
+															<td>26.6.2016</td>
+															<td>27.6.2016</td>
+															<td>Bibwevadi</td>
+															<td>Holiday Inn</td>
+															
+														</tr>
+														
+														
+										    			<tr>
+															<td>102354</td>
+															<td>Bank</td>
+															<td>26.6.2016</td>
+															<td>27.6.2016</td>
+															<td>Bibwevadi</td>
+															<td>Karad Sahakari Bank</td>														
+														</tr>	
+																		
+				
+													</tbody>
+												</table>
+				
+											</div>
+				
+										</div> -->
+
+
+
+
+
+      
+					<!-- end row -->						
+				</div>				
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->
+
+		<script>
+		
+/*  $(document).ready(function() { */
+        	   
+        		 /*
+				* ACCORDION
+				*/
+				//jquery accordion
+				
+			    
+
+				// DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+
+				/*
+				 * PAGE RELATED SCRIPTS
+				 */
+				 
+				 pageSetUp();
+				 var accordionIcons = {
+				         header: "fa fa-plus",    // custom icon class
+				         activeHeader: "fa fa-minus" // custom icon class
+				     };
+				     
+					$("#accordion").accordion({
+						autoHeight : false,
+						heightStyle : "content",
+						collapsible : true,
+						animate : 300,
+						icons: accordionIcons,
+						header : "h4",
+					});
+
+				/*  $('#collapseDiv').on('shown.bs.collapse', function () {
+					   $(".fa").removeClass("fa-plus-square").addClass("fa-minus-square");
+					});
+
+					$('#collapseDiv').on('hidden.bs.collapse', function () {
+					   $(".fa").removeClass("fa-minus-square").addClass("fa-plus-square");
+					}); 
+				});*/
+ 
+			
+
+		</script>
+	

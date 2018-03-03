@@ -1,0 +1,204 @@
+
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+<!-- <script src="https://www.google.com/recaptcha/api.js?onload=recaptchaOnload&render=explicit" async defer></script> -->
+
+
+
+<div id="extr-page">
+
+	<header id="header">
+
+			<div id="logo-group">
+				<span id="logo"> <img src="img/fines.png" alt="ShowAD"> </span>
+			</div>
+
+			<span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Need an account?</span> <button type="button" id="mediaownerregistration" class="btn btn-danger">Create account</button> </span>
+ 
+		</header>
+
+	<div id="main" role="main"  class="myLogin">
+    
+		<!-- MAIN CONTENT -->
+		<div id="content" class="container">
+			<div class="row">
+				<span> <%=CommonUtils.getDataTransfer("SignUpmessage")%></span>
+			</div>
+			<div class="row">
+				<div id="mediaRegistrationLayout"></div>
+				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+					<div class="well no-padding">
+					
+						<form id="login-form" class="smart-form client-form" >
+							
+							<br/>
+							<header> Sign In </header>
+
+							<fieldset>
+
+								<section>
+									<label class="label">Login</label> <label class="input">
+										<i class="icon-append fa fa-user"></i> <input type="email"
+										name="loginId" id="loginId"> <b
+										class="tooltip tooltip-top-right"><i
+											class="fa fa-user txt-color-teal"></i> Please enter your Login Id
+											</b>
+									</label>
+								</section>
+
+								<section>
+									<label class="label">Password</label> <label class="input">
+										<i class="icon-append fa fa-lock"></i> <input type="password"
+										name="password" id="password"> <b
+										class="tooltip tooltip-top-right"><i
+											class="fa fa-lock txt-color-teal"></i> Enter your password</b>
+									</label>
+									<div>
+									<label class="label"> <%=CommonUtils.getDataTransfer("loginError")%> </label> 
+									</div>
+									
+									<div class="note">
+										<a href="#resetPassword">Forgot password?</a>
+									</div><br><br>
+								<!-- 	<div id="g-recaptcha"></div> -->
+								
+								<!-- <a href="whatsapp://send?text=*Hi* %0A this is test for the %0A*whatsapp web* %0Ato mobile send Message",data-action="share/whatsapp/share"><img src="img/whatsapp1.png" width="39" height="32"></a> -->
+								</section>
+
+								<!-- <section>
+									<label class="checkbox"> <input type="checkbox"
+										name="remember" checked=""> <i></i>Stay signed in
+									</label>
+								</section> -->
+							</fieldset>
+							<footer>
+								<button type="submit" class="btn btn-primary" id="signIn">
+									Sign in</button>
+						<!-- 					<h5 class="text-left"><b> - Or sign in using -</h5>
+
+					     <ul class="list-inline text-left">
+						<li><a href="javascript:void(0);"
+							class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
+						</li>
+						<li><a href="javascript:void(0);"
+							class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
+						</li>
+						<li><a href="javascript:void(0);"
+							class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
+						</li>
+					    </ul> -->
+									<div id="submit">
+									</div>
+									
+							</footer>
+							
+						</form>
+						
+					</div>
+
+					
+
+				</div>
+			</div>
+		</div>
+		
+		<div style="top:50%;left:50%;position:absolute;" id="loginSpinner">
+		</div>
+	
+
+	<!--================================================== -->
+
+
+	<!--[if IE 8]>
+			
+			<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+			
+		<![endif]-->
+
+	<script type="text/javascript">
+		//	runAllForms();
+
+		/* 
+		var recaptchaScriptLoaded = false;
+var recaptchaAjaxReady = false;
+
+function recaptchaOnload()
+{
+    recaptchaScriptLoaded = true;
+    recaptchaRender();
+}
+
+function recaptchaRender() {
+    if (recaptchaScriptLoaded && recaptchaAjaxReady)
+    {
+        grecaptcha.render('g-recaptcha', {
+            'sitekey' : '6LfhfxMUAAAAABCgqDma3VNi0hNWrhMWjvhD3b7-'
+        });
+    }
+} */
+		
+		
+				
+		$( document ).ready(function() {
+			  // Handler for .ready() called.
+	
+		
+		function chkform(){
+			//console.log("in chkform");
+			
+			
+			var validator = $( "#login-form" ).validate({
+				
+				rules : {
+					loginId : {
+						required : true,
+						minlength : 6,							
+						email : true
+					},
+					password : {
+						required : true,
+						minlength : 3,
+						maxlength : 20
+					}
+				},
+
+				// Messages for form validation
+				messages : {
+					loginId : {
+						minlength:'Login Id must not be empty',
+						required : 'Please enter your Login Id',
+						email : 'Please enter a VALID Login Id'
+					},
+					password : {
+						required : 'Please enter your password'
+					}
+				},
+				
+				submitHandler: function() {					
+				    	$("#submit").click();
+				    
+				  },
+				  invalidHandler: function() {
+				    
+				  }
+				});
+		}
+		
+		$('#signIn').click(function(e){
+	      
+	        chkform();
+	    });
+		
+		 /* recaptchaAjaxReady = true;
+         recaptchaRender(); */
+				
+		});
+		</script>
+
+</div>
+
+</div>

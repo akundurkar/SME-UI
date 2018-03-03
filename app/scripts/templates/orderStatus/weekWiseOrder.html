@@ -1,0 +1,131 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>WeekWise Order</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+	<div id="content">
+		<div class="animated fadeInRight">
+
+		
+		
+			<!-- widget grid -->
+				<section id="widget-grid" class="">
+				
+					<!-- row -->
+					<div class="row">
+				
+						<!-- NEW WIDGET START -->
+						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget  id="wid-id-0" >
+								<header>
+									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+									<h2>Order Status </h2>
+				
+								</header>
+				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+									
+									<!-- widget content -->
+									<div class="widget-body no-padding">
+										<div class="table-responsive">
+										<table  class="table table-hover" width="100%">
+					
+									        <thead>
+									            <tr>
+									            
+									               <th>Order ID</th>
+									               <th>Client</th>
+									               <th>Service</th>         
+								                   <th>DATE</th>
+								                   <th>TIME</th>
+								                   <th>Duration</th>
+								                   <th>Staff</th>
+								                   <th>Price</th>
+												   <th>STATUS</th>
+												   <th>VIEW</th>
+												   
+									            </tr>
+									        </thead>
+				
+									        <tbody>
+									        <%  
+									        				        
+									        _.each(WeekWiseOrderList, function(WeekWiseOrderDetail){ 
+									        console.log(WeekWiseOrderDetail);
+									        
+									         var date = new Date(WeekWiseOrderDetail.attributes.date).toLocaleDateString('en-US');
+									         var time = new Date(WeekWiseOrderDetail.attributes.date).toLocaleTimeString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
+									         
+									         %>
+												<tr>
+												   
+									              <td><%= WeekWiseOrderDetail.attributes.orderId %></td>
+									              <td><%= WeekWiseOrderDetail.attributes.clientName %></td>
+									              <td>Hair cut</td>
+									              <td><%= date %></td>
+									              <td><%= time %></td>
+									              <td>45min</td>
+									              <td>Rahul Savane</td>
+									              <td><%= WeekWiseOrderDetail.attributes.total %><i class="fa fa-inr"></i></td>
+									              <td><label class="label label-success">Complete</label></td>
+									               <td><a class="btn btn-info btn-sm">View</a></td>
+															
+									            </tr>
+									       	 <% }); %>								
+					
+											</tbody>
+									
+										</table>
+										</div>
+									</div>
+									<!-- end widget content -->
+				
+								</div>
+								<!-- end widget div -->
+				
+							</div>
+							<!-- end widget -->
+							
+						</article>
+						<!-- WIDGET END -->
+				
+					</div>
+					<!-- end row -->
+				</section>
+				
+		</div>
+		<!-- end widget grid -->
+				
+	</div>
+<!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->
+
+</div>
+<!-- END MAIN PANEL -->
+

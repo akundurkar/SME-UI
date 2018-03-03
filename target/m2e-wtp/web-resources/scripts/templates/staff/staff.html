@@ -1,0 +1,1668 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Staff</li>
+		</ol>
+	<!-- end breadcrumb -->
+
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+<div id="content">
+	<div class="animated fadeInRight">
+			
+		<!-- row -->
+		<div class="row">
+				
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget well" id="wid-id-1 data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+				
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+				
+								-->
+								<header>
+									<span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+									<h2>Default Tabs with border </h2>
+				
+								</header>
+				
+								<!-- widget div-->
+								<div>
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+				
+									<!-- widget content -->
+									<div class="widget-body">
+										<br>
+										<br>
+										<ul id="myTab1" class="nav nav-tabs bordered">
+											<li class="active">
+												<a href="#s1" data-toggle="tab">WORKING HOURS</a>
+											</li>
+											<li>
+												<a href="#s2" data-toggle="tab">CLOSED DATES</a>
+											</li>
+											<li>
+												<a href="#s3" data-toggle="tab">STAFF MEMBERS</a>
+											</li>
+											<li>
+												<a href="#s4" data-toggle="tab">PERMISSION LEVELS</a>
+											</li>
+										</ul>
+										
+										<!-- WORKING HOURS Tab START -->
+										<div id="myTabContent1" class="tab-content padding-10">
+											<div class="tab-pane fade in active" id="s1">
+												<div class="row">
+												
+								
+													<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+														<div class="table-responsive">
+													
+															<table class="table table-bordered">
+																<thead>
+																	<tr>
+																		<th>Change Staff</th>
+																		
+																		
+																	<%  									        
+															        _.each(staffDetailsList, function(staffDetails,i){ 
+															        console.log(staffDetails);
+															        if (i <= 2) {
+																	     return false;   
+																	    }
+																		    %>	
+																<th><%=staffDetails.attributes.staffScheduleDto.sunday%></th>	
+																<th><%=staffDetails.attributes.staffScheduleDto.monday%></th>
+																<th><%=staffDetails.attributes.staffScheduleDto.tuesday%></th>
+																<th><%=staffDetails.attributes.staffScheduleDto.wednesday%></th>
+																<th><%=staffDetails.attributes.staffScheduleDto.thrusday%></th>
+																<th><%=staffDetails.attributes.staffScheduleDto.friday%></th>
+																<th><%=staffDetails.attributes.staffScheduleDto.saturday%></th>
+																
+																	<%
+																	 return false;
+																	});%>
+																		
+																	</tr>
+																</thead>
+																<tbody>
+																	
+																	<%  									        
+															        _.each(staffDetailsList, function(staffDetails){ 
+															        console.log(staffDetails);
+															        
+															         %>	
+																	<tr>
+																		<td ><%= staffDetails.attributes.fullName %></td>
+																		<td><span style="cursor:pointer"  id="staffSchedule" staffId ="<%= staffDetails.attributes.staffId %>" class="label label-success"><%=staffDetails.attributes.staffScheduleDto.openTimeSun%> - <%=staffDetails.attributes.staffScheduleDto.closeTimeSun%></span></td>
+																		<td><span style="cursor:pointer"  id="staffSchedule" staffId ="<%= staffDetails.attributes.staffId %>" class="label label-success"><%=staffDetails.attributes.staffScheduleDto.openTimeMon%> - <%=staffDetails.attributes.staffScheduleDto.closeTimeMon%></span></td>
+																		<td><span style="cursor:pointer"  id="staffSchedule" staffId ="<%= staffDetails.attributes.staffId %>" class="label label-success"><%=staffDetails.attributes.staffScheduleDto.openTimeTue%> - <%=staffDetails.attributes.staffScheduleDto.closeTimeTue%></span></td>
+																		<td><span style="cursor:pointer"  id="staffSchedule" staffId ="<%= staffDetails.attributes.staffId %>" class="label label-success"><%=staffDetails.attributes.staffScheduleDto.openTimeWed%> - <%=staffDetails.attributes.staffScheduleDto.closeTimeWed%></span></td>
+																		<td><span style="cursor:pointer"  id="staffSchedule" staffId ="<%= staffDetails.attributes.staffId %>" class="label label-success"><%=staffDetails.attributes.staffScheduleDto.openTimeThr%> - <%=staffDetails.attributes.staffScheduleDto.closeTimeThr%></span></td>
+																		<td><span style="cursor:pointer"  id="staffSchedule" staffId ="<%= staffDetails.attributes.staffId %>" class="label label-success"><%=staffDetails.attributes.staffScheduleDto.closeTimeFri%> - <%=staffDetails.attributes.staffScheduleDto.closeTimeFri%></span></td>
+																		<td><span style="cursor:pointer"  id="staffSchedule" staffId ="<%= staffDetails.attributes.staffId %>" class="label label-success"><%=staffDetails.attributes.staffScheduleDto.openTimeSat%> - <%=staffDetails.attributes.staffScheduleDto.closeTimeSat%></span></td>
+																	</tr>
+																	<% }); %>
+																	
+																</tbody>
+															</table>
+														</div>
+													</article>
+												</div>
+											</div>
+												<!--  CLOSED DATES Tab START -->
+											
+											<div class="tab-pane fade" id="s2">
+												<div class="col-sm-12">
+		                                            <button  type="button" class="btn btn-primary btn-default pull-right" data-toggle="modal" data-target="#newClosedModal"> New Closed Date</button>
+		                                        </div><br><br>
+												<div class="row">
+								<!-- NEW WIDGET START -->
+													<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+														<div class="table-responsive">
+															<table  class="table table-hover" width="100%">
+										        				<thead>
+										        				
+														            <tr>
+														            
+														                <th>Date Range</th>
+													                    <th>No Of Days</th>
+													                    <th>Locations</th>
+													                    <th>Description</th>
+																		<th>View</th>
+																		
+														            </tr>
+														            
+										       					 </thead>
+					
+										        				 <tbody>
+													
+																	<tr>
+																	<%  									        
+															        _.each(closedDatesList, function(closedDatesDetails){ 
+															        
+															         var sdate = new Date(closedDatesDetails.attributes.startDate).toLocaleDateString('ca-indian');
+															          var fdate = new Date(closedDatesDetails.attributes.finishDate).toLocaleDateString('ca-indian');
+															         
+															         closedDatesDetails.attributes.date = sdate;
+															         closedDatesDetails.attributes.date = fdate;
+															         
+															        	var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+																		var firstDate = new Date(closedDatesDetails.attributes.startDate);
+																		var secondDate = new Date(closedDatesDetails.attributes.finishDate);
+
+																		var day = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+																        var days = day+1;
+																		    %>	
+																		<td><%=sdate%> - <%=fdate%></td>
+																		<td><%=days%> Days</td>
+																		<td><%=closedDatesDetails.attributes.branchName%></td>
+																		<td><%=closedDatesDetails.attributes.description%></td>
+																		<td><a href="#" id="clientsProfile" class="btn btn-default txt-color-blueLight" data-toggle="modal" data-target="#historyModal">View</a></td>
+																	
+																	</tr>
+																	<% }); %>
+																</tbody>
+															</table>
+														</div>
+													</article>
+												</div>
+											</div>
+											
+											<!-- STAFF MEMBERS Tab START -->
+											
+											<div class="tab-pane fade" id="s3">
+												<div class="col-sm-12">
+														<button  type="button" class="btn btn-primary btn-default pull-right"  id="newStaff"> New Staff </button>
+												</div><br><br>
+												<div class="row">
+				
+								<!-- NEW WIDGET START -->
+													<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+														<div class="table-responsive">
+															<table  class="table table-hover" width="100%">
+								
+														        <thead>
+														            <tr>
+														                <th>Name</th>
+													                    <th>Mobile No</th>
+													                    <th>Email</t>
+													                    <th>Scheduled</th>          
+																		<th>Status</th>
+														            </tr>
+														        </thead>
+							
+														        <tbody>
+																	<%  									        
+															        _.each(staffDetailsList, function(staffDetails){ 
+															        console.log(staffDetails);
+															         %>	
+																	<tr>
+																		<td><a href="#" id="<%= staffDetails.attributes.staffId %>"  class="editStaff"><%= staffDetails.attributes.fullName %></a></td>
+																		<td><%= staffDetails.attributes.mobile %></td>
+																		<td><%= staffDetails.attributes.email %></td>
+																		<td><a href="#" id="staffSchedule" staffId ="<%= staffDetails.attributes.staffId %>" class="btn btn-default txt-color-blueLight"><i class="fa fa-clock-o fa-lg"></i></a></td>
+																		<td><span class="label label-warning">Working</span></td>
+																	</tr>
+																	<% }); %>
+																</tbody>
+															</table>
+														</div>
+													</article>
+												</div>
+											</div>
+											
+											<!-- User Permission Tab Start -->
+											
+											<div class="tab-pane fade" id="s4">
+												<br>
+												<div class="row">
+													<div class="col-sm-6">
+														<p>Setup which sections are accessible to each user permission level. All logged in staff can access the calendar, and owner accounts have full system access.</p>
+													</div>
+												</div>		
+												<div class="row">
+												
+													<!-- NEW WIDGET START -->
+													<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+														        
+											    		<div class="table-responsive">
+															
+															<table class="table table-bordered ">
+																					
+																<tbody>
+																	
+																	<tr>
+														                <th width="40%">LOCATIONS</th>
+													                    <th>Low</th>
+													                    <th>Medium</th>          
+																		<th>High</th>
+																		<th>Owner</th>
+														            </tr>
+																	<tr>
+																	<td>Access All Locations</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="accessAllLocation_low" id="accessAllLocation_low"  checked="checked">
+																				<i></i>		
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="accessAllLocation_medium" id="accessAllLocation_medium" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="accessAllLocation_high" id="accessAllLocation_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="accessAllLocation_owner" id="accessAllLocation_owner"checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																						
+															</tbody>
+														
+														</table>
+																
+													</div>
+																				
+													<div class="table-responsive">
+																				
+														<table class="table table-bordered ">
+																					
+															<tbody>
+																
+																<tr>
+													                <th width="40%">BOOKINGS & CLIENTS</th>
+												                    <th>Low</th>
+												                    <th>Medium</th>          
+																	<th>High</th>
+																	<th>Owner</th>
+														        </tr>
+																<tr>
+																	<td>Clients</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="clients_low" id="clients_low">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="clients_medium" id="clients_medium" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="clients_high" id="clients_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="clients_owner" id="clients_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																	
+																<tr>
+																	<td>DashBoard</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="dashBoard_low" id="dashBoard_low" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="dashBoard_medium" id="dashBoard_medium" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="dashBoard_high" id="dashBoard_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="dashBoard_owner" name="dashBoard_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																	
+																<tr>
+																	<td>Order Status</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox"  name="orderStatus_low" id="orderStatus_low">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox"  name="orderStatus_medium" id="orderStatus_medium">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="orderStatus_high"  id="orderStatus_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="orderStatus_owner" id="orderStatus_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>					
+																<tr>
+																	<td>Services</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="service_low" id="service_low" >
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="service_medium" id="service_medium" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="service_high" id="service_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="service_high" id="service_high" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>	
+																	
+																<tr>
+																	<td>Online Booking</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="onlineBooking_low" id="onlineBooking_low" >
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="onlineBooking_medium" id="onlineBooking_medium">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="onlineBooking_high" id="onlineBooking_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="onlineBooking_owner" id="onlineBooking_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																	
+																<tr>
+																	<td>Offline Booking</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="offlineBooking_low" id="offlineBooking_low" >
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="offlineBooking_medium" id="offlineBooking_medium" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="offlineBooking_high" id="offlineBooking_high"  checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="offlineBooking_owner" id="offlineBooking_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																	
+																<tr>
+																	<td>Campaign Manager</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="campaignManager_low" id="campaignManager_low">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="campaignManager_medium" id="campaignManager_medium">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="campaignManager_high" id="campaignManager_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="campaignManager_owner" id="campaignManager_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+															
+															</tbody>
+														
+														</table>
+													
+													</div>
+													<div class="table-responsive">
+														
+														<table class="table table-bordered ">
+																					
+															<tbody>
+																
+																<tr>
+													                <th width="40%">Sales</th>
+												                    <th>Low</th>
+												                    <th>Medium</t>          
+																	<th>High</th>
+																	<th>Owner</th>
+													            </tr>
+																<tr>
+																	<td>Can delete invoices</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="canDeleteInvoices_low" id="canDeleteInvoices_low" >
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="canDeleteInvoices_medium" id="canDeleteInvoices_medium" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="canDeleteInvoices_high" id="canDeleteInvoices_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="canDeleteInvoices_owner" id="canDeleteInvoices_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																<tr>
+																
+																	<td>Payments</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="payments_low" id="payments_low" >
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="payments_medium" id="payments_medium" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="payments_high" id="payments_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="payments_owner" id="payments_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																			
+																</tr>
+																<tr>
+																	<td>Daily Sales</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="dailySales_low" id="dailySales_low">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="dailySales_medium" id="dailySales_medium" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="dailySales_high" id="dailySales_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="dailySales_owner" id="dailySales_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																
+																<tr>
+																	<td>Appointments</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="appointment_low" id="appointment_low" >
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="appointment_medium" id="appointment_medium" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="appointment_high" id="appointment_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="appointment_owner" id="appointment_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																<tr>
+																	<td>Invoices</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="invoices_low" id="invoices_low">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="invoices_medium" id="invoices_medium" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="invoices_high" id="invoices_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="invoices_owner" id="invoices_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+															
+															</tbody>
+														
+														</table>	
+													
+													</div>			
+													<div class="table-responsive">
+														
+														<table class="table table-bordered ">
+																					
+															<tbody>
+																
+																<tr>
+													                <th width="40%">Staff</th>
+												                    <th>Low</th>
+												                    <th>Medium</t>          
+																	<th>High</th>
+																	<th>Owner</th>
+													            </tr>
+																<tr>
+																	<td>Working Hours</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="workingHour_low" id="workingHour_low">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="workingHour_medium" id="workingHour_medium" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="workingHour_high" id="workingHour_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="workingHour_owner" id="workingHour_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																<tr>
+																	<td>Staff Members</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="staffMember_low" id="staffMember_low">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="staffMember_medium" id="staffMember_medium" >
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="staffMember_high" id="staffMember_high" checked="checked">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="staffMember_owner" id="staffMember_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																<tr>
+																	<td>Permission Levels</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="permissionLevel_low" id="permissionLevel_low">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="permissionLevel_medium" id="permissionLevel_medium" >
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="permissionLevel_high" id="permissionLevel_high">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="permissionLevel_owner" id="permissionLevel_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>			
+															
+															</tbody>
+														
+														</table>	
+																
+													</div>
+																	
+													<div class="table-responsive">			
+																		
+														<table class="table table-bordered ">
+																					
+															<tbody>
+																
+																<tr>
+													                <th width="40%">SetUp</th>
+												                    <th>Low</th>
+												                    <th>Medium</t>          
+																	<th>High</th>
+																	<th>Owner</th>
+													            </tr>
+																						<tr>
+																	<td>Account SetUp</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="accountSetUp_low" id="accountSetUp_low">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="accountSetUp_medium" id="accountSetUp_medium" >
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="accountSetUp_high" id="accountSetUp_high">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="accountSetUp_owner" id="accountSetUp_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																	
+																<tr>
+																	<td>Photos</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="photos_low" id="photos_low">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="photos_medium" id="photos_medium">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="photos_high" id="photos_high">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="photos_owner"  id="photos_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>
+																			
+																<tr>
+																	<td>Notification</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="notification_low" id="notification_low">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="notification_medium" id="notification_medium">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox">
+																				<input type="checkbox" name="notification_high" id="notification_high">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="smart-form">
+																			<label class="checkbox state-disabled">
+																				<input type="checkbox" name="notification_owner" id="notification_owner" checked="checked" disabled="disabled">
+																				<i></i>
+																			</label>
+																		</div>
+																	</td>
+																		
+																</tr>			
+															
+															</tbody>
+																				
+														</table>				
+													
+													</div>
+																
+													</article>
+													
+												</div>
+												
+											</div>
+											
+										</div>
+										
+									</div>
+									<!-- end widget content -->
+								
+								</div>
+								<!-- end widget div -->
+							
+				</div>
+					
+			</div>
+		
+		</div>
+		<!-- end row -->
+		
+	</div>
+	<!-- end widget grid -->
+	
+</div>
+<!-- MAIN CONTENT -->
+
+<!-- Modal -->
+<div class="modal fade" id="staffTimeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6>Edit aniket's Hours</h6>
+					<label>Sunday, 5 March 2017</label>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+					</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<form class="smart-form">
+							<fieldset>
+									<div class="row">
+										<section class="col col-6">
+										    <label class="input">
+											<label class="label">Shift Start</label>
+											<label class="select">
+												<select>
+													<option value="0">2</option>
+													<option value="1">3</option>
+													<option value="2">6</option>
+													<option value="3">12</option>
+													<option value="4">24</option>
+													<option value="5">48</option>
+												</select> <i></i> 
+											</label>
+											</label>
+										</section>
+									
+										<section class="col col-6">
+											<label class="input">
+											<label class="label">Shift End</label>
+											<label class="select">
+												<select>
+													<option value="0">2</option>
+													<option value="1">3</option>
+													<option value="2">6</option>
+													<option value="3">12</option>
+													<option value="4">24</option>
+													<option value="5">48</option>
+												</select> <i></i> 
+											</label>
+											</label>
+										</section>
+										
+									</div>
+									
+									<div class="row" id="repeatingSection" style="display: none;">
+										
+										<section class="col col-6">
+										    <label class="input">
+											<label class="label">Shift Start</label>
+											<label class="select">
+												<select>
+													<option value="0">2</option>
+													<option value="1">3</option>
+													<option value="2">6</option>
+													<option value="3">12</option>
+													<option value="4">24</option>
+													<option value="5">48</option>
+												</select> <i></i> 
+											</label>
+											</label>
+										</section>
+									
+										<section class="col col-6">
+											<label class="input">
+											<label class="label">Shift End</label>
+											<label class="select">
+												<select>
+													<option value="0">2</option>
+													<option value="1">3</option>
+													<option value="2">6</option>
+													<option value="3">12</option>
+													<option value="4">24</option>
+													<option value="5">48</option>	
+												</select> <i></i> 
+											</label>
+											</label>
+										</section>
+										
+									</div>
+									
+									<div class="row" >
+										
+										<section class="col col-6">
+											<label class="input">
+											<label class="label">Repeats</label>
+											<label class="select">
+												<select>
+													<option value="0">Don't Repeat</option>
+													<option value="1">Weekly</option>																					
+												</select> <i></i> 
+											</label>
+											</label>
+										</section>
+										
+									</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-md btn-danger pull-left" >
+					Delete
+				</button> 
+				
+				<a class="btn btn-default pull-left " id="AddAnotherShift"  data-toggle="#AddAnotherShift">Add Another Shift</a>
+				
+				<button type="button" class="btn btn-default" data-dismiss="modal" >
+					Cancel
+				</button>
+				
+				<button type="submit" class="btn btn-success btn-sm">
+						<span class="glyphicon glyphicon-floppy-disk"></span> Save
+				</button>
+			</div>
+			
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+				
+<!-- Modal -->
+<div class="modal fade" id="newClosedModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<form class="form" role="form" id="newClosedDate-form">
+				<div class="modal-header">
+					<h6>New Closed Date</h6>
+		
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+						</button>
+				
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="row">
+								<div class="smart-form">
+									<div class="col col-6">
+										Start Date
+											<label class="input">
+												<i class="icon-append fa fa-calendar"></i>
+													<input type="text" name="startDate" id="startDate" required>
+												
+											</label>
+									</div>
+									<div class="col col-6">
+										Finish Date
+											<label class="input">
+												<i class="icon-append fa fa-calendar"></i>
+													<input type="text" name="finishDate" id="finishDate" required>
+												
+											</label>
+									</div>
+								</div>
+							</div>
+							<div class="row" >
+							
+								<div class="smart-form">
+							
+									<div class="col col-6">
+									<label class="input">
+										<div class="form-group">
+										Description<input type="text" class="form-control"  required name="description" id="description" placeholder="e.g.holiday" />
+										</div>
+									</label>
+									</div>
+								</div>
+							</div>
+							<hr>
+						
+							<div class="row" >
+								<div class="smart-form">
+									<div class="col col-10">
+										<p>Assign locations where closed Dates can be set.</p><br>
+										<label class="input">
+											<div class="inline-group">
+													<label class="checkbox">
+														<input type="checkbox" name="checkbox"  id="checkAll">
+														<i></i>All Location
+													</label>
+												<% _.each(locationList, function(locationDetails){  %>	
+												
+													<label class="checkbox">
+															<input type="checkbox" name="assignLocation" id="location" value="location">
+															<i></i><%= locationDetails.attributes.locationName %>
+													</label>
+													
+												<% }); %>
+											
+											</div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+				
+					<button type="button" class="btn btn-md btn-danger pull-left" >
+						Delete
+					</button>
+				
+					<button type="button" class="btn btn-default" data-dismiss="modal" >
+						Cancel
+					</button>
+					
+					<button type="button" class="btn btn-success btn-sm" id ="saveNewClosedDateModelBtn" data-dismiss="modal">
+											<span class="glyphicon glyphicon-floppy-disk"></span> Save
+					</button>
+					<div id= "saveNewClosedDateBtn"></div>
+					
+				</div>
+				
+			</form>
+			
+		</div><!-- /.modal-content -->
+		
+	</div><!-- /.modal-dialog -->
+	
+</div>
+<!-- /.modal -->
+				
+<!-- Modal -->
+<div class="modal fade" id="newStaff" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6>New Staff</h6>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<ul id="myTab1" class="nav nav-tabs bordered">
+							<li class="active">
+								<a href="#t1" data-toggle="tab">Details</a>
+							</li>
+							<li>
+								<a href="#t2" data-toggle="tab">Address</a>
+							</li>
+							<li>
+								<a href="#t3" data-toggle="tab">Services</a>
+							</li>
+						</ul>
+						<div id="myTabContent1" class="tab-content padding-10">
+						
+							<div class="tab-pane fade in active" id="t1">
+								<div class="row">
+									<form class="form" role="form"  id="details-form">
+										<!-- NEW WIDGET START -->
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="row">	 
+												<div class="smart-form">	
+													<div class="col col-6">
+														<label class="input">
+															First Name<input type="text" class="form-control"  required name="fName" id="fName" >
+														</label>
+													</div>
+													<div class="col col-6">
+														<label class="input">
+															Last Name<input type="text" class="form-control"  required name="lName" id="lName" >
+														</label>
+													</div>
+												</div>
+											</div>
+											<br>
+											<div class="row">
+											   <div class="smart-form">
+													<div class="col col-6">
+														<label class="input">
+															Mobile No<input data-mask="9999999999" type="text" class="form-control"  required name="mob" id="mob" >
+														</label>
+													</div>
+													<div class="col col-6">
+														<label class="input">
+															E-mail<input type="text" class="form-control"  required name="email" id="email" >
+														</label>
+													</div>
+												</div>
+											</div>
+											<br>
+											<div class="row">
+												<div class="smart-form">
+													<div class="col col-6">
+														Start Date
+															<label class="input">
+																<i class="icon-append fa fa-calendar"></i>
+																	<input type="text" name="startdate1" id="startdate1" >
+															</label>
+													</div>
+													<div class="col col-6">
+														Finish Date
+															<label class="input">
+																<i class="icon-append fa fa-calendar"></i>
+																	<input type="text" name="finishdate1" id="finishdate1" >
+															</label>
+													</div>
+												</div>
+											</div>
+											<br>
+											<div class="row" >
+												<div class="smart-form">
+													<div class="col col-6">
+														<p>Assign locations where this staff member can be booked.</p>
+												             <label class="input">
+																<div class="inline-group">
+																	<label class="checkbox">
+																		<input type="checkbox" name="assignLocation" checked="checked" id="checkAll" value="checkAll">
+																		<i></i>All Location
+																	</label>	
+																	
+																	<%  _.each(locationList, function(locationDetails){  %>	
+																	<label class="checkbox">
+																			<input type="checkbox" name="assignLocation" id="location" value="location">
+																			<i></i><%= locationDetails.attributes.locationName %>
+																	</label>
+																		
+																	<% }); %>	
+																</div>
+															 </label>
+													</div>
+												</div>
+											</div>
+											<br>
+											<div align= "right">				
+												<button type="button" class="btn btn-default" data-dismiss="modal" >
+														Cancel
+												</button>
+												
+												<button type="button" class="btn btn-success btn-sm" id= "saveNewStaffDetailsModelBtn">
+													<span class="glyphicon glyphicon-floppy-disk"></span> Save
+												</button>
+					                            <div id= "saveNewStaffDetailsBtn"></div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="t2">
+								<div class="row">
+									<form class="form" role="form"  id="address-form">
+										<!-- NEW WIDGET START -->
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="row">
+												<div class="smart-form">
+													<div class="col col-10">
+													Address<label class="textarea"> <textarea
+														rows="3" class="form-control"  required name="address" id="address"></textarea>
+												</label>
+														
+													</div>
+												</div>
+											</div>
+											<br>	
+											<div class="row">
+												<div class="smart-form">
+													<div class="col col-4">
+														<label class="input">
+																State<input type="text" class="form-control"  required name="state" id="state" style="text-transform:uppercase">
+														</label>
+													</div>
+													<div class="col col-4">
+														<label class="input">
+																city<input type="text" class="form-control"  required name="city" id="city"  style="text-transform:uppercase" >
+														</label>
+													</div>
+													<div class="col col-4">
+														<label class="input">
+																Pin Code<input type="text" data-mask="999999" class="form-control"  required name="pincode" id="pincode" >
+														</label>
+													</div>
+												</div>
+											</div>
+											<br>
+											<div align= "right">
+												<button type="button" class="btn btn-default" data-dismiss="modal" >
+														Cancel
+												</button>
+												
+												<button type="button" class="btn btn-success btn-sm" id= "saveNewStaffAddressModelBtn">
+													<span class="glyphicon glyphicon-floppy-disk"></span> Save
+												</button>
+												<div id= "saveNewStaffAddressBtn"></div>	
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="t3">
+								<div class="row">
+									<form class="form" role="form"  id="service-form">
+										<!-- NEW WIDGET START -->
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<p>Assign services this staff member can perform.</p><br>
+												<div class="row" >
+													<div class="smart-form">
+														<div class="col col-6">
+															<label class="input">
+																<div class="inline-group">
+																<%  									        
+															        _.each(serviceDetailsList, function(serviceDetails){ 
+															        console.log(serviceDetails);
+															         %>	
+																	<label class="checkbox">
+																		<input type="checkbox" name="serviceCheckbox" id="serviceCheckbox" value="services">
+																		<i></i><%= serviceDetails.attributes.groupName %></label>
+																	
+																<% }); %>
+																</div>
+															</label>
+														</div>
+													</div>
+												</div>
+												<br>
+												<div align= "right">
+													<button type="button" class="btn btn-default" data-dismiss="modal" >
+														Cancel
+													</button>
+													
+													<button type="button" class="btn btn-success btn-sm" id ="saveNewStaffServiceModalBtn" data-dismiss="modal" >
+														<span class="glyphicon glyphicon-floppy-disk"></span> Save
+													</button>
+													<div id= "saveNewStaffServiceBtn"></div>
+													
+												</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->					
+
+</div>
+<!-- END MAIN PANEL -->
+
+<script>
+
+ $("#description").keypress(function(event){
+		var inputValue = event.charCode;
+		if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		   event.preventDefault();
+      }
+
+});
+
+ $("#fName").keypress(function(event){
+		var inputValue = event.charCode;
+		if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		   event.preventDefault();
+      }
+
+});
+ 
+ $("#lName").keypress(function(event){
+		var inputValue = event.charCode;
+		if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		   event.preventDefault();
+       }
+
+});
+ 
+ $("#mob").keypress(function(event){
+       var inputValue = event.charCode;
+       if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+           event.preventDefault();
+       }
+       
+});
+ 
+ $("#state").keypress(function(event){
+		var inputValue = event.charCode;
+		if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		    event.preventDefault();
+        }
+
+});
+
+ $("#city").keypress(function(event){
+		var inputValue = event.charCode;
+		if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		  event.preventDefault();
+        }
+
+});
+
+ $("#pincode").keypress(function(event){
+	     var inputValue = event.charCode;
+	     if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+	         event.preventDefault();
+	     }
+	     
+});
+ 
+
+//START AND FINISH DATE
+$('#startDate').datepicker({
+	dateFormat : 'yy-mm-dd',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	onSelect : function(selectedDate) {
+		$('#finishDate').datepicker('option', 'minDate', selectedDate);
+	}
+});
+
+$('#finishDate').datepicker({
+	dateFormat : 'yy-mm-dd',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	onSelect : function(selectedDate) {
+		$('#startDate').datepicker('option', 'maxDate', selectedDate);
+	}
+});
+
+//START AND FINISH DATE
+$('#startdate1').datepicker({
+	dateFormat : 'dd.mm.yy',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	onSelect : function(selectedDate) {
+		$('#finishdate1').datepicker('option', 'minDate', selectedDate);
+	}
+});
+
+$('#finishdate1').datepicker({
+	dateFormat : 'dd.mm.yy',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	onSelect : function(selectedDate) {
+		$('#startdate1').datepicker('option', 'maxDate', selectedDate);
+	}
+});
+
+$('#saveNewClosedDateModelBtn').off().on('click', function() {
+	//alert("The btn Save was clicked.");
+	var formCheck = $("#newClosedDate-form").valid();
+    if(formCheck){
+    	console.log("formcheck true");
+    	$("#saveNewClosedDateBtn").click();
+    }
+    console.log("formcheck false");
+});
+
+
+$('#saveNewStaffDetailsModelBtn').off().on('click', function() {
+	//alert("The btn Save was clicked.");
+	var formCheck = $("#details-form").valid();
+    if(formCheck){
+    	console.log("formcheck true");
+    	$("#saveNewStaffDetailsBtn").click();
+    }
+    console.log("formcheck false");
+});
+
+
+$('#saveNewStaffAddressModelBtn').off().on('click', function() {
+	//alert("The btn Save was clicked.");
+	var formCheck = $("#address-form").valid();
+    if(formCheck){
+    	console.log("formcheck true");
+    	$("#saveNewStaffAddressBtn").click();
+    }
+    console.log("formcheck false");
+});
+
+$('#saveNewStaffServiceModalBtn').off().on('click', function() {
+	//alert("The btn Save was clicked.");
+	var formCheck = $("#service-form").valid();
+    if(formCheck){
+    	console.log("formcheck true");
+    	$("#saveNewStaffServiceBtn").click();
+    }
+    console.log("formcheck false");
+});
+
+$("#checkAll").click(function () {
+    $('input:checkbox').not(this).prop('checked', this.checked);
+});
+
+</script>

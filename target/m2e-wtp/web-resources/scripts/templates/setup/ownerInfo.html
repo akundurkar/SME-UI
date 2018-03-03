@@ -1,0 +1,937 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+<aside id="left-panel">
+ 
+ </aside>
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>SetUp</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+		<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:-->
+	</div>
+	<!-- END RIBBON -->
+	<!-- MAIN CONTENT -->
+	<div id="content">
+	
+		<div class="animated fadeInRight">
+
+			<div class="row" id="company-owner-detail-form">
+			
+				<div class="col-sm-9">
+
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+						
+						<header>
+							<span class="widget-icon"> <i class="fa fa-edit"></i></span>
+							<h2>Owner Details</h2>
+						</header>
+							<!-- widget div-->
+							<div>
+								<!-- widget edit box -->
+								<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+								</div>
+								<!-- end widget edit box -->
+									
+									<!-- widget content -->
+									<div class="widget-body no-padding">
+
+										<form id="ownerDetails-form" class="smart-form" novalidate="novalidate">
+
+											<div id="companyFormDiv">
+												
+												<fieldset>
+													
+													<div class="row">
+														
+															<section class="col col-4">
+																First Name<label class="input"> <i
+																	class="icon-append fa fa-user"></i> <input type="text"
+																	name="ownerName" id="ownerName">
+																</label>
+															</section>
+															
+															<section class="col col-4">
+																Last Name<label class="input"> <i
+																	class="icon-append fa fa-user"></i> <input type="text"
+																	name="ownerSurname" id="ownerSurname">
+																</label>
+															</section>
+														
+															<section class="col col-4">
+																Mobile<label class="input"> <i
+																	class="icon-append fa fa-phone-square"></i> <input
+																	data-mask="9999999999" type="text" id="ownerMobile" name="ownerMobile">
+																</label>
+															</section>
+				
+													</div>
+												
+													<div class="row">
+													
+														<section class="col col-6">
+															Address Line 1<label for="address1" class="input"> <i
+																class="icon-append fa fa-location-arrow"></i><input
+																type="text" name="ownerAddress1" id="ownerAddress1"
+																>
+															</label>
+														</section>
+													
+														<section class="col col-6">
+															Address Line 2<label for="adress2" class="input"><i
+																class="icon-append fa fa-location-arrow"></i> <input
+																type="text" name="ownerAddress2" id="ownerAddress2"
+																>
+															</label>
+														</section>
+															
+													</div>
+													
+													<div class="row">
+													
+														<section class="col col-4">
+															State<label class="input"> <i
+															class="icon-append fa fa-empire"></i><input type="text"
+																name="ownerState" id="ownerState"
+															 style="text-transform:uppercase" />
+															</label>
+														</section>
+													
+														<section class="col col-4">
+															City<label class="input"> <i
+															class="icon-append fa fa-slack"></i><input type="text"
+																id="ownerCity" name="ownerCity"
+																 style="text-transform:uppercase" />
+															</label>
+														</section>
+														
+														<section class="col col-4">
+															Postal Code<label class="input">  <i
+															class="icon-append fa fa-envelope"></i><input type="text"
+																data-mask="999999" name="postalCode" id="postalCode"
+																>
+															</label>
+														</section>
+		
+													</div>
+															
+												</fieldset>
+												
+											</div>
+								
+											<footer>
+											
+												<button id="ownerDetailsSaveModelBtn" type="submit"
+													class="btn btn-primary">
+													<i class="fa fa-check "></i> Save
+												</button>
+												<div id="saveOwnerDetailsBtn"></div>
+		
+											</footer>
+									
+										</form>
+
+									</div>
+									<!-- end widget content -->
+
+							</div>
+							<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+		
+				</div>
+				<!-- WIDGET END -->
+							
+			</div>
+			<!-- end row -->
+		
+		
+				<div class="row" id="company-detail-form">
+				
+				<div class="col-sm-9">
+
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+						
+						<header>
+							<span class="widget-icon"> <i class="fa fa-edit"></i></span>
+							<h2>Business Details</h2>
+						</header>
+						
+						<!-- widget div-->
+						<div>
+						
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+							</div>
+							<!-- end widget edit box -->
+							
+								<!-- widget content -->
+								<div class="widget-body no-padding">
+
+									<form id="companyDetails-form" class="smart-form" novalidate="novalidate">
+
+										<div id="companyFormDiv">
+									
+											<fieldset>
+										
+												<div class="row">
+												
+													<section class="col col-6">
+														Business Name<label class="input"><i class="icon-append fa fa-user"></i> 
+																		<input type="text" name="businessName" id="businessName">
+																	 </label>
+													</section>
+												
+													<!-- <section class="col col-6">
+														<label class="label">Business Type</label>
+														<label class="select">
+														<select name="businesssCategory" id="businesssCategory">
+															<option value="0" selected="" disabled="">Choose Type</option>										
+																<option value="1">Hair Salon</option>
+																<option value="2">Beauty Parlor</option>																						
+																<option value="3">SPA</option>
+																<option value="4">Skin Clinic</option>
+																<option value="5">Massage Therapy</option>
+																<option value="6">Training Salon</option>
+																<option value="7">Dental Clinic</option>
+																<option value="8">Gym & Fitness</option>
+																<option value="9">Health Club</option>
+																<option value="10">Yoga Studio</option>
+																<option value="11">Ayurvedic</option>
+																<option value="12">Panchakarma</option>
+																<option value="13">Clinic</option>
+																<option value="14">Other</option>
+															</select> <i></i> </label>
+													</section>  -->
+													<section class="col col-6">
+														<label class="label">Business Type</label>
+														<label class="select">
+														<select name="businesssCategory" id="businesssCategory">
+															<option value="" selected="" disabled="">Choose Type</option>										
+																<% 
+																	businesTypeMap = {};
+																	
+																	_.each(businessTypeList, function(businessTypeObject){
+																	
+																%>
+																		
+																		<optgroup label="<%= businessTypeObject.attributes.businessCategoryName %>">
+																			
+																			<% 
+																			   	
+																		        var arr = [];
+																		        var json = JSON.stringify(businessTypeObject.attributes.businessTypeList);
+																		        var parsed = JSON.parse(json);
+														      
+																			      for(var x in parsed)
+																				 {
+									                                               var key = parsed[x].businessTypeId;
+									                                               businesTypeMap[key] = parsed[x]; 
+									                                               arr.push(parsed[x]);
+									                                             %>
+									                                                    
+																						<option value="<%= parsed[x].businessTypeId %>"><%= parsed[x].businessTypeName %></option>
+																			
+																				<% } %>
+														
+																<% }); %>
+														</select> <i></i> </label>
+													</section> 
+												
+												</div>
+												
+												
+												
+												<div class="row">
+												
+													<section class="col col-6">
+														Business Contact<label class="input"><input
+															type="text" name="officephone" id="officephone" data-mask="9999999999" >
+														</label>
+													</section>
+													
+													<section class="col col-6">
+														WebSite(If Available)<label class="input">  <i
+														class="icon-append fa fa-globe"></i><input
+															type="text" name="website" id="website"
+															>
+														</label>
+													</section>
+												
+												</div>
+												
+												<div class="row">
+											
+													<section class="col col-10" >
+														Detail Info<label class="textarea"> 
+														                  <textarea rows="4" name="info" id="info" placeholder=""></textarea>
+														           </label>
+												    </section>
+												
+												</div>
+											
+											</fieldset>
+
+										</div>
+									
+										<footer>
+											<button id="validateOwnerForm" type="submit"
+												class="btn btn-primary">
+												Save
+											</button>
+											<div id="saveCompanyProfileBtn"></div>
+	
+										</footer>
+									
+									</form>
+
+								</div>
+								<!-- end widget content -->
+
+						</div>
+						<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+
+				</div>
+				<!-- end row -->
+			
+			</div>
+		
+		
+		
+		
+				<div class="row" id="company-firstLocation-form">
+				
+				<div class="col-sm-9">
+
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+						
+						<header>
+							<span class="widget-icon"> <i class="fa fa-edit"></i></span>
+							<h2>Location Details</h2>
+						</header>
+						
+						<!-- widget div-->
+						<div>
+						
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+							</div>
+							<!-- end widget edit box -->
+							
+								<!-- widget content -->
+								<div class="widget-body no-padding">
+
+									<form id="locationDetails-form" class="smart-form" novalidate="novalidate">
+
+										<div id="locationFormDiv">
+									
+											<fieldset>
+											
+										<div class=row>
+										
+												<section class="col col-4">
+											<label class="input"> 
+												Branch Name<input type="text" class="form-control"  required name="locationName" id="locationName" placeholder="e.g Deccan" />
+											</label>
+										</section>
+										
+										<section class="col col-4">
+											<label class="input">
+												Phone No<input type="text" class="form-control"  required name="phone" id="phone" />
+											</label>
+										</section>
+										
+										<section class="col col-4">
+											<label class="input">
+												Contact No <input type="text" class="form-control"  required name="contactNo" id="contactNo" />
+											</label>
+										</section>
+										
+											</div>
+											</fieldset>	
+												
+												<fieldset>
+												<div class="row">
+												
+													<section class="col col-4">
+										 	<label class="input">
+									    		 Area<input type="text" class="form-control"  required name="area" id="area" placeholder="e.g.Satara Road" />
+											</label>
+										</section>
+									
+										<section class="col col-4">
+										 	<label class="input">
+									     		State<input type="text" class="form-control"  required name="state" id="state" placeholder="" style="text-transform:uppercase" />
+											</label>
+										</section>
+									
+										<section class="col col-4">
+											<label class="input">
+												City<input type="text" class="form-control"  required name="city" id="city" placeholder="" style="text-transform:uppercase"/>
+											</label>
+										</section>
+												
+												</div>
+												
+												<div class="row">
+												<section class="col col-4">
+											<label class="input">
+												Pin Code <input type="text" data-mask="999999" class="form-control"  required name="locationPin" id="locationPin" />
+											</label>
+										</section>
+										
+										<section class="col col-4">
+											<label class="input">
+									    		latitude <input type="text" class="form-control"  required name="latitude" id="latitude" placeholder="e.g.18.233" />
+											</label>
+										</section>
+										
+										<section class="col col-4">
+										 	<label class="input">
+												longitude<input type="text" class="form-control"  required name="longitude" id="longitude" placeholder="e.g.75.233" />
+											</label>
+										</section>
+											
+									</div>	
+									</fieldset>
+									
+									<fieldset>
+									<div class="row">
+									<section class="col col-6">
+											
+											<div class="inline-group">
+												
+												<label class="radio">
+													<input type="radio" name="gender" checked="checked" value="UNISEX">
+													<i></i>Unisex</label>
+												<label class="radio">
+													<input type="radio" name="gender" value="FEMALE">
+													<i></i>Female</label>
+												<label class="radio">
+													<input type="radio" name="gender" value="MALE">
+													<i></i>Male</label>
+															
+											</div>
+											
+										</section>
+											
+										<section class="col col-6">
+											
+											<div class="inline-group">
+												<label class="radio">
+													<input type="radio" name="shopType" checked="checked" value="true">
+													<i></i>AC</label>
+												<label class="radio">
+													<input type="radio" name="shopType" value="false">
+													<i></i>Non-AC</label>	
+											</div>
+											
+										</section>
+									
+									</div>
+									
+									
+									</fieldset>
+									<fieldset>
+									<div class="row">
+									
+										<section class="col col-6">
+											
+											<label class="label">Online booking available</label>
+													
+													<div class="inline-group">
+														<label class="checkbox">
+															<input type="radio" name="online_bookng_status" checked="checked" value="true">
+															<i></i>Yes</label>
+														<label class="checkbox">
+															<input type="radio" name="online_bookng_status" value="false">
+															<i></i>No</label>
+													</div>
+											
+										</section>
+										
+										<section class="col col-6">
+											
+											<label class="label">Wi-Fi available</label>
+													
+													<div class="inline-group">
+														<label class="checkbox">
+															<input type="radio" name="wiFiAvailable" checked="checked" value="true">
+															<i></i>Yes</label>
+														<label class="checkbox">
+															<input type="radio" name="wiFiAvailable" value="false">
+															<i></i>No</label>
+													</div>
+											
+										</section>
+										
+									</div>
+									</fieldset>
+
+										</div>
+									
+										<footer>
+											<button id="validateLocationForm" type="submit"
+												class="btn btn-primary">
+												Save
+											</button>
+											<div id="saveLocationProfileBtn"></div>
+	
+										</footer>
+									
+									</form>
+
+								</div>
+								<!-- end widget content -->
+
+						</div>
+						<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+
+				</div>
+				<!-- end row -->
+			
+			</div>
+		
+		
+		
+		</div>
+				
+	</div>
+	<!-- END MAIN CONTENT -->
+	
+</div>
+<!-- END MAIN PANEL -->
+
+<script type="text/javascript">
+
+			$(document).ready(function() {
+				
+ 				});
+			
+			 $("#ownerName").keypress(function(event){
+					var inputValue = event.charCode;
+					if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		  			event.preventDefault();
+		             }
+			 });
+			 $("#ownerSurname").keypress(function(event){
+					var inputValue = event.charCode;
+					if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		  			event.preventDefault();
+		             }
+			 });
+			  		 
+			  $("#ownerMobile").keypress(function(event){
+			        var inputValue = event.charCode;
+			        if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+			            event.preventDefault();
+			        }
+			    });
+			  $("#ownerState").keypress(function(event){
+					var inputValue = event.charCode;
+					if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		  			event.preventDefault();
+		             }
+
+					});
+			  $("#ownerCity").keypress(function(event){
+					var inputValue = event.charCode;
+					if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		  			event.preventDefault();
+		             }
+
+					});
+			  $("#postalCode").keypress(function(event){
+			        var inputValue = event.charCode;
+			        if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+			            event.preventDefault();
+			        }
+			    });
+			  
+							  
+				
+			  $("#businessName").keypress(function(event){
+					var inputValue = event.charCode;
+					if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+		  			event.preventDefault();
+		             }
+
+					});
+			  
+			  $("#info").keypress(function(event){
+					var inputValue = event.charCode;
+					if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+					event.preventDefault();
+		           }
+
+					});
+			  $("#officephone").keypress(function(event){
+			        var inputValue = event.charCode;
+			        if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+			            event.preventDefault();
+			        }
+			    });
+				
+			  
+			  
+			  
+			  $("#locationName").keypress(function(event){
+					var inputValue = event.charCode;
+					if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+					event.preventDefault();
+		       }
+
+			});
+			 
+			 $("#phone").keypress(function(event){
+			        var inputValue = event.charCode;
+			        if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+			            event.preventDefault();
+			        }
+			 });
+			 
+			 $("#contactNo").keypress(function(event){
+			        var inputValue = event.charCode;
+			        if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+			            event.preventDefault();
+			        }
+			 });
+			 
+			
+			 $("#city").keypress(function(event){
+					var inputValue = event.charCode;
+					if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+					event.preventDefault();
+		    }
+
+			});
+			 
+			 $("#state").keypress(function(event){
+					var inputValue = event.charCode;
+					if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+					event.preventDefault();
+		    }
+
+			});
+			 
+			 $("#locationPin").keypress(function(event){
+			        var inputValue = event.charCode;
+			        if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0)){
+			            event.preventDefault();
+			        }
+			 });
+			 
+			
+			 $("#latitude").keypress(function(event){
+			       var inputValue = event.charCode;
+			        if(!(inputValue >= 48 && inputValue <= 57 )&& (inputValue != 0 && inputValue != 46 ) ){
+			            event.preventDefault();
+			        }
+			    });
+			    
+			    $("#longitude").keypress(function(event){
+			        var inputValue = event.charCode;
+			        if(!(inputValue >= 48 && inputValue <= 57 )&& (inputValue != 0 && inputValue != 46 ) ){
+			            event.preventDefault();
+			        }
+			    });
+
+			  
+				 function chkform()
+				 {
+
+					 //alert("inchk form validation");
+					 //console.log("in chkform");
+						var validator = $( "#ownerDetails-form" ).validate({
+							
+							// Step-1 validations
+							rules: {
+						
+									ownerName: 
+									{
+							        	required:true
+							      	},
+							      	ownerMobile:
+							      	{
+							      		required:true
+							      	},
+							      	ownerAddress1:
+							      	{
+							      		required:true
+							      	},
+							      	ownerAddress2:
+							      	{
+							      		required:true
+							      	},
+							      	ownerState:
+							      	{
+							      		required:true
+							      	},
+							      	ownerCity:
+							      	{
+							      		required:true
+							      	},
+							      	postalCode:
+							      	{
+							      		required:true
+							      	}
+						      	
+						    },
+						    
+						    messages: {
+							//step1
+								    ownerName:
+								    {
+										required : "Please specify your Name"      
+									},
+									ownerMobile:
+							      	{
+							      		required: "Please specify your Mobile Number"
+							      	},
+							      	ownerAddress1:
+							      	{
+							      		required:"Please specify your Address"
+							      	},
+							      	ownerAddress2:
+							      	{
+							      		required:"Please specify your Address"
+							      	},
+							      	ownerState:
+							      	{
+							      		required: "Please specify your State"
+							      	},
+							      	ownerCity:
+							      	{
+							      		required:"Please specify your City"
+							      	},
+							      	postalCode:
+							      	{
+							      		required:"Please specify your Pin code"
+							      	}
+					      	
+						    },
+						   
+							submitHandler: function() {					
+								//alert("inchk form");
+								$("#saveOwnerDetailsBtn").click();
+							    
+							},
+							
+							invalidHandler: function() {
+							    
+							}
+							
+						});
+				 }
+			
+				 $('#ownerDetailsSaveModelBtn').click(function(e){
+				       
+				        //console.log(validator.numberOfInvalids();
+				        //alert("inchk form");
+				        chkform();
+				        
+				 });	
+				        
+				 function chkBusinessform()
+				 {
+
+					 //alert("inchk form validation");
+					 //console.log("in chkform");
+						var validator = $( "#companyDetails-form" ).validate({
+							
+							// Step-1 validations
+							rules: {
+						
+								info: 
+								{
+						        	required: true
+						      	},
+						      	businessName:
+						      	{
+						      		required: true
+						      	},
+						      	
+						      	businesssCategory:
+						      	{
+						        	required: true
+						      	},
+						      	
+						      	officephone:
+						      	{
+						      		required:true,
+						      		min:4
+						      	}
+						      
+						    },
+						    
+						    messages: {
+							//step1
+						      info:{
+								required : "Please specify your Business Details"      
+							},
+					      	businessName:
+					      	{
+					      		required: "Please specify your Business Name"
+					      	},
+					      	
+					      	businesssCategory:{
+								required : "Please select your Business Type"      
+							},
+					      	
+					      	officephone:
+					      	{
+					      		required:"Please specify your Office Phone",
+					      		min:"Please specify correct Phone no"
+					      	}
+						   },
+						   
+							submitHandler: function() {					
+								//alert("inchk form");
+								$("#saveCompanyProfileBtn").click();
+							    
+							  },
+							  invalidHandler: function() {
+							    
+							  }
+							});
+					}
+			
+				 $('#validateOwnerForm').click(function(e){
+				       
+				        //console.log(validator.numberOfInvalids();
+				        //alert("inchk form");
+				        chkBusinessform();
+				    });				        				       					
+
+				        
+				        
+				        
+				        
+				    function chkLocationform()
+					 {
+
+						 //alert("inchk form validation");
+						 //console.log("in chkform");
+							var validator = $( "#locationDetails-form" ).validate({
+								
+								// Step-1 validations
+								rules: {
+							
+									locationName: 
+									{
+							        	required: true
+							      	},
+							      	phone:
+							      	{
+							      		required: true
+							      	},
+							      	contactNo:
+							      	{
+							        	required: true
+							      	},
+							      	city:
+							      	{
+							      		required:true
+							      	},
+							      	state:
+							      	{
+							      		required: true
+							      	},
+							      	locationPin:
+							      	{
+							        	required: true
+							      	},
+							      	latitude:
+							      	{
+							      		required:true
+							      	},
+							      	longitude:
+							      	{
+							      		required:true
+							      	}
+							      
+							    },
+							    
+							    messages: {
+								//step1
+							     locationName:
+							      	{
+										required : "Please specify your location Name"      
+									},
+									phone:
+							      	{
+							      		required: "Please specify your Phone"
+							      	},
+							      	contactNo:
+							      	{
+										required : "Please select your Contact No"      
+									},
+									city:
+							      	{
+							      		required:"Please specify your City"
+							      	},
+									state:
+							      	{
+										required : "Please specify your State"      
+									},
+									locationPin:
+							      	{
+							      		required: "Please specify your Postal Code"
+							      	},
+							      	latitude:
+							      	{
+										required : "Please select your Latitude"      
+									},
+									longitude:
+							      	{
+							      		required:"Please specify your Longitude"
+							      	}
+							   },
+							   
+								submitHandler: function() {					
+									//alert("inchk form");
+									$("#saveLocationProfileBtn").click();
+								    
+								  },
+								  invalidHandler: function() {
+								    
+								  }
+								});
+						}
+				
+					 $('#validateLocationForm').click(function(e){
+					       
+					        //console.log(validator.numberOfInvalids();
+					        //alert("inchk form");
+					        chkLocationform();
+					    });				        				       					
+
+
+</script>

@@ -1,0 +1,1139 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>SetUp</li>
+			<li>Notification</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+		<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:-->
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+	<div id="content">
+		<div class="animated fadeInRight">
+
+		<div class="row">
+		<div class="col-sm-12">
+		<div class="well">
+		<form class="smart-form">
+		
+		
+		
+		 <label class="toggle">
+			<input type="checkbox" name="checkbox-toggle" class="input-lg" id ="enable" checked="checked">
+			<i data-swchon-text="ON" data-swchoff-text="OFF"></i>
+		</label> <h3 class="semi-bold">Enable Client Notification Messages</h3>
+		</form>
+			
+		</div>
+		
+						
+		</div>
+		</div>
+		
+		
+		<div class="row" id=tabView>
+								<article class="col-sm-12 col-md-12 col-lg-12">
+				
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget well" id="wid-id-1 data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+				
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+				
+								-->
+								<header>
+									<span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+									<h2>Default Tabs with border </h2>
+				
+								</header>
+				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+				
+									<!-- widget content -->
+									<div class="widget-body">
+										<br>
+										
+										
+											<div class="table-responsive">
+											
+											<table class="table table-hover">
+														
+												<thead>
+													
+													<tr>
+														<th></th>
+														<th>Messages</th>
+														<th width="30%">Send By </th>
+														<th></th>
+														
+														
+													</tr>
+												</thead>
+												<tbody>
+													
+													<tr id="row1">
+													
+														<td><i class="fa fa-reorder"></i></td>
+														<td>Reminder</td>
+														<td>
+														
+													
+															<div class="btn-group" data-toggle="buttons">
+																<label class="btn btn-default">
+																	<input type="radio" name="gender" value="male" data-bv-field="gender">
+																	Email </label>
+																<label class="btn btn-default">
+																	<input type="radio" name="gender" value="female" data-bv-field="gender">
+																	SMS </label>
+																<label class="btn btn-default active">
+																	<input type="radio" name="gender" value="other" data-bv-field="gender">
+																	Both </label>
+															</div>
+														</td>
+												
+														<td><div class="smart-form"><label class="toggle">
+															<input type="checkbox" name="checkbox-toggle" checked="checked" id="offerStatus" offerId="" onclick="switchOffer(this)">
+															<i data-swchon-text="ON" data-swchoff-text="OFF"></i></label></div></td>
+															
+													</tr>
+													
+													<tr id="row1">
+													
+														<td><i class="fa fa-reorder"></i></td>
+														<td>Confirmation</td>
+														<td>	<div class="btn-group" data-toggle="buttons">
+																<label class="btn btn-default">
+																	<input type="radio" name="gender" value="male" data-bv-field="gender">
+																	Email </label>
+																<label class="btn btn-default">
+																	<input type="radio" name="gender" value="female" data-bv-field="gender">
+																	SMS </label>
+																<label class="btn btn-default active">
+																	<input type="radio" name="gender" value="other" data-bv-field="gender">
+																	Both </label>
+															</div></td>
+												
+														<td><div class="smart-form"><label class="toggle">
+															<input type="checkbox" name="checkbox-toggle" checked="checked" id="offerStatus" offerId="" onclick="switchOffer(this)">
+															<i data-swchon-text="ON" data-swchoff-text="OFF"></i></label></div></td>
+															
+													</tr>
+													
+													<tr id="row1">
+													
+														<td><i class="fa fa-reorder"></i></td>
+														<td>Reschedule</td>
+														<td>	<div class="btn-group" data-toggle="buttons">
+																<label class="btn btn-default">
+																	<input type="radio" name="gender" value="male" data-bv-field="gender">
+																	Email </label>
+																<label class="btn btn-default">
+																	<input type="radio" name="gender" value="female" data-bv-field="gender">
+																	SMS </label>
+																<label class="btn btn-default active">
+																	<input type="radio" name="gender" value="other" data-bv-field="gender">
+																	Both </label>
+															</div></td>
+												
+														<td><div class="smart-form"><label class="toggle">
+															<input type="checkbox" name="checkbox-toggle" checked="checked" id="offerStatus" offerId="" onclick="switchOffer(this)">
+															<i data-swchon-text="ON" data-swchoff-text="OFF"></i></label></div></td>
+															
+													</tr>
+													
+													<tr id="row1">
+													
+														<td><i class="fa fa-reorder"></i></td>
+														<td>Cancellation</td>
+														<td>	<div class="btn-group" data-toggle="buttons">
+																<label class="btn btn-default">
+																	<input type="radio" name="gender" value="male" data-bv-field="gender">
+																	Email </label>
+																<label class="btn btn-default">
+																	<input type="radio" name="gender" value="female" data-bv-field="gender">
+																	SMS </label>
+																<label class="btn btn-default active">
+																	<input type="radio" name="gender" value="other" data-bv-field="gender">
+																	Both </label>
+															</div></td>
+												
+														<td><div class="smart-form"><label class="toggle">
+															<input type="checkbox" name="checkbox-toggle" checked="checked" id="offerStatus" offerId="" onclick="switchOffer(this)">
+															<i data-swchon-text="ON" data-swchoff-text="OFF"></i></label></div></td>
+															
+													</tr>
+													
+													<tr id="row1">
+													
+														<td><i class="fa fa-reorder"></i></td>
+														<td>Thank You</td>
+														<td>	<div class="btn-group" data-toggle="buttons">
+																<label class="btn btn-default">
+																	<input type="radio" name="gender" value="male" data-bv-field="gender">
+																	Email </label>
+																<label class="btn btn-default">
+																	<input type="radio" name="gender" value="female" data-bv-field="gender">
+																	SMS </label>
+																<label class="btn btn-default active">
+																	<input type="radio" name="gender" value="other" data-bv-field="gender">
+																	Both </label>
+															</div></td>
+												
+														<td><div class="smart-form"><label class="toggle">
+															<input type="checkbox" name="checkbox-toggle" checked="checked" id="offerStatus" offerId="" onclick="switchOffer(this)">
+															<i data-swchon-text="ON" data-swchoff-text="OFF"></i></label></div></td>
+															
+													</tr>
+												
+												</tbody>
+												
+											</table>
+										
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										<!-- <ul id="myTab1" class="nav nav-tabs bordered">
+											<li class="active">
+												<a href="#s1" data-toggle="tab">REMINDERS</a>
+											</li>
+											<li>
+												<a href="#s2" data-toggle="tab">CONFIRMATION</a>
+											</li>
+											<li>
+												<a href="#s3" data-toggle="tab">RESCHEDULES</a>
+											</li>
+											<li>
+												<a href="#s4" data-toggle="tab">CANCELLATIONS</a>
+											</li>
+											<li>
+												<a href="#s5" data-toggle="tab">THNAK YOU</a>
+											</li>
+												<li>
+												<a href="#s6" data-toggle="tab">CUSTOM</a>
+											</li>
+										
+										</ul>
+				
+										<div id="myTabContent1" class="tab-content padding-10">
+											<div class="tab-pane fade in active" id="s1">
+											<div class ="row">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+													<label class="checkbox">
+															<input type="checkbox" name="checkbox-inline" id="enableReminder" checked="checked">
+															<i></i>Enable Reminder Messages</label>
+															</form>
+											</div>
+											</div>
+											
+											<div class ="row" id="reminderMessageTemplate">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+											<fieldset>
+											<div class="row">
+													<section class="col col-6">
+													<label class="label">Send By</label>
+													<label class="select">
+														<select>
+															<option value="0">Email</option>
+															<option value="1">SMS</option>
+															<option value="2">Email and SMS</option>																						
+															
+														</select> <i></i> </label>
+												</section> 
+												
+												<section class="col col-6">
+													<label class="label">Reminder Advance Notice</label>
+													<label class="select">
+														<select>
+															<option value="0">2</option>
+															<option value="1">3</option>
+															<option value="2">6</option>
+															<option value="3">12</option>
+															<option value="4">24</option>
+															<option value="5">48</option>
+																																					
+															
+														</select> <i></i> </label>
+												</section> 
+												</div>
+												</fieldset>
+												
+													<fieldset>
+												<div class="row">
+												<div class="col col-6" id="col-email">
+												<h6>Email Template</h6><br>
+												<div class="row">
+												<section class="col-10">
+													<label class="input"> <input
+														type="text" name="emailSubject" id="emailSubject" value="Appointment Book Success" placeholder="Email Subject"
+														>
+													</label>
+												</section>
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="emailTemplate" id="emailTemplate"  placeholder="Email Template"> 
+													Hi CLIENT_FIRST_NAME,
+
+													This is a friendly reminder about your appointment with booking reference BOOKING_REFERENCE. Here are the details:
+													
+													BUSINESS_NAME
+													SERVICE_NAME
+													BOOKING_DATE_TIME
+													
+													At this location:
+													
+													LOCATION_NAME
+													LOCATION_PHONE
+													
+													Need to change your appointment? Please contact BUSINESS_NAME on LOCATION_PHONE.
+								
+								
+												</textarea>
+												</label>
+											</section>
+												
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#emailPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+												
+												
+											</div>
+											
+											
+											<div class="col col-6" id="col-sms">
+												<h6 >SMS Template</h6><br>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="smsTemplate" id="smsTemplate" placeholder="SMS Template">	Hi John, this is a friendly reminder about your appointment with princes shine on Thursday.
+													
+														</textarea>
+												</label>
+													<p>
+												    <span id="remaining">160 characters remaining</span>
+												    <span id="messages">1 message(s)</span>
+												</p>
+											</section>
+												
+												
+												</div>
+												
+											
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#smsPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+											</div>
+											
+											
+											
+											</div>
+												</fieldset>
+												
+													</form>
+												
+															
+											</div>
+											
+											
+											</div>
+											<br>
+												<div class="row">
+												<div class="col-md-6 col-xs-12">
+													<button type="submit" class="btn btn-success">
+														<span class="glyphicon glyphicon-floppy-disk"></span> Save Changes
+													</button>
+												
+												</div>
+												</div>
+												</div>
+												
+											<div class="tab-pane fade" id="s2">
+												
+												<div class ="row">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+													<label class="checkbox">
+															<input type="checkbox" name="checkbox-inline" id="enableConfirmation" checked="checked">
+															<i></i>Enable Confirmation Messages</label>
+															</form>
+											</div>
+											</div>
+											
+											<div class ="row" id="confirmationMessageTemplate">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+											
+												
+											<fieldset>
+												<div class="row">
+												<div class="col col-6" id="col-email">
+												<h6>Email Template</h6><br>
+												<div class="row">
+												<section class="col-10">
+													<label class="input"> <input
+														type="text" name="emailSubject" id="emailSubject" placeholder="Email Subject"
+														>
+													</label>
+												</section>
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="emailTemplate" id="emailTemplate" placeholder="Email Template"></textarea>
+												</label>
+											</section>
+												
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#emailPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+												
+												
+											</div>
+											
+											
+											<div class="col col-6" id="col-sms">
+												<h6 >SMS Template</h6><br>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="smsTemplate" id="smsTemplate" placeholder="SMS Template"></textarea>
+												</label>
+											</section>
+												
+												
+												</div>
+												
+											
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#smsPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+											</div>
+											
+											
+											
+											</div>
+												</fieldset>
+												
+												
+													</form>
+													
+											
+												
+															
+											</div>
+											
+											
+											</div>
+											<br>
+												<div class="row">
+												<div class="col-md-6 col-xs-12">
+													<button type="submit" class="btn btn-success">
+														<span class="glyphicon glyphicon-floppy-disk"></span> Save Changes
+													</button>
+												
+												</div>
+												</div>
+												
+											</div>
+											<div class="tab-pane fade" id="s3">
+												
+													<div class ="row">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+													<label class="checkbox">
+															<input type="checkbox" name="checkbox-inline" id="enableReschedule" checked="checked">
+															<i></i>Enable Rescheduling Messages</label>
+															</form>
+											</div>
+											</div>
+											
+											<div class ="row" id="rescheduleMessageTemplate">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+											
+												
+												<fieldset>
+												<div class="row">
+												<div class="col col-6" id="col-email">
+												<h6>Email Template</h6><br>
+												<div class="row">
+												<section class="col-10">
+													<label class="input"> <input
+														type="text" name="emailSubject" id="emailSubject" placeholder="Email Subject"
+														>
+													</label>
+												</section>
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="emailTemplate" id="emailTemplate" placeholder="Email Template"></textarea>
+												</label>
+											</section>
+												
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#emailPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+												
+												
+											</div>
+											
+											
+											<div class="col col-6" id="col-sms">
+												<h6 >SMS Template</h6><br>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="smsTemplate" id="smsTemplate" placeholder="SMS Template"></textarea>
+												</label>
+											</section>
+												
+												
+												</div>
+												
+											
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#smsPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+											</div>
+											
+											
+											
+											</div>
+												</fieldset>
+												
+												
+													</form>
+													
+													
+												
+															
+											</div>
+											
+											
+											</div>
+											<br>
+												<div class="row">
+												<div class="col-md-6 col-xs-12">
+													<button type="submit" class="btn btn-success">
+														<span class="glyphicon glyphicon-floppy-disk"></span> Save Changes
+													</button>
+												
+												</div>
+												</div>
+												
+											</div>
+											<div class="tab-pane fade" id="s4">
+												
+													<div class ="row">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+													<label class="checkbox">
+															<input type="checkbox" name="checkbox-inline" id="enableCancellation" checked="checked">
+															<i></i>Enable Rescheduling Messages</label>
+															</form>
+											</div>
+											</div>
+											
+											<div class ="row" id="cancellationMessageTemplate">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+											
+												
+											<fieldset>
+												<div class="row">
+												<div class="col col-6" id="col-email">
+												<h6>Email Template</h6><br>
+												<div class="row">
+												<section class="col-10">
+													<label class="input"> <input
+														type="text" name="emailSubject" id="emailSubject" placeholder="Email Subject"
+														>
+													</label>
+												</section>
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="emailTemplate" id="emailTemplate" placeholder="Email Template"></textarea>
+												</label>
+											</section>
+												
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#emailPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+												
+												
+											</div>
+											
+											
+											<div class="col col-6" id="col-sms">
+												<h6 >SMS Template</h6><br>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="smsTemplate" id="smsTemplate" placeholder="SMS Template"></textarea>
+												</label>
+											</section>
+												
+												
+												</div>
+												
+											
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#smsPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+											</div>
+											
+											
+											
+											</div>
+												</fieldset>
+												
+												
+													</form>
+													
+													
+												
+															
+											</div>
+											
+											
+											</div>
+											<br>
+												<div class="row">
+												<div class="col-md-6 col-xs-12">
+													<button type="submit" class="btn btn-success">
+														<span class="glyphicon glyphicon-floppy-disk"></span> Save Changes
+													</button>
+												
+												</div>
+												</div>
+												
+											</div>
+											
+											<div class="tab-pane fade" id="s5">
+												
+												<div class ="row">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+													<label class="checkbox">
+															<input type="checkbox" name="checkbox-inline" id="enableThankyou" checked="checked">
+															<i></i>Enable Thank You Messages</label>
+															</form>
+											</div>
+											</div>
+											
+											<div class ="row" id="thankyouMessageTemplate">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+											
+												
+													<fieldset>
+												<div class="row">
+												<div class="col col-6" id="col-email">
+												<h6>Email Template</h6><br>
+												<div class="row">
+												<section class="col-10">
+													<label class="input"> <input
+														type="text" name="emailSubject" id="emailSubject" placeholder="Email Subject"
+														>
+													</label>
+												</section>
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="emailTemplate" id="emailTemplate" placeholder="Email Template"></textarea>
+												</label>
+											</section>
+												
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#emailPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+												
+												
+											</div>
+											
+											
+											<div class="col col-6" id="col-sms">
+												<h6 >SMS Template</h6><br>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="smsTemplate" id="smsTemplate" placeholder="SMS Template"></textarea>
+												</label>
+											</section>
+												
+												
+												</div>
+												
+											
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#smsPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+											</div>
+											
+											
+											
+											</div>
+												</fieldset>
+												
+												
+												
+													</form>
+													
+													
+															
+											</div>
+											
+											
+											</div>
+											<br>
+												<div class="row">
+												<div class="col-md-6 col-xs-12">
+													<button type="submit" class="btn btn-success">
+														<span class="glyphicon glyphicon-floppy-disk"></span> Save Changes
+													</button>
+												
+												</div>
+												</div>
+												
+											</div>
+											
+											<div class="tab-pane fade" id="s6">
+												
+												<div class ="row">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+													<label class="checkbox">
+															<input type="checkbox" name="checkbox-inline" id="enableCustom" checked="checked">
+															<i></i>Enable Custom Messages</label>
+															</form>
+											</div>
+											</div>
+											
+											<div class ="row" id="customTemplate">
+											<div class="col-sm-12 col-md-12 col-lg-12">
+											<form class="smart-form">
+											
+												
+											<fieldset>
+												<div class="row">
+												<div class="col col-6" id="col-email">
+												<h6>Email Template</h6><br>
+												<div class="row">
+												<section class="col-10">
+													<label class="input"> <input
+														type="text" name="emailSubject" id="emailSubject" placeholder="Email Subject"
+														>
+													</label>
+												</section>
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="emailTemplate" id="emailTemplate" placeholder="Email Template"></textarea>
+												</label>
+											</section>
+												
+												
+												</div>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#emailPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+												
+												
+											</div>
+											
+										<div class="col col-6" id="col-sms">
+												<h6 >SMS Template</h6><br>
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<label class="textarea"> <textarea
+														rows="12" name="smsTemplate" id="smsTemplate" placeholder="SMS Template"></textarea>
+												</label>
+											</section>
+												
+												
+												</div>
+												
+											
+												
+												<div class="row">
+												
+												<section class="col-10">
+												<a class="btn btn-sm btn-default" data-toggle="modal" data-target="#smsPreview">Preview Message</a>	
+												
+												<a class="btn btn-sm btn-default">Reset To Default</a>	
+												</section>
+												
+												
+												</div>
+											</div>
+											
+											
+											
+											</div>
+												</fieldset>
+												
+												
+													</form>
+												
+												
+															
+											</div>
+											
+											
+											</div>
+											<br>
+												<div class="row">
+												<div class="col-md-6 col-xs-12">
+													<button type="submit" class="btn btn-success">
+														<span class="glyphicon glyphicon-floppy-disk"></span> Save Changes
+													</button>
+												
+												</div>
+												</div>
+												
+											</div>
+											
+										</div> -->
+				
+									</div>
+									<!-- end widget content -->
+				
+								</div>
+								<!-- end widget div -->
+				
+							</div>
+							<!-- end widget -->
+				
+				</article>
+			
+</div>
+
+		</div>
+	</div>
+	<!-- Modal -->
+				<div class="modal fade" id="emailPreview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								<h6 class="modal-title" id="myModalLabel">Preview template</h6>
+							</div>
+							<div class="modal-body" id="">
+							<h6 id="eHead"> </h6>
+							<p id="emailDiv"> </p>
+							
+								
+				
+						</div>
+							
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+				<!-- Modal -->
+				<div class="modal fade" id="smsPreview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								<h6 class="modal-title" id="myModalLabel">Preview template</h6>
+							</div>
+							<div class="modal-body" id="">
+							
+							<p id="smsDiv"> </p>
+								
+				
+							</div>
+							
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+	
+</div>
+
+<!-- END MAIN CONTENT -->
+
+
+<!-- END MAIN PANEL -->
+
+
+
+<script>
+
+$(document).ready(function(){
+   
+    $('#enable').change(function(){
+        if(this.checked)
+            $('#tabView').fadeIn('slow');
+        else
+            $('#tabView').fadeOut('slow');
+
+    });
+    
+    $('#enableReminder').change(function(){
+        if(this.checked)
+            $('#reminderMessageTemplate').fadeIn('slow');
+        else
+            $('#reminderMessageTemplate').fadeOut('slow');
+
+    });
+    
+    $('#enableConfirmation').change(function(){
+        if(this.checked)
+            $('#confirmationMessageTemplate').fadeIn('slow');
+        else
+            $('#confirmationMessageTemplate').fadeOut('slow');
+
+    });
+    
+    $('#enableReschedule').change(function(){
+        if(this.checked)
+            $('#rescheduleMessageTemplate').fadeIn('slow');
+        else
+            $('#rescheduleMessageTemplate').fadeOut('slow');
+
+    });
+    
+    $('#enableCancellation').change(function(){
+        if(this.checked)
+            $('#cancellationMessageTemplate').fadeIn('slow');
+        else
+            $('#cancellationMessageTemplate').fadeOut('slow');
+
+    });
+    
+    $('#enableThankyou').change(function(){
+        if(this.checked)
+            $('#thankyouMessageTemplate').fadeIn('slow');
+        else
+            $('#thankyouMessageTemplate').fadeOut('slow');
+
+    });
+    
+    $('#enableCustom').change(function(){
+        if(this.checked)
+            $('#customTemplate').fadeIn('slow');
+        else
+            $('#customTemplate').fadeOut('slow');
+
+    });
+    
+    
+ 
+ /*    $("#emailPreview").click(function(){
+        alert("Text: " + $("#emailTemplate").text());
+    }); */
+  
+        
+            $("#emailDiv").text($("#emailTemplate").text()); 
+    		 
+    		$("#smsDiv").text($("#smsTemplate").text());
+           
+        
+    		var $remaining = $('#remaining'),
+            $messages = $remaining.next();
+
+        $('#smsTemplate').keyup(function(){
+            var chars = this.value.length,
+                messages = Math.ceil(chars / 160),
+                remaining = messages * 160 - (chars % (messages * 160) || messages * 160);
+
+            $remaining.text(remaining + ' characters remaining');
+            $messages.text(messages + ' message(s)');
+        });
+       
+      /*  $('#emailPreview1').on('show.bs.modal', function (e) {
+    	   console.log($(e.relatedTarget));
+    	   
+		       var src = $(e.relatedTarget).attr('emailTemplate1');
+		       console.log("----------"+src);
+		       
+		       $(this).find('.modal-body > img.image_modal').attr('abcd', src);
+		       
+		      
+		       
+		    });  */
+});
+
+</script>

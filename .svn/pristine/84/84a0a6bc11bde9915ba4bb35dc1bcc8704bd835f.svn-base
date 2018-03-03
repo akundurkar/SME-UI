@@ -1,0 +1,9 @@
+{
+   
+	 "UPLOADFILELIMIT":5,
+	 "VIDEO":"V",
+	 "IMAGE":"I",
+	 "MENUCARD":"M",
+	 "UPLOADVIDEOSIZELMT_MB":6
+	 
+ }

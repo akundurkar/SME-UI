@@ -1,0 +1,300 @@
+<script src="js/plugin/superbox/superbox.min.js"></script>
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>SetUp</li>
+			<li>Photos</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+	</div>
+	<!-- END RIBBON -->
+
+		<!-- MAIN CONTENT -->
+		<div id="content">
+			
+			<div class="animated fadeInRight">
+					
+				<!-- row -->
+				<div class="row">
+					
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+					
+						<div class="row">
+						 	<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+							</div>
+						
+						 	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+						
+								<div class=smart-form>
+						
+									<label class="label">Select Location</label>
+									<label class="select" id ="notificationSendBy">
+										
+										<select>
+										
+											<%   _.each(locationList, function(location){  %>
+											    
+												<option ><%= location.attributes.locationName %></option>
+												
+											<% }); %>
+										
+										</select><i></i> 
+										
+									</label>
+								
+								</div>
+							
+							</div> 
+						
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-align-right">
+							
+								<div class="page-title">
+
+									<a id="uploadImageMedia" class="btn btn-primary" > 
+										<i class="glyphicon glyphicon-upload"></i> Upload Photos
+									</a>
+								
+									<a id="uploadMenuCardMedia" class="btn btn-primary" > 
+										<i class="glyphicon glyphicon-upload"></i> Upload Menu Cards
+									</a>
+									
+								</div>
+								
+							</div>
+						
+						</div>
+						
+					</div>
+				
+				</div>
+				
+			</div>
+
+			<div class="row">
+					
+				<div class="col-sm-12">
+						
+					<div class="well">
+						
+						<div class="row">
+						
+								<!-- SuperBox -->
+		
+									<div class="superbox col-sm-12">
+									
+									<h3>Gallery</h3><br>
+									
+										<% _.each(mediaList,function(media) {
+											console.log(media);
+											console.log(media.attributes.imageType);
+										 %>
+																											
+												<% if(media != null){ %> 
+												
+													<% if(media.attributes.imageType == "I"){ 
+													console.log(media.attributes.imageId);
+													%> 
+										                
+										                <div class="superbox-list">
+										                
+															<img class="superbox-img" data-toggle="modal" data-target="#myModal" 
+															src="<%= CommonUtils.get('projectUrl')%>/rest/media/get/<%=media.attributes.imageId%>?oauth_token=<%=CommonUtils.get('oauth_token')%>&oauth_token_secret=<%=CommonUtils.get('oauth_token_secret')%>"
+															data-img="<%= CommonUtils.get('projectUrl')%>/rest/media/get/<%=media.attributes.imageId%>?oauth_token=<%=CommonUtils.get('oauth_token')%>&oauth_token_secret=<%=CommonUtils.get('oauth_token_secret')%>" />  
+													
+													    </div>
+													   
+													
+													<% }  %>
+																									
+												<% } %>
+												 						 
+																			
+										<% }); %>
+
+									</div>
+									
+								
+			
+						</div>
+	
+						<div class="superbox-show" style="height:300px; display: none">
+						
+						</div>
+
+					</div>
+	 				<!-- end well -->
+			
+				</div>
+				<!-- end col -->
+					
+					
+					<div class="col-sm-12">
+						
+					<div class="well">
+						
+						<div class="row">
+						
+								<!-- SuperBox -->
+									
+									<div class="superbox col-sm-12">
+									<h3>Menu Card</h3><br>
+									
+										<% _.each(mediaList,function(media) {
+											console.log(media);
+											console.log(media.attributes.imageType);
+										 %>
+																				
+												<% if(media != null){ %> 
+												
+													<% if(media.attributes.imageType == "M"){ 
+													console.log(media.attributes.imageId);
+													%> 
+													    
+													    <div class="superbox-list">
+										
+															<img class="superbox-img"  data-toggle="modal" data-target="#myMenuCard" 
+															src="<%= CommonUtils.get('projectUrl')%>/rest/media/get/<%=media.attributes.imageId%>?oauth_token=<%=CommonUtils.get('oauth_token')%>&oauth_token_secret=<%=CommonUtils.get('oauth_token_secret')%>"
+															data-img="<%= CommonUtils.get('projectUrl')%>/rest/media/get/<%=media.attributes.imageId%>?oauth_token=<%=CommonUtils.get('oauth_token')%>&oauth_token_secret=<%=CommonUtils.get('oauth_token_secret')%>" />  
+														
+														</div>
+													
+													<% }  %> 
+												
+												 <% } %>
+										
+										<% }); %>
+
+									</div>
+		
+								<!-- /SuperBox -->
+			
+						</div>
+	
+						<div class="superbox-show" style="height:300px; display: none">
+						
+						</div>
+
+					</div>
+	 				<!-- end well -->
+			
+				</div>
+				<!-- end col -->
+					
+					
+					
+					
+			</div>
+			<!-- end row -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								<h4 class="modal-title" id="myModalLabel">Gallery Image</h4>
+							</div>
+							<div class="modal-body">
+				
+								<img class = "image_modal img-responsive" src="" >
+                                                        
+                                                        
+								
+				
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary" data-dismiss="modal">
+									Cancel
+								</button>
+							<% _.each(mediaList,function(media) {  %>
+								<% if(media.attributes.imageType == "I"){ %>
+							<!-- <button type="button" class="btn btn-danger" id="deleteImage" imageId="<%= media.attributes.imageId %>">
+									Delete
+								</button> -->
+								<!-- <img src='img/mail_delete.png'  class="closeButton showAdPointerCursor closeImage" id="deleteImage"/>  -->
+							<a href="javascript:void(0);" id="delImage" imageId="<%= media.attributes.imageId %>" class="deleteImage btn btn-danger btn-sm ">Delete</a> 
+								<% }  %> 
+							<% }); %>
+							
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->	
+				
+					<div class="modal fade" id="myMenuCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								<h4 class="modal-title" id="myModalLabel">Menu Card</h4>
+							</div>
+							<div class="modal-body">
+				
+								<img class = "image_modal img-responsive" src="" >
+                                                        
+                                                        
+								
+				
+							</div>
+							<div class="modal-footer">
+							<button type="button" class="btn btn-primary" data-dismiss="modal">
+									Cancel
+								</button>
+							<% _.each(mediaList,function(media) {  %>
+								<% if(media.attributes.imageType == "M"){ %>
+							<a href="javascript:void(0);" id="deleteMenuCard" imageId="<%= media.attributes.imageId %>" class="deleteMenuCard btn btn-danger btn-sm ">Delete</a>	
+								<% }  %> 
+							<% }); %>
+								
+								
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+		</div>
+		<!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->
+
+<script>		
+	$(document).ready(function() {
+			
+			 pageSetUp();
+			
+			  $('#myModal').on('show.bs.modal', function (e) {
+			       var src = $(e.relatedTarget).attr('data-img');
+			     
+			       
+			       $(this).find('.modal-body > img.image_modal').attr('src', src);
+			       
+			      
+			       
+			    });	
+			  
+			  $('#myMenuCard').on('show.bs.modal', function (e) {
+			       var src = $(e.relatedTarget).attr('data-img');
+			     
+			       
+			       $(this).find('.modal-body > img.image_modal').attr('src', src);
+			       
+			      
+			       
+			    });	
+			  
+			  /* 	 
+			  $('#deleteImage').click(function(){
+				  alert("delete image");
+			  } */
+			  
+	})
+</script>

@@ -1,0 +1,224 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>SetUp</li>
+			<li>Payment</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+		<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:-->
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+	<div id="content">
+		<div class="animated fadeInRight">
+
+		<div class="col-sm-12">
+		
+		<button type="button" class="btn btn-primary btn-default pull-right" data-toggle="modal" data-target="#myModal">New Payment Type </button>
+						
+		</div>
+		<br>
+		<br>
+		
+			<div class="row" id="company-detail-form">
+				<div class="col-sm-12">
+
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget" id="wid-id-1"
+						data-widget-editbutton="false" data-widget-custombutton="false">
+						<header>
+							<span class="widget-icon"> <i class="fa  fa-inr"></i>
+							</span>
+							<h2>Payment Types</h2>
+						</header>
+						<!-- widget div-->
+						<div>
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+							</div>
+							<!-- end widget edit box -->
+							<!-- widget content -->
+							<div class="widget-body no-padding">
+
+								<table class="table table-hover">
+												<thead>
+													<tr>
+														<th></th>
+														<th>Payment Type</th>
+														<th>Edit</th>
+														<th>Remove</th>
+														
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+													<td><i class="fa fa-reorder"></i></td>
+														<td>Cash</td>
+														<td><a href="#" class="btn btn-default txt-color-blueLight"><i class="fa fa-edit fa-lg"></i></a></td>
+														<td><a href="#" class="btn btn-default txt-color-blueLight" id="delete"><i class="fa fa-lg  fa-trash-o"></i></a></td>
+													</tr>
+													<tr>
+													<td><i class="fa fa-reorder"></i></td>
+														<td>Card</td>
+														<td><a href="#" class="btn btn-default txt-color-blueLight"><i class="fa fa-edit fa-lg"></i></a></td>
+														<td><a href="#" class="btn btn-default txt-color-blueLight" id="delete1"><i class="fa fa-lg  fa-trash-o"></i></a></td>
+													</tr>
+													<tr>
+													<td><i class="fa fa-reorder"></i></td>
+														<td>Other</td>
+														<td><a href="#" class="btn btn-default txt-color-blueLight"><i class="fa fa-edit fa-lg"></i></a></td>
+														<td><a href="#" class="btn btn-default txt-color-blueLight" id="delete2"><i class="fa fa-lg  fa-trash-o"></i></a></td>
+													</tr>
+													
+												</tbody>
+											</table>
+
+
+							</div>
+							<!-- end widget content -->
+
+						</div>
+						<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+
+
+
+
+
+					<!-- WIDGET END -->
+
+
+				</div>
+
+
+			
+				<!-- end row -->
+			</div>
+
+
+
+			<!-- end widget grid -->
+
+
+		</div>
+	</div>
+	<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+						
+							<form class="form " role="form" id="paymentType-form" >
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+										&times;
+									</button>
+									<h4 class="modal-title" id="myModalLabel"><i class="fa fa-inr"></i> &nbsp;New Payment Type</h4>
+								</div>
+								<div class="modal-body">
+								
+									<div class="row">
+						
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					
+								
+									<div class="row">
+									
+										<div class="smart-form">
+										
+											<div class="col col-8">
+											<label class="input">
+													Payment Type Name<input type="text" class="form-control"  required name="paymentName" id="paymentName" placeholder="e.g.card or Cash" />
+													</label>
+											</div>
+											
+											
+											
+										</div>
+											
+									</div>
+								
+									<br>
+									
+									
+										</div>
+									</div>
+								
+								
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Cancel
+									</button>
+									<button type="submit" class="btn btn-success btn-sm" id= "savePaymentTypeModelBtn" >
+											<span class="glyphicon glyphicon-floppy-disk"></span> Save
+									</button>
+									<div id= "savePaymentTypeBtn"></div>
+								</div>
+							</form>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+	
+</div>
+<!-- END MAIN PANEL -->
+<script type="text/javascript">
+
+	$(document).ready(function() {
+				
+			});
+	
+	 $("#paymentName").keypress(function(event){
+			var inputValue = event.charCode;
+			if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)){
+			event.preventDefault();
+          }
+
+	});
+	 
+	 $('#savePaymentTypeModelBtn').off().on('click', function() {
+			//alert("The btn Save was clicked.");
+			var formCheck = $("#paymentType-form").valid();
+		    if(formCheck){
+		    	console.log("formcheck true");
+		    	$("#savePaymentTypeBtn").click();
+		    }
+		    console.log("formcheck false");
+		});
+	  
+	 
+	 $('#delete').on('click', function() {
+	    	
+	    	$(this).closest('tr').remove();
+	    	
+	    });
+	    
+	 $('#delete1').on('click', function() {
+	    	
+	    	$(this).closest('tr').remove();
+	    	
+	    });
+	 
+	 $('#delete2').on('click', function() {
+	 	
+	 	$(this).closest('tr').remove();
+	 	
+	 });
+</script>

@@ -1,0 +1,211 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Schedule</li>
+			
+		</ol>
+		<!-- end breadcrumb -->
+
+		<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:-->
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+	<div id="content">
+		<div class="animated fadeInRight">
+	
+		<div class="row" id="tabView">
+		<div class="col-sm-12">
+		
+		
+						
+		</div>
+		<br>
+		<br>
+								<article class="col-sm-12 col-md-12 col-lg-12">
+		
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget well" id="wid-id-1 data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+				
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+				
+								-->
+								<header>
+									<span class="widget-icon"> <i class="fa fa-gift"></i> </span>
+									<h2>Promotional Offers </h2>
+				
+								</header>				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+				
+									<!-- widget content -->
+									<div class="widget-body">
+										
+								<div class="table-responsive">
+								<table class="table table-hover">
+												<thead>
+													<tr>
+														<th></th>
+														<th>Week Day</th>
+														<th>Open Time </th>
+														<th>Close Time </th>
+													</tr>
+												</thead>
+												<tbody>
+												    <%  									        
+											        _.each(scheduleDetailsList, function(scheduleDetails){ 
+											         %>	
+													<tr id="row1">
+													  
+													    <td> <i class="fa fa-reorder"></i> </td>
+													    <td> <b>SUN</b> </td>
+														<td> <%= scheduleDetails.attributes.openTimeSun %> </td>
+														<td> <%= scheduleDetails.attributes.closeTimeSun %> </td>
+														
+													</tr>
+													<tr id="row2">
+													
+													 <td> <i class="fa fa-reorder"></i> </td>
+													    <td> <b>MON </b></td>
+														<td> <%= scheduleDetails.attributes.openTimeMon %> </td>
+														<td> <%= scheduleDetails.attributes.closeTimeMon %> </td>
+													
+													</tr>
+													<tr id="row3">
+													
+													 <td> <i class="fa fa-reorder"></i> </td>
+													    <td> <b>TUE</b> </td>
+														<td> <%= scheduleDetails.attributes.openTimeTue %> </td>
+														<td> <%= scheduleDetails.attributes.closeTimeTue %> </td>
+													
+													</tr>
+													<tr id="row4">
+													
+													 <td> <i class="fa fa-reorder"></i> </td>
+													    <td> <b>WED</b> </td>
+														<td> <%= scheduleDetails.attributes.openTimeWed %> </td>
+														<td> <%= scheduleDetails.attributes.closeTimeWed %> </td>
+													
+													</tr>
+													<tr id="row5">
+													
+													 <td> <i class="fa fa-reorder"></i> </td>
+													    <td><b> THU</b> </td>
+														<td> <%= scheduleDetails.attributes.openTimeThr %> </td>
+														<td> <%= scheduleDetails.attributes.closeTimeThr %> </td>
+													
+													</tr>
+													<tr id="row6">
+													
+													 <td> <i class="fa fa-reorder"></i> </td>
+													    <td><b> FRI</b> </td>
+														<td> <%= scheduleDetails.attributes.openTimeFri %> </td>
+														<td> <%= scheduleDetails.attributes.closeTimeFri %> </td>
+													
+													</tr>
+													<tr id="row7">
+													
+													 <td> <i class="fa fa-reorder"></i> </td>
+													    <td><b> SAT</b> </td>
+														<td> <%= scheduleDetails.attributes.openTimeSat %> </td>
+														<td> <%= scheduleDetails.attributes.closeTimeSat %> </td>
+													
+													</tr>
+													<% }); %>
+												</tbody>
+											</table>
+											</div>
+						
+									</div>
+									<!-- end widget content -->
+				
+				
+								</div>
+								<!-- end widget div -->
+				
+							</div>
+							<!-- end widget -->
+				
+				</article>
+			
+</div>
+
+		</div>
+	</div>
+	
+	
+</div>
+
+<!-- END MAIN CONTENT -->
+
+
+<!-- END MAIN PANEL -->
+
+
+
+<script>
+
+$(document).ready(function(){
+   
+    $('#enable').change(function(){
+        if(this.checked)
+            $('#tabView').fadeIn('slow');
+        else
+            $('#tabView').fadeOut('slow');
+
+    });
+    
+   
+  
+    
+  
+    
+    $('#delete').on('click', function() {
+    	
+    	$(this).closest('tr').remove();
+    	
+    });
+    
+ $('#delete1').on('click', function() {
+    	
+    	$(this).closest('tr').remove();
+    	
+    });
+ 
+ $('#delete2').on('click', function() {
+ 	
+ 	$(this).closest('tr').remove();
+ 	
+ });
+
+});
+
+</script>

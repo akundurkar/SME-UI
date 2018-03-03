@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="building"  >
+<target name="building">
+  <echo></echo>
+  <exec failonerror="true" dir="C:\MYWORK\DEVELOPMENT\SME-UI" executable="cmd" osfamily="windows">
+    <arg line="/c npm config set color false"/>
+  </exec>
+  <exec failonerror="true" dir="C:\MYWORK\DEVELOPMENT\SME-UI" executable="bash" osfamily="unix">
+    <arg line="npm config set color false"/>
+  </exec>
+  <exec failonerror="true" dir="C:\MYWORK\DEVELOPMENT\SME-UI" executable="cmd" osfamily="windows">
+    <arg line="/c npm install"/>
+  </exec>
+  <exec failonerror="true" dir="C:\MYWORK\DEVELOPMENT\SME-UI" executable="bash" osfamily="unix">
+    <arg line="npm install"/>
+  </exec>
+  <echo></echo>
+  <exec resultproperty="cmdresult" dir="C:\MYWORK\DEVELOPMENT\SME-UI" executable="cmd" osfamily="windows">
+    <arg line="/c grunt serve --force"/>
+  </exec>
+</target>
+</project>

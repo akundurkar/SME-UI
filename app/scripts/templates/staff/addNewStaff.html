@@ -1,0 +1,542 @@
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+	<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Staff</li>
+			<li>New Staff</li>
+		</ol>
+		<!-- end breadcrumb -->
+
+	</div>
+	<!-- END RIBBON -->
+<!-- MAIN CONTENT -->
+	<div id="content">
+		<div class="animated fadeInRight">
+
+					<!-- row -->
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					
+						<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget well" id="wid-id-1 data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+				
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+				
+								-->
+								<header>
+									<span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+									<h2>Default Tabs with border </h2>
+				
+								</header>
+				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+				
+									<!-- widget content -->
+									<div class="widget-body">
+				
+										
+										<br>
+										<br>
+										
+										<ul id="myTab1" class="nav nav-tabs bordered">
+											<li class="active">
+												<a href="#s1" data-toggle="tab">Details</a>
+											</li>
+											<li>
+												<a href="#s2" data-toggle="tab">Address</a>
+											</li>
+											<li>
+												<a href="#s3" data-toggle="tab">Location</a>
+											</li>
+											<li>
+												<a href="#s4" data-toggle="tab">Services</a>
+											</li>
+											
+										
+										</ul>
+				
+										<div id="myTabContent1" class="tab-content padding-10">
+											<div class="tab-pane fade in active" id="s1">
+											
+									<div class="row">
+				
+											<!-- NEW WIDGET START -->
+											<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<form id="companyDetails-form" class="smart-form" novalidate="novalidate">
+
+									<div id="companyFormDiv">
+										<fieldset>
+											<div class="row">
+												
+												<section class="col col-6">
+													FIRST NAME<label class="input"> <i
+														class="icon-append fa fa-user"></i> <input type="text"
+														name="FName" id="FName">
+													</label>
+												</section>
+												
+												<section class="col col-6">
+													LAST NAME<label class="input"> <i
+														class="icon-append fa fa-user"></i> <input type="text"
+														name="FName" id="FName">
+													</label>
+												</section>
+												
+											</div>
+																								
+											<div class="row">
+											
+												<section class="col col-6">
+													MOBILE NUMBER<label class="input"> <i
+														class="icon-append fa fa-phone-square"></i> <input
+														data-mask="9999999999" type="text" id="ownermobile" name="ownermobile">
+													</label>
+												</section>
+												
+												<section class="col col-6">
+												E-MAIL<label class="input"> <i
+														class="icon-append fa fa-user"></i> <input type="text"
+														name="FName" id="FName">
+													</label>
+												</section>
+												
+											</div>
+												
+											<div class="row">
+											
+													<section class="col col-6">
+										Start Date<label class="input"> <i class="icon-append fa fa-calendar"></i>
+											<input type="text" name="startdate" id="startdate" placeholder="">
+										</label>
+									</section>
+												
+													<section class="col col-6">
+										Finish Date<label class="input"> <i class="icon-append fa fa-calendar"></i>
+											<input type="text" name="finishdate" id="finishdate" placeholder="">
+										</label>
+									</section>
+												
+											</div>
+														
+												
+										</fieldset>
+										
+										
+										
+									</div>
+									
+									<footer>
+									
+									    <button id="validateForm" type="submit"
+											class="btn btn-primary">
+											Save
+										</button>
+										
+										<a href="javascript:void(0);" class="btn btn-default btn-lg">Cancel</a>
+										
+									
+									</footer>
+								</form>
+											
+											</article>
+											</div>
+												
+											</div>
+											<div class="tab-pane fade" id="s2">
+										
+										<div class="row">
+				
+											<!-- NEW WIDGET START -->
+											<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<form id="companyDetails-form" class="smart-form" novalidate="novalidate">
+
+									<div id="companyFormDiv">
+							
+										
+										<fieldset>
+										
+											<section>
+												 Address<label class="textarea"> <textarea
+														rows="3" name="clientAddress" id=""clientAddress"" placeholder=""></textarea>
+												</label>
+											</section>
+											
+											
+											<div class="row">
+												
+												<section class="col col-4">
+												City<label class="input"> <i
+													class="icon-append fa fa-slack"></i><input type="text"
+														id="ownercity" name="ownercity"
+														 style="text-transform:uppercase" />
+													</label>
+													
+												</section>
+											
+											     <section class="col col-4">
+													State<label class="input"> <i
+													class="icon-append fa fa-empire"></i><input type="text"
+														name="ownerstate" id="ownerstate"
+													 style="text-transform:uppercase" />
+													</label>
+											      </section>
+												
+												  <section class="col col-4">
+													Postal Code<label class="input">  <i
+													class="icon-append fa fa-envelope"></i><input type="text"
+														data-mask="999999" name="ownercode" id="ownercode"
+														>
+													</label>
+												  </section>
+
+											  </div>
+		
+										</fieldset>
+										
+									</div>
+									
+									<footer>
+									
+									    <button id="validateForm" type="submit"
+											class="btn btn-primary">
+											Save
+										</button>
+										
+										<a href="javascript:void(0);" class="btn btn-default btn-lg">Cancel</a>
+										
+									
+									</footer>
+								</form>
+											
+											</article>
+											</div>		
+											</div>
+											<div class="tab-pane fade" id="s3">
+												
+											<div class="row">
+				
+											<!-- NEW WIDGET START -->
+											<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<form id="companyDetails-form" class="smart-form" novalidate="novalidate">
+
+										<div id="companyFormDiv">
+							
+										
+										<fieldset>
+										
+											<div class="row">
+												
+												  <section class="col col-6">
+													Postal Code<label class="input">  <i
+													class="icon-append fa fa-envelope"></i><input type="text"
+														data-mask="999999" name="ownercode" id="ownercode"
+														>
+													</label>
+												  </section>
+
+											  </div>
+											
+											<div class="row">
+												
+												  <section class="col col-6">
+													Postal Code<label class="input">  <i
+													class="icon-append fa fa-envelope"></i><input type="text"
+														data-mask="999999" name="ownercode" id="ownercode"
+														>
+													</label>
+												  </section>
+
+											  </div>
+										</fieldset>
+										
+									</div>
+									
+									<footer>
+									
+									    <button id="validateForm" type="submit"
+											class="btn btn-primary">
+											Save
+										</button>
+										
+										<a href="javascript:void(0);" class="btn btn-default btn-lg">Cancel</a>
+										
+									
+									</footer>
+								</form>
+											
+											</article>
+											</div>
+												
+											</div>
+											
+										
+											
+										</div>
+				
+									</div>
+									<!-- end widget content -->
+				
+								</div>
+								<!-- end widget div -->
+				
+							</div>
+					
+					</div>
+					</div>
+				
+					<!-- end row -->
+		</div>
+		<!-- end widget grid -->
+	</div>
+			<!-- Modal -->
+				<div class="modal fade" id="staffTimeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+							<h6>Edit aniket's Hours</h6>
+							<label>Sunday, 5 March 2017</label>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								
+							</div>
+							<div class="modal-body">
+							
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								
+							<form class="smart-form">
+							
+							<fieldset>
+												<div class="row" id="addShift">
+												<section class="col col-6">
+													<label class="label">Shift Start</label>
+													<label class="select">
+														<select>
+															<option value="0">2</option>
+															<option value="1">3</option>
+															<option value="2">6</option>
+															<option value="3">12</option>
+															<option value="4">24</option>
+															<option value="5">48</option>
+																																					
+															
+														</select> <i></i> </label>
+												</section>
+												
+												<section class="col col-6">
+													<label class="label">Shift End</label>
+													<label class="select">
+														<select>
+															<option value="0">2</option>
+															<option value="1">3</option>
+															<option value="2">6</option>
+															<option value="3">12</option>
+															<option value="4">24</option>
+															<option value="5">48</option>
+																																					
+															
+														</select> <i></i> </label>
+												</section>
+													</div>
+													<div class="row" >
+													<section class="col col-6">
+													<label class="label">Repeats</label>
+													<label class="select">
+														<select>
+															<option value="0">Don't Repeat</option>
+															<option value="1">Weekly</option>
+																																					
+														</select> <i></i> </label>
+												</section>
+													</div>
+														</fieldset>
+							
+							
+							
+													</form>
+									
+								</div>
+								</div>
+							
+							
+							</div>
+							<div class="modal-footer">
+							<button type="button" class="btn btn-md btn-danger pull-left" >
+									Delete
+								</button>
+								<a class="btn btn-default pull-left"  data-toggle="#addShift">Add Another Shift</a>
+								<button type="button" class="btn btn-default" data-dismiss="modal" >
+									Cancel
+								</button>
+								<button type="submit" class="btn btn-success btn-sm">
+														<span class="glyphicon glyphicon-floppy-disk"></span> Save
+													</button>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+					<!-- Modal -->
+				<div class="modal fade" id="newClosedModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+							<h6>New Closed Date</h6>
+						
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								
+							</div>
+							<div class="modal-body">
+							
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								
+							<form class="smart-form">
+							
+							<fieldset>
+												<div class="row">
+												<section class="col col-6">
+										Start Date<label class="input"> <i class="icon-append fa fa-calendar"></i>
+											<input type="text" name="startdate1" id="startdate1" placeholder="">
+										</label>
+									</section>
+												
+													<section class="col col-6">
+										Finish Date<label class="input"> <i class="icon-append fa fa-calendar"></i>
+											<input type="text" name="finishdate1" id="finishdate1" placeholder="">
+										</label>
+									</section>
+													</div>
+													<div class="row" >
+													<section class="col col-6">
+										Description<label class="input"> 
+											<input type="text" name="description" placeholder="e.g.holiday">
+										</label>
+									</section>
+													</div>
+														</fieldset>
+														<div class="row" >
+													<section class="col col-6">
+												
+															<label class="checkbox">
+																<input type="checkbox" name="checkbox" checked="checked">
+																<i></i>All Location</label>
+															<label class="checkbox">
+																<input type="checkbox" name="checkbox">
+																<i></i>Deccan</label>
+															<label class="checkbox">
+																<input type="checkbox" name="checkbox">
+																<i></i>Camp</label>
+														
+									</section>
+													</div>
+														
+													</form>
+									
+								</div>
+								</div>
+							
+							
+							</div>
+							<div class="modal-footer">
+							
+								<button type="button" class="btn btn-default" data-dismiss="modal" >
+									Cancel
+								</button>
+								<button type="submit" class="btn btn-success btn-sm">
+														<span class="glyphicon glyphicon-floppy-disk"></span> Save
+													</button>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+</div>
+
+<!-- END MAIN CONTENT -->
+
+
+<!-- END MAIN PANEL addnewstaff-->
+<script>
+
+.find('button[data-toggle]').on('click', function() {
+	var $target = $($(this).attr('data-toggle'));
+	// Show or hide the additional fields
+	// They will or will not be validated based on their visibilities
+	$target.toggle();
+	if (!$target.is(':visible')) {
+		// Enable the submit buttons in case additional fields are not valid
+		$('#togglingForm').data('bootstrapValidator').disableSubmitButtons(false);
+	}
+});
+
+
+//START AND FINISH DATE
+$('#startdate').datepicker({
+	dateFormat : 'dd.mm.yy',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	minDate: 0,
+	onSelect : function(selectedDate) {
+		var maxDate = new Date(Date.parse(selectedDate));
+	}
+});
+
+$('#finishdate').datepicker({
+	dateFormat : 'dd.mm.yy',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	onSelect : function(selectedDate) {
+		$('#startdate').datepicker('option', 'maxDate', selectedDate);
+	}
+});
+
+//START AND FINISH DATE
+$('#startdate1').datepicker({
+	dateFormat : 'dd.mm.yy',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	minDate: 0,
+	onSelect : function(selectedDate) {
+		var maxDate = new Date(Date.parse(selectedDate));
+	}
+});
+
+$('#finishdate1').datepicker({
+	dateFormat : 'dd.mm.yy',
+	prevText : '<i class="fa fa-chevron-left"></i>',
+	nextText : '<i class="fa fa-chevron-right"></i>',
+	onSelect : function(selectedDate) {
+		$('#startdate1').datepicker('option', 'maxDate', selectedDate);
+	}
+});
+
+</script>

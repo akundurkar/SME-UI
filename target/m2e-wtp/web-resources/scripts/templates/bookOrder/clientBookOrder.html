@@ -1,0 +1,786 @@
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Check Out</li>
+		</ol>
+		<!-- end breadcrumb -->
+	</div>
+	<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+			
+				<div class="animated fadeInRight">
+					
+					<!-- row -->
+					<div class="row">
+				
+						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+							<div class="well well-light">
+						
+								<div class="row">	
+								
+									<div class="col-sm-12">
+
+										<!-- Widget ID (each widget will need unique ID)-->
+										<div class="jarviswidget" id="wid-id-1"
+											data-widget-editbutton="false" data-widget-custombutton="false">
+											<header>
+												<span class="widget-icon"> <i class="fa fa-edit"></i>
+												</span>
+												<h2>Check Out</h2>
+											</header>
+											<!-- widget div-->
+											<div>
+											<!-- widget edit box -->
+											<div class="jarviswidget-editbox">
+												<!-- This area used as dropdown edit box -->
+											</div>
+											<!-- end widget edit box -->
+											
+												<!-- widget content -->
+												<div class="widget-body no-padding">
+														
+						
+														
+													<form id="checkOut-form" class="smart-form"
+															novalidate="novalidate">
+
+														<fieldset>
+															<div id="searchDiv">
+															<div class="row" id="serachRow">
+																<section class="col col-8">
+																	<label class="input"> <i
+																		class="icon-append fa fa-search"></i> <input type="text"
+																		name="search" id="search" placeholder="Search by Name or Mobile No">
+																	</label> 
+																</section>
+																<section class="col col-4">
+																	<a class="btn btn-sm btn-default" id="newClients"><i class="fa fa-plus "></i> Add New</a>	
+												
+																</section>
+																
+																</div>
+																
+																<div class="row" id="clientRow">
+																<section class="col col-6">
+																
+																	 <h1 class="semi-bold"><a href="#" id="clientName"><%= fname %></a></h1> 
+																	 <h5 id="clientMobile">&nbsp;&nbsp;&nbsp;<%= ownermobile %></h5>
+																	 
+																</section>
+			           												
+																<!-- <section class="col col-2">
+																	<a class="btn btn-sm btn-default" id="changeClient">Change Client</a>	
+												
+																</section> -->
+																 <section class="col col-6">
+																	<h6>Booking Details</h6>	
+																	<div class="table-responsive">
+																	<table class="table table-bordered table-striped">
+																	<tbody>
+
+																	 
+																	
+																	<%  
+
+																		deleteServiceMap = {};
+																		last = 2;
+																		afterDiscountTotal = 0;
+																		curDiscountValue = 0;
+																		curDiscountPercentage = 0;		
+																		bookingTotal = 0;
+																		curBookingTotal=0;																	     
+																		if  ((bookingOrderLastUpdateList.length) != null){
+																	      
+																	     //console.log("in if statment"+bookingOrderLastUpdateList.length);
+																	 _.each(bookingOrderLastUpdateList, function(bookingOrderLastUpdateDetails){ 
+															     					
+															       		var date = new Date(bookingOrderLastUpdateDetails.attributes.date).toLocaleDateString('en-US');
+									         							var time = new Date(bookingOrderLastUpdateDetails.attributes.date).toLocaleTimeString('en-US', { hour: 'numeric',minute:'numeric', hour12: true }); 
+															       		//console.log("here checking bookingTotal");
+															       		if(bookingOrderLastUpdateDetails.attributes.orderStatus == "CONFIRMED"){
+	                                                                     	bookingTotal = bookingOrderLastUpdateDetails.attributes.totalCost;
+    	                                                                 	bookingId = bookingOrderLastUpdateDetails.attributes.bookingId;
+        	                                                             	curBookingTotal = bookingTotal;
+	                                                                     	console.log("bookingId"+bookingId);
+                                                                     	}
+                                                                     	else{
+                                                                     		bookingTotal = 0;    	                                                                 	
+        	                                                            	curBookingTotal = 0;
+                                                                     	}
+																        var arr = [];
+																        var json = JSON.stringify(bookingOrderLastUpdateDetails.attributes.serviceList);
+																        var parsed = JSON.parse(json);
+																            for(var x in parsed)
+																	        {
+								                                               arr.push(parsed[x]);
+								                                               
+								                                               var strValue = parsed[x].serviceName + "- Price :"+ parsed[x].retailPrice ;
+								                                               %>
+								                                               
+								                                         <tr>
+								                                         		<td>
+								                                       <!--   <span class="semi-bold"> <%= parsed[x].serviceId %>"><%= parsed[x].serviceName %> - Price : <%= parsed[x].retailPrice %> <i class="fa fa-inr"></i></span> -->
+								                                         <span class="semi-bold"> <%= strValue  %><i class="fa fa-inr"></i>							                                         
+								                                         <!-- <td><%= parsed[x].durationTime %></td> -->
+																		 		</td>
+																		 		<%if(bookingTotal != 0){%>
+																		 		<td><a href="#" id="delete1"><i class="fa fa-big fa fa-trash-o"></i></a></td>
+																		 		<%}%>
+																        </tr>
+								                                            <% }
+																        
+																        %> 
+																        <tr>
+								                                         		<th>
+								                                         		    Date : <%= date%> <%= time%>
+								                                         		</th>
+								                                         		<%if(bookingTotal != 0){%>																		 		
+								                                         		<th>
+								                                         		</th>
+								                                         		<%}%>
+								                                        </tr>
+																        
+																	<% }); }else{
+																	//console.log("in else bookingTotal")
+																		bookingTotal = 0;
+																	} %>																	
+																	</tbody>
+																	
+																	</table>
+																	</div>
+																	
+																	
+												
+																</section> 
+																</div>
+															
+															</div>
+															
+															 <div id="clientInfoView">
+															 <%if(typeof(bookingId) != "undefined"){%>
+															 <div id="bookingId" class="hidden"><%=bookingId%></div>
+															 <%}%>
+															<div class="row">
+																<section class="col col-3">
+																	<a href="#" id="clientsProfile" ><h3><%=cName%></h3></a>
+																</section>
+																
+																
+															
+															</div>
+															</div>
+															<!-- <div class="row">
+																<section class="col col-12">
+																	   <div id="myRadioGroup">
+																			<label class="label">Booking</label>
+																				<div class="inline-group">
+																					<label class="radio">
+																						<input type="radio" name="radio-inline" checked="checked">
+																						<i></i>Walk-In</label>
+																						
+																					<label class="radio">
+																						<input type="radio" name="radio-inline" >
+																						<i></i>Online</label>
+																						
+																						<label class="radio">
+																						<input type="radio" name="radio-inline" >
+																						<i></i>other</label>
+																				</div>
+																		</div>			
+																</section>
+																
+															</div>  -->
+															
+														</fieldset>
+
+														<!-- <fieldset>
+														<div class="row">
+																<section class="col col-4">	
+															Date<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																<input type="text" name="startdate" id="startdate">
+															</label>
+															</section>
+					
+															<section class="col col-4">
+																		<label class="label">Repeats</label>
+																		<label class="select">
+																			<select>
+																				<option value="0">Don't Repeat</option>
+																				<option value="1">Daily</option>
+																				<option value="2">Weekly</option>
+																				<option value="3">Every 2 Weeks</option>
+																				<option value="4">Every 3 Weeks</option>
+																				<option value="5">Monthly</option>
+																																										
+																				
+																			</select> <i></i> </label>
+																	</section>
+																	<section class="col col-4">
+																		<label class="label">Time</label>
+																		<label class="select">
+																			<select>
+																				<option value="0">12:00pm</option>
+																				<option value="1">12:30pm</option>
+																				<option value="2">1:00pm</option>
+																				<option value="3">1:30pm</option>
+																				<option value="4">2:00pm</option>
+																				<option value="5">2:30pm</option>																						
+																				
+																			</select> <i></i> </label>
+																	</section>
+																	
+															</div>
+															
+															</fieldset> -->
+
+													<fieldset>
+																<div class="repeatingSection row">
+															 		 <!-- <a href="#" type="button" class="btn btn-primary btn-sm buttonright deleteService"><i class="fa fa-times "></i> Delete</a> -->
+															            <input type="hidden" name="fighter_a_id_1" id="fighter_a_id_1" value="" />
+															            <input type="hidden" name="fighter_b_id_1" id="fighter_b_id_1" value="" />
+															            <input type="hidden" name="winner_id_1" id="winner_id_1" value="" />
+															 		
+																		<!-- <div class="row"> 
+																			 <div id = "directorpartner">
+																    			<div class="form-group box"> -->
+																            		<section class="col col-4">	
+																						<label class="label">Select Services</label>
+																						<label class="select">
+																							<select id="serviceId_1" name="serviceId_1" onchange=addPriceTobookingTotal(this)>
+																								<option value="0" selected="" disabled="">Select</option>																						
+																								
+																								<% 
+																								serviceMap = {};
+																								_.each(servicesList, function(serviceObject){ %>
+																									
+																									<optgroup label="<%= serviceObject.attributes.serviceGroupName %>">									                													        
+																							        
+																							        <%    	
+																							        var arr = [];
+																							        var json = JSON.stringify(serviceObject.attributes.serviceList);
+																							        var parsed = JSON.parse(json);
+																							        
+																	        for(var x in parsed)
+																	        {
+								                                               var key = parsed[x].serviceId;
+								                                               serviceMap[key] = parsed[x]; 
+								                                               arr.push(parsed[x]);
+								                                               
+								                                                  var timeValue=parsed[x].durationTime;
+								    
+								                                               var hours=Math.floor(timeValue/60);
+								                                               console.log("hours print"+ hours);
+								                                               if (hours>0)
+								                                               {
+																					min=hours*60;
+																					finalMin=timeValue-min;
+																					if(finalMin!=0)
+																					{
+																						timeString=hours + " h " +finalMin + " min";
+																						console.log("hours print"+ timeString);
+																					}
+																					else{
+																						timeString=hours + " h";
+																						console.log("hours print"+ timeString);
+																					}
+																				}
+																				else{
+																				
+																					timeString=timeValue + " min";
+																					console.log("hours print"+ timeString);
+																				}
+								                                                                           
+															                                               %>
+															                                               
+															                                               <option value="<%= parsed[x].serviceId %>"><%= parsed[x].serviceName %> - <%= parsed[x].retailPrice %>Rs , (<%= timeString %>)</option>
+															                                               	<!-- <td><%= parsed[x].durationTime %></td> -->
+																											
+															                                            <% }
+																							        
+																							        %>
+														
+																								<% }); %>
+																								
+																							</select> <i></i> 
+																						</label>
+																	
+																					</section>
+					
+																					<section class="col col-4">	
+																						<label class="label">Select Staff</label>
+																						<label class="select">
+
+																							<select id="staffId_1" name="staffId_1">
+																								<option value="0" selected="" disabled="">Select</option>
+																									<%   _.each(staffList, function(staffDetails){  %>	
+																									
+																										<option value="<%= staffDetails.attributes.staffId %>"><%= staffDetails.attributes.fullName %></option>
+																									
+																									<% }); %>						
+																							</select> <i></i> </label>														
+
+																							
+																					</section>
+																					
+				       													<!--        </div>
+				       													    </div>
+				       													 </div> -->
+															        <label><font color="white">.</font></label><br>	
+															        <a href="#" id="delete"><i class="fa fa-big  fa-trash-o"></i></a>														       
+															 							<!-- <i class="fa fa-lg fa-trash-o delete"></i> -->
+															           </div>
+				       										
+				       										<div class="row">
+				       										<div class="col col-6">
+				       														 <div class="formRowRepeatingSection">
+					               											 <a href="#" type="button" align="right" 
+					               											 class="btn btn-primary btn-sm buttonRight addMyService" value="Clone box">
+					               											 <i class="fa fa-plus "></i> Add Services</a>
+																		</div>
+																		</div>
+																		</div>
+															</fieldset>
+															
+															<fieldset>
+															<div class="row">
+																<section class="col col-4">
+																				<label class="label">Offer Available</label>
+																				<label class="select" id ="offer">
+																					<select>
+																					<option value="0" selected="" disabled="">Select</option>
+																						<option value="0">Student Discount</option>
+																						<option value="1">Birthday</option>
+																						<option value="2">Festival</option>																						
+																						
+																						
+																					</select> <i></i> 
+																				</label>
+																			 </section> 
+																				<!-- <section class="col col-4">
+																				Discount By Value<label class="input"> <i
+																					class="icon-prepend fa fa-inr"></i> <input type="text"
+																					name=""discountValue"" id="discountValue" placeholder="0" onchange="applyDiscountByValue(this)">
+																				</label>
+																			</section> -->
+																			
+																		
+																			<section class="col col-4">
+																					Additional Discount(%)<label class="input"> <i
+																					class="icon-prepend  fa fa-tag"></i> <input type="text"
+																					name="discountPercent" id="discountPercent" placeholder="0" onchange="applyDiscountByPercentage(this)">
+																				</label>
+																			</section>		
+																			
+																				<section class="col col-4">
+																					<label class="label">Tax</label>
+																						<label class="select">
+
+																							<select id="taxAdd" name="taxAdd" >
+																						
+																								<option value="0" selected="">Select</option>
+
+																									<%   _.each(taxesList, function(taxes){ %>	
+																									
+																										<option value="<%= taxes.attributes.taxId %>"><%= taxes.attributes.taxName %> (<%= taxes.attributes.taxRate %> %) </option>
+																									
+																									<% }); %>						
+																							</select> <i></i> </label>	
+																			</section>	
+																					
+															</div>
+															
+															</fieldset>
+														
+															<fieldset>
+																<div class="row">
+																<section class="col col-9">
+													
+													<div class="btn-group" data-toggle="buttons">
+																<label class="btn btn-lg btn-default active" id="basedOnEvents">
+																	<input type="radio" name="gender" value="events" data-bv-field="gender">Cash</label>
+																<label class="btn btn-lg btn-default" id="basedOnFestivals">
+																	<input type="radio" name="gender" value="festivals" data-bv-field="gender">
+																	Card</label>
+																	<label class="btn btn-lg btn-default" id="basedOnFestivals">
+																	<input type="radio" name="gender" value="festivals" data-bv-field="gender">
+																	Other</label>
+																	
+													</div>
+													
+											</section>
+											
+													<section class="col col-3">
+													
+												<div class="alert alert-darken alert-block">
+								
+								<%if  (typeof(bookingTotal) != "undefined"){%>
+													<h4 class="alert-heading">Total Due :
+															<span class="pull-right" id="bookingTotalAmt"> <%=bookingTotal%> <i class="fa fa-inr"></i> </span></h4>
+													<%}else{%>
+													
+													<h4 class="alert-heading">Total Due : 0
+															<span class="pull-right">  <i class="fa fa-inr"></i> </span></h4>
+													
+													<%}%>
+												</div>
+														
+														
+				
+													
+													
+											</section>
+															</div>
+															</fieldset>
+															
+						                                    <footer>
+																<button id="checkOut" type="button" orderId ="<%= orderId %>" class="btn btn-primary">
+																	Check Out</button>
+																	
+						
+															</footer> 
+                                   	
+													</form>
+								
+												</div>
+												<!-- end widget content -->
+
+											</div>
+											<!-- end widget div -->
+
+										</div>
+										<!-- end widget -->
+
+									</div>
+							
+								</div>
+				
+							</div>
+					
+						</article>	
+					
+					</div>
+					<!-- end row -->
+											
+				</div>				
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->
+
+		<script>
+		
+		function applyDiscountByValue(element){			
+			if(typeof(element.value) != "undefined")
+			{	
+				curDiscountValue = element.value;
+				var total = calculateTotalDiscount();
+				$("#bookingTotalAmt").html(total+' <i class="fa fa-inr"></i>');
+			}
+			
+		}
+		
+		function applyDiscountByPercentage(element){			
+			if(typeof(element.value) != "undefined")
+			{	
+				curDiscountPercentage = element.value;				
+				var total = calculateTotalDiscount();				
+				$("#bookingTotalAmt").html(total+' <i class="fa fa-inr"></i>');
+			}
+			
+		}
+		
+		
+		
+		function addPriceTobookingTotal(element){
+			var curSelector = $(element).attr('id');
+			if(typeof(deleteServiceMap[curSelector]) == "undefined"){
+				deleteServiceMap[curSelector] = serviceMap[element.value].retailPrice;			
+				curBookingTotal = curBookingTotal + deleteServiceMap[curSelector];			
+			}
+			else{
+				curBookingTotal = curBookingTotal - deleteServiceMap[curSelector];
+				deleteServiceMap[curSelector] = serviceMap[element.value].retailPrice;			
+				curBookingTotal = curBookingTotal + deleteServiceMap[curSelector];
+			}
+			var total = calculateTotalDiscount();
+			$("#bookingTotalAmt").html(total+' <i class="fa fa-inr"></i>');
+			//console.log(deleteServiceMap);
+			//$("#bookingTotalAmt").addclass("fa fa-inr");
+		}
+		
+		function calculateTotalDiscount(){
+			var afterDiscountTotal = curBookingTotal - curDiscountValue;
+			if(curDiscountPercentage > 0)
+			{
+				return afterDiscountTotal - (afterDiscountTotal*curDiscountPercentage)/100; 
+			}
+			else{
+				return afterDiscountTotal;
+			}					
+		}
+		
+		function calculateTotalTax(){
+			var afterDiscountTotal = curBookingTotal - curDiscountValue;
+			if(curDiscountPercentage > 0)
+			{
+				return afterDiscountTotal + (afterDiscountTotal*curDiscountPercentage)/100; 
+			}
+			else{
+				return afterDiscountTotal;
+			}					
+		}
+		
+		$(document).ready(function() {			
+			//console("setting bookingTotal =0 ");
+		    $('.addMyService').click(function(e){
+				e.preventDefault();
+		        
+		        if(last == 1)
+		        {
+		        	$('.repeatingSection').show();
+		        	last = 2;		        	
+		        	curBookingTotal = curBookingTotal + lastPrice;
+		        	var total = calculateTotalDiscount();					
+		        	
+		        	$("#bookingTotalAmt").html(total+' <i class="fa fa-inr"></i>');
+		        }
+		        else
+		        {
+		        	var lastRepeatingGroup = $('.repeatingSection').last();
+		        	var cloned = lastRepeatingGroup.clone(true)  
+		        	cloned.insertAfter(lastRepeatingGroup);
+		        	clonedFlag = true;
+		        	resetAttributeNames(cloned);
+		        	//console.log(last);
+		        }
+		    });
+		    
+		    
+		    $(document).on("click", ".close", function() {
+		        $(this).closest(".box").remove();
+		    });
+		    
+		    
+		    $('#searchResult').hide();
+		    
+		});
+		
+		$('#delete').click(function(e){
+			e.preventDefault();
+	        //console.log(e);
+	        var current_fight = $(this).parent('div');	        	       
+	        var other_fights = current_fight.siblings('.repeatingSection');
+	        var curSelecter = current_fight.find("select").attr('id');
+	        //console.log(other_fights);
+	        //console.log(last);
+	        if (other_fights.length === 0) {
+	        	$('.repeatingSection').hide();
+	        	last = 1;
+	        	
+	        	if(typeof(deleteServiceMap[curSelecter]) != "undefined"){
+	        		//console.log("deleting "+current_fight.find("select").attr('id'));	        	
+	        		curBookingTotal = curBookingTotal - deleteServiceMap[curSelecter];
+	        		lastPrice = deleteServiceMap[curSelecter];
+	        		
+	        		var total = calculateTotalDiscount();
+					$("#bookingTotalAmt").html(total+' <i class="fa fa-inr"></i>');
+	        	}
+	            //alert("You should atleast have one Service");
+	            return;
+	        }
+	        current_fight.slideUp('slow', function() {
+	        	//console.log("deleting "+current_fight.find("select").attr('id'));	        	
+	        	if(typeof(deleteServiceMap[curSelecter]) != "undefined"){	        	
+	        		
+	        		curBookingTotal = curBookingTotal - deleteServiceMap[curSelecter];
+	        		var total = calculateTotalDiscount();
+	        		
+					$("#bookingTotalAmt").html(total+' <i class="fa fa-inr"></i>');
+					deleteServiceMap[curSelecter] = undefined;
+	        	}
+				current_fight.remove();
+	            
+	            // reset fight indexes
+	             other_fights.each(function() {
+	               resetAttributeNames($(this)); 
+	            })   
+	        })
+	        
+	    });
+		
+		
+		var attrs = ['for', 'id', 'name'];
+		function resetAttributeNames(section) { 
+		    var tags = section.find('select, label'), idx = section.index();
+		    
+		    var curSelecterReset = section.find("select").attr('id');
+		    
+		    var curPriceReset = deleteServiceMap[curSelecterReset];		    
+		    //console.log(curSelecterReset+"-----reseting"+curPriceReset);
+		    //delete deleteServiceMap[curSelecter];
+		    //console.log(deleteServiceMap);
+		    var index = section.parent().find('.repeatingSection').index(section);
+		    var newKey = "serviceId_"+(index +1);
+		    //console.log(newKey+"-----reseting"+curPriceReset);
+		    if(clonedFlag){
+		    	deleteServiceMap[newKey] = undefined;
+		    	clonedFlag = false;
+		    }
+		    else{
+		    	deleteServiceMap[newKey] = curPriceReset;
+		    }
+		    //console.log(deleteServiceMap);
+		    //console.log(index + "------"+ idx);
+		    tags.each(function() {
+		      var $this = $(this);
+		      $.each(attrs, function(i, attr) {
+		        var attr_val = $this.attr(attr);
+		        if (attr_val) {
+		            $this.attr(attr, attr_val.replace(/_\d+$/, '_'+(index + 1)))
+		        }
+		      })
+		    })
+		}
+		
+		/* 
+		$('.addDirector').click(function(e){
+	        e.preventDefault();
+	        var lastRepeatingGroup = $('.repeatingSection').last();
+	        var cloned = lastRepeatingGroup.clone(true)  
+	        cloned.insertAfter(lastRepeatingGroup);
+	        resetAttributeNames(cloned)
+	    });
+		
+		
+		$('.deleteDirector').click(function(e){
+	        e.preventDefault();
+	        var current_fight = $(this).parent('div');
+	        var other_fights = current_fight.siblings('.repeatingSection');
+	        if (other_fights.length === 0) {
+	            alert("You should have atleast  one Service");
+	            return;
+	        }
+	        current_fight.slideUp('slow', function() {
+	            current_fight.remove();
+	            
+	            // reset fight indexes
+	            other_fights.each(function() {
+	               resetAttributeNames($(this)); 
+	            })  
+	            
+	        })
+	        
+	            
+	    }); */
+		
+		// START AND FINISH DATE
+		$('#startdate').datepicker({
+			dateFormat : 'yy-mm-dd',
+			prevText : '<i class="fa fa-chevron-left"></i>',
+			nextText : '<i class="fa fa-chevron-right"></i>',	
+			onSelect : function(selectedDate) {
+				$('#startdate').datepicker('option', 'minDate', selectedDate);
+			}
+		});
+		
+	    
+	    $(function() {
+	       
+	        $("#search").autocomplete({
+	          source: function( request, response ) { 
+	        	  var searchField = $('#search').val();
+	        	  //console.log("read value"+searchField);
+	        	  $.ajax({
+	                type: 'GET',					
+	                url: CommonUtils.get("projectUrl")+"/rest/client/searchClient/"+searchField+"/"+CommonUtils.getUser('organisationId'),
+	            	async:false,			        
+	              success: function( data ) {
+	            	  //console.log("hiiiii");
+	            	  var availableTags = [];
+	            	  for (var i = 0; i < data.length; i++) {
+			            	availableTags.push(data[i].name);
+			            	//$(area).append('<option id=' + i + ' value="' + data[i] + '">' + data[i]+ '</option>');
+
+			            }
+	            	  //console.log("hiiiii--");
+	            	  response(availableTags);       
+	              },
+	                error: function(jqXHR, textStatus, errorThrown){
+	                    alert(jqXHR);                        
+	                },
+	            });
+	          },
+	        select: function (event, ui) {
+	           /*  $("#search").val();
+	                    cityID = ui.item.id; */
+	                    $("#serachRow").hide();
+	                    $("#clientRow").show();
+	            return false;
+	          },
+	        });
+	      });
+	    
+		 $('#changeClient').on('click', function() {
+		    	
+	    	 
+	    	 //console.log("hidden");
+	    	 $("#clientRow").hide();
+	    	 $("#serachRow").show();
+	    	 $('#search').val(""); 
+	    });
+	    
+	    $("#serachRow").hide();
+	    
+	    $('#delete1').on('click', function() {
+		 	
+		 	$(this).closest('tr').remove();
+	    });
+		 	
+		 	 $('#delete2').on('click', function() {
+		 	 	
+		 	 	$(this).closest('tr').remove();
+		 	 });
+	   
+	    /* $( function() {
+	      var availableTags = [
+	        "ActionScript",
+	        "AppleScript",
+	        "Asp",
+	        "BASIC",
+	        "C",
+	        "C++",
+	        "Clojure",
+	        "COBOL",
+	        "ColdFusion",
+	        "Erlang",
+	        "Fortran",
+	        "Groovy",
+	        "Haskell",
+	        "Java",
+	        "JavaScript",
+	        "Lisp",
+	        "Perl",
+	        "PHP",
+	        "Python",
+	        "Ruby",
+	        "Scala",
+	        "Scheme"
+	      ];
+	      $( "#search" ).autocomplete({
+
+	    	  source: availableTags;
+	      });
+	    } );
+	    */
+	    
+		</script>

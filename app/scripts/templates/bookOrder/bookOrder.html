@@ -1,0 +1,739 @@
+<script src="js/plugin/clockpicker/clockpicker.min.js"></script>
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Book Order</li>
+		</ol>
+		<!-- end breadcrumb -->
+	</div>
+	<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+			
+				<div class="animated fadeInRight">
+					
+					<!-- row -->
+					<div class="row">
+				
+						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+							<div class="well well-light">
+						
+								<div class="row">	
+								
+									<div class="col-sm-12">
+
+										<!-- Widget ID (each widget will need unique ID)-->
+										<div class="jarviswidget" id="wid-id-1"
+											data-widget-editbutton="false" data-widget-custombutton="false">
+											<header>
+												<span class="widget-icon"> <i class="fa fa-edit"></i>
+												</span>
+												<h2>New Booking</h2>
+											</header>
+											<!-- widget div-->
+											<div>
+											<!-- widget edit box -->
+											<div class="jarviswidget-editbox">
+												<!-- This area used as dropdown edit box -->
+											</div>
+											<!-- end widget edit box -->
+											
+												<!-- widget content -->
+												<div class="widget-body no-padding">
+														
+						
+														
+													<form id="bookorderform" class="smart-form"
+															novalidate="novalidate">
+
+														<fieldset>
+																<div id="searchDiv">
+																	<div class="row" id="serachRow">
+																		
+																		<section class="col col-8">
+																			<label class="input"> <i
+																				class="icon-append fa fa-search"></i> <input type="text"
+																				name="search" id="search" placeholder="Search by Name or Mobile No">
+																			</label> 
+																		</section>
+																		<section class="col col-4">
+																			<a class="btn btn-sm btn-default" id="newClients"><i class="fa fa-plus "></i> Add New</a>	
+																		</section>
+																	
+																	</div>
+																	
+																	<div class="row" id="clientRow">
+																		<section class="col col-4">
+																			 <h1 class="semi-bold"><a href="#" id="clientName"></a></h1> 
+																			 <h5 id="mobile">&nbsp;&nbsp;&nbsp;<a href="#" id="mobile"></a></h5> 
+																		</section>
+																		<section class="col col-2">
+																			<a class="btn btn-sm btn-default" id="changeClient">Change Client</a>
+																		</section>
+																		<!-- <section class="col col-6">
+																			<h6>Last Visited</h6>	
+																			<div class="table-responsive">
+																				<table class="table table-bordered table-striped">
+																					
+																					<tbody>
+																						<tr>
+																						<td><span class="semi-bold">Blow Dry</span><br>
+																						Rahul - Friday, 14 Apr 2017 at 10:30am																
+																						</td>
+																						</tr>
+																						
+																						<tr>
+																						<td><span class="semi-bold">Haircut</span><br>
+																						Sushant - Friday, 14 Apr 2017 at 9:00am																
+																						</td>
+																						</tr>
+																					</tbody>
+																				
+																				</table>
+																			</div>
+																	
+																		</section> -->
+																	</div>
+																
+																</div>
+																
+																<div id="clientInfoView">
+																	<div class="row">
+																		<section class="col col-3">
+																			<a href="#" id="clientsProfile" ><h3><%=cName%></h3></a>
+																		</section>
+																	</div>
+																</div>
+															<!-- 	<div class="row">
+																	<section class="col col-12">
+																		   <div id="myRadioGroup">
+																				<label class="label">Booking</label>
+																					<div class="inline-group">
+																						<label class="radio">
+																							<input type="radio" name="radio-inline" checked="checked">
+																							<i></i>Walk-In</label>
+																							
+																						<label class="radio">
+																							<input type="radio" name="radio-inline" >
+																							<i></i>Online</label>
+																							
+																						<label class="radio">
+																							<input type="radio" name="radio-inline" >
+																							<i></i>other</label>
+																							
+																					</div>
+																			</div>			
+																	</section>
+																</div> -->
+															</fieldset>
+
+															<fieldset>
+																<div class="row">
+																	<section class="col col-4">
+																	<label class="label">Select Date</label>	
+																		<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																		<input type="text" name="bookingDate" id="bookingDate">
+																		</label>
+																	</section>
+																	<!-- <section class="col col-4">
+																			<label class="label">Repeats</label>
+																			<label class="select">
+																				<select id="repeats">
+																					<option value="0">Don't Repeat</option>
+																					<option value="1">Daily</option>
+																					<option value="2">Weekly</option>
+																					<option value="3">Every 2 Weeks</option>
+																					<option value="4">Every 3 Weeks</option>
+																					<option value="5">Monthly</option>
+																				</select> <i></i> </label>
+																	</section> -->
+																	<section class="col col-4">
+																	<label class="label">Select Time</label>
+																	<label class="input"> <i class="icon-append fa fa-clock-o"></i>
+																		<input type="text" name="time" id="time" data-autoclose="true">
+																		</label>
+																	
+																	</section>
+																	<!-- <section class="col col-4">
+																			<label class="label">Time</label>
+																			<label class="select">
+																				<select id="time">
+																					<option value="0">12:00pm</option>
+																					<option value="1">12:30pm</option>
+																					<option value="2">1:00pm</option>
+																					<option value="3">1:30pm</option>
+																					<option value="4">2:00pm</option>
+																					<option value="5">2:30pm</option>
+																				</select> <i></i> </label>
+																	</section> -->
+																</div>
+															
+															
+																<div class="repeatingSection row">
+															 		 <!-- <a href="#" type="button" class="btn btn-primary btn-sm buttonright deleteService"><i class="fa fa-times "></i> Delete</a> -->
+															            <input type="hidden" name="fighter_a_id_1" id="fighter_a_id_1" value="" />
+															            <input type="hidden" name="fighter_b_id_1" id="fighter_b_id_1" value="" />
+															            <input type="hidden" name="winner_id_1" id="winner_id_1" value="" />
+															 		
+																		<!-- <div class="row"> 
+																			 <div id = "directorpartner">
+																    			<div class="form-group box"> -->
+																            		<section class="col col-4">	
+																						<label class="label">Select Services</label>
+																						<label class="select" for="serviceId_1">
+																							<select id="serviceId_1" name="serviceId_1" onchange=addPriceTobookingTotal(this)>
+																								<option value="0" selected="" disabled="">Select</option>
+
+																																																																				
+																									<% 
+																								serviceMap = {};
+																								curBookingTotal=0;
+																								deleteServiceMap = {};				
+																								last = 2;
+																								_.each(servicesList, function(serviceObject){ %>
+																									
+																									<optgroup label="<%= serviceObject.attributes.serviceGroupName %>">									                													        
+																							        
+																							        <%    	
+																							        var arr = [];
+																							        var json = JSON.stringify(serviceObject.attributes.serviceList);
+																							        var parsed = JSON.parse(json);
+																							        
+																	        for(var x in parsed)
+																	        {
+								                                               var key = parsed[x].serviceId;
+								                                               serviceMap[key] = parsed[x]; 
+								                                               arr.push(parsed[x]);
+								                                                 
+								                                                    var timeValue=parsed[x].durationTime;
+								    
+								                                               var hours=Math.floor(timeValue/60);
+								                                               console.log("hours print"+ hours);
+								                                               if (hours>0)
+								                                               {
+																					min=hours*60;
+																					finalMin=timeValue-min;
+																					if(finalMin!=0)
+																					{
+																						timeString=hours + " h " +finalMin + " min";
+																						console.log("hours print"+ timeString);
+																					}
+																					else{
+																						timeString=hours + " h";
+																						console.log("hours print"+ timeString);
+																					}
+																				}
+																				else{
+																				
+																					timeString=timeValue + " min";
+																					console.log("hours print"+ timeString);
+																				}                          
+															                                               %>
+															                                               
+															                                               <option value="<%= parsed[x].serviceId %>"><%= parsed[x].serviceName %> - <%= parsed[x].retailPrice %>Rs , (<%= timeString %>)</option>
+															                                               	<!-- <td><%= parsed[x].durationTime %></td> -->
+																											
+															                                            <% }
+																							        
+																							        %>
+														
+																								<% }); %>
+
+																								
+																							</select> <i></i> 
+																						</label>
+																	
+																					</section>
+					
+																					<section class="col col-4">	
+																						<label class="label">Select Staff</label>
+																						<label class="select" for="staffId_1">
+																							<select id="staffId_1" name="staffId_1">
+																								<option value="0" selected="" disabled="">Select</option>
+																									<%   _.each(staffList, function(staffDetails){  %>	
+																										
+																										<option value="<%= staffDetails.attributes.staffId %>"><%= staffDetails.attributes.fullName %></option>
+																								
+																									<% }); %>						
+																							</select> <i></i> </label>														
+																							
+																					</section>
+																					
+				       													<!--        </div>
+				       													    </div>
+
+				       													 </div> -->
+															        <label><font color="white">.</font></label><br>	
+															        <a href="#" id="delete"><i class="fa fa-big  fa-trash-o"></i></a>														       
+															 							<!-- <i class="fa fa-lg fa-trash-o delete"></i> -->
+
+															           </div>
+				       										
+				       										<div class="row">
+				       										<div class="col col-6">
+															<div class="formRowRepeatingSection">
+					               											 <a href="#" type="button" align="right" 
+					               											 class="btn btn-primary btn-sm buttonRight addMyService" value="Clone box">
+					               											 <i class="fa fa-plus "></i> Add Services</a>
+															</div>
+															</div>
+															</div>
+															
+															</fieldset>
+															<fieldset>
+															
+															<div class="row">
+															<section class="col col-9">
+															</section>
+															
+																	<section class="col col-3">
+													
+												<div class="alert alert-darken alert-block" id="right">
+								
+													<h4 class="alert-heading">Total Due:
+															<span class="pull-right" id="bookingTotalAmt">  <i class="fa fa-inr"></i> </span></h4>
+													
+												</div>
+												</section>
+												</div>
+														
+														
+				
+													
+													
+											
+															
+															</fieldset>
+															
+						                                    <footer>
+																<button id="bookOrders" type="submit" class="btn btn-primary" disabled="disabled">
+																	<i class="fa fa-check "></i> Save</button>
+																	<div id="saveNewBooking"></div>
+						
+															</footer> 
+                                   	
+													</form>
+								
+												</div>
+												<!-- end widget content -->
+
+											</div>
+											<!-- end widget div -->
+
+										</div>
+										<!-- end widget -->
+
+									</div>
+							
+								</div>
+				
+							</div>
+					
+						</article>	
+					
+					</div>
+					<!-- end row -->
+											
+				</div>				
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->
+
+<script>
+		
+function addPriceTobookingTotal(element){
+	var curSelector = $(element).attr('id');
+	if(typeof(deleteServiceMap[curSelector]) == "undefined"){
+		deleteServiceMap[curSelector] = serviceMap[element.value].retailPrice;			
+		curBookingTotal = curBookingTotal + deleteServiceMap[curSelector];			
+	}
+	else{
+		curBookingTotal = curBookingTotal - deleteServiceMap[curSelector];
+		deleteServiceMap[curSelector] = serviceMap[element.value].retailPrice;			
+		curBookingTotal = curBookingTotal + deleteServiceMap[curSelector];
+	}
+	
+	$("#bookingTotalAmt").html(curBookingTotal+' <i class="fa fa-inr"></i>');	
+	//$("#bookingTotalAmt").addclass("fa fa-inr");
+}
+		
+		
+		$(document).ready(function() {
+		    $('.addMyService').click(function(e){
+		        e.preventDefault();
+		        
+		        if(last == 1)
+		        {
+		        	$('.repeatingSection').show();
+		        	last = 2;		        	
+		        	curBookingTotal = curBookingTotal + lastPrice;
+		        	
+		        	$("#bookingTotalAmt").html(curBookingTotal+' <i class="fa fa-inr"></i>');
+		        }
+		        else
+		        {
+		        	var lastRepeatingGroup = $('.repeatingSection').last();
+		        	var cloned = lastRepeatingGroup.clone(true)  
+		        	cloned.insertAfter(lastRepeatingGroup);
+		        	clonedFlag = true;
+		        	resetAttributeNames(cloned);
+		        	
+		        }
+		    });
+		    
+		    
+		    $(document).on("click", ".close", function() {
+		        $(this).closest(".box").remove();
+		    });
+		    
+		    
+		    $('#searchResult').hide();
+		    
+		});
+		
+
+		$('#delete').click(function(e){
+			e.preventDefault();
+	        //console.log(e);
+	        var current_fight = $(this).parent('div');	        	       
+	        var other_fights = current_fight.siblings('.repeatingSection');
+	        var curSelecter = current_fight.find("select").attr('id');
+	        //console.log(other_fights);
+	        //console.log(last);
+	        if (other_fights.length === 0) {
+	        	$('.repeatingSection').hide();
+	        	last = 1;
+	        	
+	        	if(typeof(deleteServiceMap[curSelecter]) != "undefined"){
+	        		//console.log("deleting "+current_fight.find("select").attr('id'));	        	
+	        		curBookingTotal = curBookingTotal - deleteServiceMap[curSelecter];
+	        		lastPrice = deleteServiceMap[curSelecter];
+	        		
+	        		
+					$("#bookingTotalAmt").html(curBookingTotal+' <i class="fa fa-inr"></i>');
+	        	}
+	            //alert("You should atleast have one Service");
+	            return;
+	        }
+	        current_fight.slideUp('slow', function() {
+	        	//console.log("deleting "+current_fight.find("select").attr('id'));	        	
+	        	if(typeof(deleteServiceMap[curSelecter]) != "undefined"){	        	
+	        		
+	        		curBookingTotal = curBookingTotal - deleteServiceMap[curSelecter];
+	        
+	        		
+					$("#bookingTotalAmt").html(curBookingTotal+' <i class="fa fa-inr"></i>');
+					deleteServiceMap[curSelecter] = undefined;
+	        	}
+				current_fight.remove();
+	            
+	            // reset fight indexes
+	             other_fights.each(function() {
+	               resetAttributeNames($(this)); 
+	            })   
+	        })
+	        
+	    });
+		
+		
+		var attrs = ['for', 'id', 'name'];
+		function resetAttributeNames(section) { 
+		    var tags = section.find('select, label'), idx = section.index();
+		    
+		    var curSelecterReset = section.find("select").attr('id');
+		    
+		    var curPriceReset = deleteServiceMap[curSelecterReset];		    
+		    //console.log(curSelecterReset+"-----reseting"+curPriceReset);
+		    //delete deleteServiceMap[curSelecter];
+		    //console.log(deleteServiceMap);
+		    var index = section.parent().find('.repeatingSection').index(section);
+		    var newKey = "serviceId_"+(index +1);
+		    //console.log(newKey+"-----reseting"+curPriceReset);
+		    if(clonedFlag){
+		    	deleteServiceMap[newKey] = undefined;
+		    	clonedFlag = false;
+		    }
+		    else{
+		    	deleteServiceMap[newKey] = curPriceReset;
+		    }
+		    //console.log(deleteServiceMap);
+		    //console.log(index + "------"+ idx);
+		    tags.each(function() {
+		      var $this = $(this);
+		      $.each(attrs, function(i, attr) {
+		        var attr_val = $this.attr(attr);
+		        if (attr_val) {
+		            $this.attr(attr, attr_val.replace(/_\d+$/, '_'+(index + 1)))
+		        }
+		      })
+		    })
+		}
+		
+		/* $('.deleteService').click(function(e){
+	        e.preventDefault();
+	        var current_fight = $(this).parent('div');
+	        console.log(current_fight);
+	        var other_fights = current_fight.siblings('.repeatingSection');
+	        if (other_fights.length === 0) {
+	        	$('.repeatingSection').hide();
+	            alert("You should atleast have one Service");
+	            return;
+	        }
+	        current_fight.slideUp('slow', function() {
+	            current_fight.remove();
+	            
+	            // reset fight indexes
+	            other_fights.each(function() {
+	               resetAttributeNames($(this)); 
+	            })  
+	        })
+	        
+	    });
+
+ */		
+		// START AND FINISH DATE
+		$('#bookingDate').datepicker({
+			dateFormat : 'yy-mm-dd',
+			prevText : '<i class="fa fa-chevron-left"></i>',
+			nextText : '<i class="fa fa-chevron-right"></i>',
+			minDate: 0,
+			onSelect : function(selectedDate) {
+				var maxDate = new Date(Date.parse(selectedDate));
+	             //maxDate.setDate( selectedDate +"+10D");     
+				//$('#endDate').datepicker('option', 'minDate', selectedDate);
+				//$('#endDate').datepicker('option', 'maxDate');
+			}
+		});
+		
+		$('#time').clockpicker({
+			placement: 'top',
+		    donetext: 'Done',
+		    twelvehour:true,
+		    
+		    onHourShow: function( hour ) { 
+		        var currenttime = new Date();
+		        if ( $('#date').val() == $.datepicker.
+		                                  formatDate ( 'mm/dd/yy', currenttime ) ) {
+		            if ( hour <= currenttime.getHours() ) {
+		                alert('nope');
+		                return false;
+		            }
+		        }
+		        return true;
+		    }
+		});
+	    
+	    $(function() {	     
+	        $("#search").autocomplete({
+	          source: function( request, response ) { 
+	        	  var searchField = $('#search').val();
+	        	  //console.log("read value"+searchField);
+	        	  $.ajax({
+	                type: 'GET',					
+	                url: CommonUtils.get("projectUrl")+"/rest/client/searchClient/"+searchField+"/"+CommonUtils.getUser('organisationId'),
+	            	async:false,			        
+	              success: function( data ) {
+	            	   //console.log("hiiiii");
+	      /*       	  var availableTags = [];
+	            	  for (var i = 0; i < data.length; i++) {
+			            	availableTags.push(data[i].name);
+			            	//$(area).append('<option id=' + i + ' value="' + data[i] + '">' + data[i]+ '</option>');
+			            }
+	            	  console.log("hiiiii--");
+	            	  response(availableTags); hre@123456
+	         */    	  
+	            	   response($.map(data,function(item){
+	            		  return{label:item.name,
+	            		  		value:item.mobile};
+	            	  })); 
+	            	  
+	            	  
+	              },
+	                error: function(jqXHR, textStatus, errorThrown){
+	                    alert(jqXHR);                        
+	                },
+	            });
+	          },
+	          
+	        select: function (event, ui) {
+	        	//console.log(ui);
+		             
+	        		 $("#search").val();
+		             var nameID = ui.item.label;
+		             var mobile = ui.item.value;
+		             //console.log("selected name--"+nameID);
+		             //console.log("selected name--"+mobile);
+		             $("#serachRow").hide();
+		             $("#clientRow").show();
+		             $('a#clientName').text(nameID);
+		             $('a#mobile').text(mobile);
+		             $("#bookOrders").removeAttr("disabled");
+		            return false;
+		          },
+	        });
+	      });
+	    
+	 $('#changeClient').on('click', function() {
+		    	
+	    	 //console.log("hidden");
+	    	 $("#clientRow").hide();
+	    	 $("#serachRow").show();
+	    	 $('#search').val(""); 
+	    	 $("#bookOrders").attr("disabled",true);
+	    });
+	    
+	    $("#clientRow").hide();
+	   
+	    function chkBookOrders(){
+	    
+		 var $validator = $("#bookorderform").validate({
+			    
+			    rules: {
+			    	
+			      serviceId_1: {
+			        required: true
+			      },
+			      staffId_1: {
+			        required: true
+			      },
+			      serviceId_2: {
+				        required: true
+				      },
+				  staffId_2: {
+				        required: true
+				  },
+				  serviceId_3: {
+				        required: true
+				  },
+				  staffId_3: {
+				        required: true
+				  },
+				  serviceId_4: {
+					        required: true
+				  },
+				  staffId_4: {
+					        required: true
+				  },
+				  serviceId_5: {
+				        required: true
+				  },
+				  staffId_5: {
+				        required: true
+				  },
+				  serviceId_6: {
+					        required: true
+				  },
+				  staffId_6: {
+					        required: true
+				  },
+				  serviceId_7: {
+					        required: true
+				  },
+			      staffId_7: {
+					        required: true
+				  },
+				  serviceId_8: {
+						        required: true
+				  },
+				  staffId_8: {
+						        required: true
+				  },
+			      bookingDate : {
+			        required: true
+			      },
+			      time: {
+			        required: true
+			      }
+			     
+			    },
+			    
+			    messages: {
+			    	serviceId_1: "Please select your Service",
+			    	staffId_1: "Please select your Staff",
+			    	serviceId_2: "Please select your Service",
+			    	staffId_2: "Please select your Staff",
+			    	serviceId_3: "Please select your Service",
+			    	staffId_3: "Please select your Staff",
+			    	serviceId_4: "Please select your Service",
+			    	staffId_4: "Please select your Staff",
+			    	serviceId_5: "Please select your Service",
+			    	staffId_5: "Please select your Staff",
+			    	serviceId_6: "Please select your Service",
+			    	staffId_6: "Please select your Staff",
+			    	serviceId_7: "Please select your Service",
+			    	staffId_7: "Please select your Staff",
+			    	serviceId_8: "Please select your Service",
+			    	staffId_8: "Please select your Staff",
+			    	bookingDate: "Please select appointment Date",
+			    	time: "Please select appointment Time"			    	
+			      },
+			      
+			    
+			    submitHandler: function() {					
+					
+					$("#saveNewBooking").click();
+					    
+			   },
+			   
+			   invalidHandler: function() {
+				    
+			   }
+			  });
+	    
+		 }
+		
+		 	$('#bookOrders').click(function(e){  
+
+		 		
+		 		  
+		        chkBookOrders();
+		        
+		     });	
+
+	    /* 
+	    
+	    $( function() {
+	      var availableTags = [
+	        "ActionScript",
+	        "AppleScript",
+	        "Asp",
+	        "BASIC",
+	        "C",
+	        "C++",
+	        "Clojure",
+	        "COBOL",
+	        "ColdFusion",
+	        "Erlang",
+	        "Fortran",
+	        "Groovy",
+	        "Haskell",
+	        "Java",
+	        "JavaScript",
+	        "Lisp",
+	        "Perl",
+	        "PHP",
+	        "Python",
+	        "Ruby",
+	        "Scala",
+	        "Scheme"
+	      ];
+	      $( "#search" ).autocomplete({
+
+	    	  source: availableTags;
+	      }); 
+	    });*/
+	    
+	   
+	    
+</script>

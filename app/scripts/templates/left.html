@@ -1,0 +1,376 @@
+	<!-- IMPORTANT: APP CONFIG -->
+		<script src="js/app.config.js"></script>
+		
+		<!-- MAIN APP JS FILE -->
+		<script src="js/app.min.js"></script>
+
+        <aside id="left-panel">
+
+			<!-- User info -->
+			<div class="login-info">
+				<span> <!-- User image size is adjusted inside CSS, it should stay as it --> 
+					
+					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+						<i class="fa fa-lg fa-fw fa-user "></i>
+						<span>
+							<%= CommonUtils.getUser("fullName") %> 
+						</span>
+						<i class="fa fa-angle-down"></i>
+					</a> 
+					
+				</span>
+			</div>
+			<!-- end user info -->
+
+			<!-- NAVIGATION : This navigation responsive-->
+			<nav>
+			
+			
+			<!-- Showad Admin -->
+			<% if ($.inArray(0, role) != -1) { %>
+			
+			<ul>
+						<!-- <li class="active">
+								<a href="#" id="homepage" title="Home"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
+							 </li>
+							
+							 <li>
+								<a href="#"  title="Dashboard"><i class="fa fa-lg fa-fw fa-dashboard"></i> <span class="menu-item-parent">Dashboard</span></a>
+								 <ul>
+									 <li>
+										<a href="#" id="blankScreen" class="showAdPointerCursor"><i class="fa fa-fw  fa-heart-o "></i>Blank Screen</a> 
+									 </li>
+								 </ul> 
+							 </li>		-->
+							 
+							 <li>
+								<a href="#"  id="dashBoard" title="Dashboard"><i class="fa fa-lg fa-fw fa-dashboard"></i> <span class="menu-item-parent">Dashboard</span></a>
+							 </li>
+							 
+							  <li>
+								<a href="#"  id="salesBtn" title="Sales"><i class="fa fa-lg fa-fw  fa-bar-chart-o"></i> <span class="menu-item-parent">Sales</span></a>
+							 </li>
+							
+						     <li>
+								<a href="#" id="clients" title="Clients"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Clients</span></a>
+							 </li>
+							
+							 <li>
+								<a href="#" id="orderStatus" title="Order Status"><i class="fa fa-lg fa-fw  fa-check-circle"></i> <span class="menu-item-parent">Order Status</span></a>
+							 	
+							 	<!-- <ul>
+
+									<li>
+										<a href="#" id="orderStatus" title="Confirm Order" class="showAdPointerCursor"><i class="fa fa-fw  fa-cloud"></i>Confirm order</a> 
+									</li>
+						
+									<li>
+										<a href="#" id="dateWiseOrder" title="Date-wise order" class="showAdPointerCursor"><i class="fa fa-fw  fa-desktop"></i>Date-wise order</a> 
+									</li>
+									
+									<li>
+										<a href="#" id="weekWiseOrder" title="Week-wise order" class="showAdPointerCursor"><i class="fa fa-fw  fa-cloud"></i>Week-wise order</a> 
+									</li>
+						
+									<li>
+										<a href="#" id="monthWiseOrder" title="Month-wise order" class="showAdPointerCursor"><i class="fa fa-fw  fa-desktop"></i>Month-wise order</a> 
+									</li>
+														
+								</ul> -->
+								
+							 </li>
+							
+						     <li>
+								<a href="#" id="services" title="Services"><i class="fa fa-lg fa-fw fa-slack"></i> <span class="menu-item-parent">Services</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" id="staff" title="Staff"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Staff</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" title="Booking Order"><i class="fa fa-lg fa-fw fa-shopping-cart"></i> <span class="menu-item-parent">Booking Order</span></a>
+						     	
+						     	<ul>
+
+									<li>
+										<a href="#" id="onlineBook" title="Online Booking" class="showAdPointerCursor"><i class="fa fa-fw  fa-cloud"></i>Online Booking</a> 
+									</li>
+						
+									<li>
+										<a href="#" id="bookOrder" title="Offline Booking" class="showAdPointerCursor"><i class="fa fa-fw  fa-desktop "></i>Offline Booking</a> 
+									</li>
+														
+								</ul>
+								
+							 </li>
+							 		
+							 <li>
+								<a href="#" id="campaignManager" title="Campaign Manager"><i class="fa fa-lg fa-fw fa-envelope"></i><span class="menu-item-parent">Campaign Manager</span></a>
+							 </li>
+							
+							 <li>
+								<a href="#" id="setup" title="Setup"><i class="fa fa-lg fa-fw fa-gears"></i> <span class="menu-item-parent">Setup</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" id="shedule" title="Schedule"><i class="fa fa-lg fa-fw fa-clock-o"></i> <span class="menu-item-parent">Schedule</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" id="contact" title="Contact"><i class="fa fa-lg fa-fw  fa-phone"></i> <span class="menu-item-parent">Contact</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" id="feedback" title="feedback"><i class="fa fa-lg fa-fw fa-phone"></i> <span class="menu-item-parent">Feedback</span></a>
+							 </li>
+			
+				</ul>	
+				
+				<% } %>
+			
+			
+			     <!-- Mediaowner -->
+				<% if ($.inArray(1, role) != -1) { %>
+				
+					<ul>
+						<!-- <li class="active">
+								<a href="#" id="homepage" title="Home"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
+							 </li>
+							
+							 <li>
+								<a href="#"  title="Dashboard"><i class="fa fa-lg fa-fw fa-dashboard"></i> <span class="menu-item-parent">Dashboard</span></a>
+								 <ul>
+									 <li>
+										<a href="#" id="blankScreen" class="showAdPointerCursor"><i class="fa fa-fw  fa-heart-o "></i>Blank Screen</a> 
+									 </li>
+								 </ul> 
+							 </li>		-->
+							 
+							 <li>
+								<a href="#"  id="dashBoard" title="Dashboard"><i class="fa fa-lg fa-fw fa-dashboard"></i> <span class="menu-item-parent">Dashboard</span></a>
+								
+							 </li>
+							 
+							  <li>
+								<a href="#"  id="salesBtn" title="Sales"><i class="fa fa-lg fa-fw  fa-bar-chart-o"></i> <span class="menu-item-parent">Sales</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#"  id="calendarBtn" title="Calendar"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">Calendar</span></a>
+							 </li>
+							
+						     <li>
+								<a href="#" id="clients" title="Clients"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Clients</span></a>
+							 </li>
+							
+							 <li>
+								<a href="#" id="orderStatus" title="Order Status"><i class="fa fa-lg fa-fw fa-check-circle"></i> <span class="menu-item-parent">Order Status</span></a>
+							 	
+							 	<!-- <ul>
+
+									<li>
+										<a href="#" id="orderStatus" title="Confirm Order" class="showAdPointerCursor"><i class="fa fa-fw  fa-cloud"></i>Confirm order</a> 
+									</li>
+						
+									<li>
+										<a href="#" id="dateWiseOrder" title="Date-wise order" class="showAdPointerCursor"><i class="fa fa-fw  fa-desktop"></i>Date-wise order</a> 
+									</li>
+									
+									<li>
+										<a href="#" id="weekWiseOrder" title="Week-wise order" class="showAdPointerCursor"><i class="fa fa-fw  fa-cloud"></i>Week-wise order</a> 
+									</li>
+						
+									<li>
+										<a href="#" id="monthWiseOrder" title="Month-wise order" class="showAdPointerCursor"><i class="fa fa-fw  fa-desktop"></i>Month-wise order</a> 
+									</li>
+														
+								</ul> -->
+								
+							 </li>
+							
+						     <li>
+								<a href="#" id="services" title="Services"><i class="fa fa-lg fa-fw fa-slack"></i> <span class="menu-item-parent">Services</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" id="staff" title="Staff"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Staff</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" title="Booking Order"><i class="fa fa-lg fa-fw fa-shopping-cart"></i> <span class="menu-item-parent">Booking Order</span></a>
+						     	
+						     	<ul>
+
+									<li>
+										<a href="#" id="onlineBook" title="Online Booking" class="showAdPointerCursor"><i class="fa fa-fw  fa-cloud "></i> Online Booking</a> 
+									</li>
+						
+									<li>
+										<a href="#" id="bookOrder" title="Offline Booking" class="showAdPointerCursor"><i class="fa fa-fw  fa-desktop "></i> Offline Booking</a> 
+									</li>
+														
+								</ul>
+								
+							 </li>
+							 		
+							 <li>
+								<a href="#" id="campaignManager" title="Campaign Manager"><i class="fa fa-lg fa-fw fa-envelope"></i><span class="menu-item-parent">Campaign Manager</span></a>
+							 </li>
+							
+							 <li>
+								<a href="#" id="setup" title="Setup"><i class="fa fa-lg fa-fw fa-gears"></i> <span class="menu-item-parent">Setup</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" id="shedule" title="Schedule"><i class="fa fa-lg fa-fw fa-clock-o"></i> <span class="menu-item-parent">Schedule</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" id="contact" title="Contact"><i class="fa fa-lg fa-fw fa-phone"></i> <span class="menu-item-parent">Contact</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" id="feedback" title="feedback"><i class="fa fa-lg fa-fw fa-phone"></i> <span class="menu-item-parent">Feedback</span></a>
+							 </li>
+			
+					</ul>
+				
+				<% } %>
+				
+				<!-- Ad Agency -->
+				
+				<% if ($.inArray(2, role) != -1) { %>
+				
+			<ul>
+						<!-- <li class="active">
+								<a href="#" id="homepage" title="Home"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
+							 </li>
+							
+							 <li>
+								<a href="#"  title="Dashboard"><i class="fa fa-lg fa-fw fa-dashboard"></i> <span class="menu-item-parent">Dashboard</span></a>
+								 <ul>
+									 <li>
+										<a href="#" id="blankScreen" class="showAdPointerCursor"><i class="fa fa-fw  fa-heart-o "></i>Blank Screen</a> 
+									 </li>
+								 </ul> 
+							 </li>		-->
+							 
+							 <li>
+								<a href="#"  id="dashBoard" title="Dashboard"><i class="fa fa-lg fa-fw fa-dashboard"></i> <span class="menu-item-parent">Dashboard</span></a>
+							 </li>
+							
+							  <li>
+								<a href="#"  id="salesBtn" title="Sales"><i class="fa fa-lg fa-fw  fa-bar-chart-o"></i> <span class="menu-item-parent">Sales</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#"  id="calendarBtn" title="Calendar"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">Calendar</span></a>
+							 </li>
+							
+						     <li>
+								<a href="#" id="clients" title="Clients"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Clients</span></a>
+							 </li>
+							
+							 <li>
+								<a href="#" id="orderStatus" title="Order Status"><i class="fa fa-lg fa-fw fa-check-circle"></i> <span class="menu-item-parent">Order Status</span></a>
+							 	
+							 	<!-- <ul>
+
+									<li>
+										<a href="#" id="orderStatus" title="Confirm Order" class="showAdPointerCursor"><i class="fa fa-fw  fa-cloud"></i>Confirm order</a> 
+									</li>
+						
+									<li>
+										<a href="#" id="dateWiseOrder" title="Date-wise order" class="showAdPointerCursor"><i class="fa fa-fw  fa-desktop"></i>Date-wise order</a> 
+									</li>
+									
+									<li>
+										<a href="#" id="weekWiseOrder" title="Week-wise order" class="showAdPointerCursor"><i class="fa fa-fw  fa-cloud"></i>Week-wise order</a> 
+									</li>
+						
+									<li>
+										<a href="#" id="monthWiseOrder" title="Month-wise order" class="showAdPointerCursor"><i class="fa fa-fw  fa-desktop"></i>Month-wise order</a> 
+									</li>
+														
+								</ul> -->
+								
+							 </li>
+							
+						     <li>
+								<a href="#" id="services" title="Services"><i class="fa fa-lg fa-fw fa-slack"></i> <span class="menu-item-parent">Services</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" id="staff" title="Staff"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Staff</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" title="Booking Order"><i class="fa fa-lg fa-fw fa-shopping-cart"></i> <span class="menu-item-parent">Booking Order</span></a>
+						     	
+						     	<ul>
+
+									<li>
+										<a href="#" id="onlineBook" title="Online Booking" class="showAdPointerCursor"><i class="fa fa-fw  fa-cloud "></i>Online Booking</a> 
+									</li>
+						
+									<li>
+										<a href="#" id="bookOrder" title="Offline Booking" class="showAdPointerCursor"><i class="fa fa-fw  fa-desktop "></i>Offline Booking</a> 
+									</li>
+														
+								</ul>
+								
+							 </li>
+							 		
+							 <li>
+								<a href="#" id="campaignManager" title="Campaign Manager"><i class="fa fa-lg fa-fw fa-envelope"></i><span class="menu-item-parent">Campaign Manager</span></a>
+							 </li>
+							
+							 <li>
+								<a href="#" id="setup" title="Setup"><i class="fa fa-lg fa-fw fa-gears"></i> <span class="menu-item-parent">Setup</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" id="shedule" title="Schedule"><i class="fa fa-lg fa-fw fa-clock-o"></i> <span class="menu-item-parent">Schedule</span></a>
+							 </li>
+							 
+							 <li>
+								<a href="#" id="contact" title="Contact"><i class="fa fa-lg fa-fw fa-phone"></i> <span class="menu-item-parent">Contact</span></a>
+							 </li>
+			
+				</ul>
+				
+				<% } %>
+				
+			</nav>
+			<span class="minifyme" data-action="minifyMenu"> 
+				<i class="fa fa-arrow-circle-left hit"></i> 
+			</span>
+
+		</aside>
+		<!-- END NAVIGATION -->
+
+		<script>
+		
+		// $(document).ready(function() {
+
+				// DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+
+				/*
+				 * PAGE RELATED SCRIPTS
+				 */
+				 
+				 pageSetUp();
+
+				$(".js-status-update a").click(function() {
+					var selText = $(this).text();
+					var $this = $(this);
+					$this.parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+					$this.parents('.dropdown-menu').find('li').removeClass('active');
+					$this.parent().addClass('active');
+				});
+
+			//});
+
+		</script>
